@@ -36,7 +36,7 @@ export default function About() {
               title={t.about.storyTitle}
               accent={t.about.storyAccent}
             />
-            <div className="space-y-5 text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-8">
+            <div className="space-y-5 text-[0.95rem] md:text-base text-foreground/82 leading-relaxed mt-8">
               <p>
                 {t.about.storyP1a}{" "}
                 <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>

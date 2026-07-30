@@ -12,6 +12,7 @@ import {
   TiltCard,
 } from "@/app/site/ui";
 import { Testimonials } from "@/app/site/Testimonials";
+import { Faq } from "@/app/site/Faq";
 import { useT } from "@/app/i18n";
 import { asianArtImg, brand, galleryItems, logo, routes, serviceImages } from "@/app/site/data";
 
@@ -42,7 +43,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-8 max-w-md"
+              className="text-[0.95rem] md:text-base text-foreground/82 leading-relaxed mt-8 max-w-md"
             >
               {t.home.heroText}{" "}
               <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
@@ -145,7 +146,7 @@ export default function Home() {
               title={t.home.introTitle}
               accent={t.home.introAccent}
             />
-            <div className="space-y-5 text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-8">
+            <div className="space-y-5 text-[0.95rem] md:text-base text-foreground/82 leading-relaxed mt-8">
               <p>{t.home.introP1}</p>
               <p>{t.home.introP2}</p>
             </div>
@@ -212,7 +213,7 @@ export default function Home() {
                       >
                         {s.title}
                       </h3>
-                      <p className="text-xs text-foreground/78 leading-relaxed mt-3">{s.desc}</p>
+                      <p className="text-sm text-foreground/78 leading-relaxed mt-3">{s.desc}</p>
                     </div>
                   </Link>
                 </TiltCard>
@@ -221,7 +222,7 @@ export default function Home() {
           </div>
 
           <FadeUp className="mt-12">
-            <p className="text-xs text-foreground/82 max-w-2xl leading-relaxed">{t.services.priceNote}</p>
+            <p className="text-sm text-foreground/82 max-w-2xl leading-relaxed">{t.services.priceNote}</p>
           </FadeUp>
 
           <FadeUp className="flex mt-10">
@@ -277,6 +278,9 @@ export default function Home() {
 
       {/* ── Testimonials ─────────────────────────────────────────── */}
       <Testimonials />
+
+      {/* ── Questions ────────────────────────────────────────────── */}
+      <Faq />
 
       {/* ── Closing invitation ───────────────────────────────────── */}
       <section className="relative overflow-hidden py-20 md:py-32 px-6 text-white bg-mauve-deep scene">

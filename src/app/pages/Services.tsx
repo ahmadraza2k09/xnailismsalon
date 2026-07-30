@@ -38,7 +38,7 @@ export default function Services() {
               </li>
             ))}
           </ul>
-          <p className="text-xs text-foreground/82 leading-relaxed mt-5">{t.services.priceNote}</p>
+          <p className="text-sm text-foreground/82 leading-relaxed mt-5">{t.services.priceNote}</p>
         </FadeUp>
         </div>
       </section>
@@ -68,12 +68,12 @@ export default function Services() {
               <p className="caption text-mauve mt-4">
                 {s.price} · {s.badge}
               </p>
-              <p className="text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-6">{s.detail}</p>
+              <p className="text-[0.95rem] md:text-base text-foreground/82 leading-relaxed mt-6">{s.detail}</p>
 
               <p className="caption mt-8">{t.services.includesLabel}</p>
               <ul className="mt-4 grid sm:grid-cols-2 gap-3">
                 {s.includes.map((inc) => (
-                  <li key={inc} className="flex items-start gap-2.5 text-xs text-foreground/78 leading-relaxed">
+                  <li key={inc} className="flex items-start gap-2.5 text-sm text-foreground/78 leading-relaxed">
                     <Check size={13} className="text-mauve shrink-0 mt-0.5" />
                     {inc}
                   </li>
@@ -110,7 +110,7 @@ export default function Services() {
                   <h3 className="font-display text-xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {st.title}
                   </h3>
-                  <p className="text-xs text-foreground/78 leading-relaxed mt-3">{st.text}</p>
+                  <p className="text-sm text-foreground/78 leading-relaxed mt-3">{st.text}</p>
                 </li>
               </Reveal3D>
             ))}

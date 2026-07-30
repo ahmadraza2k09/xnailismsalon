@@ -49,7 +49,7 @@ export function Footer() {
               >
                 {brand.wordmark}
               </Link>
-              <p className="text-xs text-white/72 mt-4 leading-relaxed max-w-xs">{t.footer.about}</p>
+              <p className="text-sm text-white/72 mt-4 leading-relaxed max-w-xs">{t.footer.about}</p>
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export function Footer() {
                 </a>
               </li>
               {studioHours.map((h) => (
-                <li key={h.day} className="text-xs text-white/70">
+                <li key={h.day} className="text-sm text-white/70">
                   {t.common.hours[h.day]} · {h.to ? `${h.from} ${t.common.hours.to} ${h.to}` : t.common.hours.byAppointment}
                 </li>
               ))}

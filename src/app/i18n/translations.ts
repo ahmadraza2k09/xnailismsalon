@@ -77,6 +77,30 @@ const es = {
     ctaAccent: "experiencia de uñas",
     ctaSubtitle:
       "Envía tu fecha y servicio por WhatsApp. Ximena responde personalmente.",
+    faqEyebrow: "Preguntas frecuentes",
+    faqTitle: "Antes de tu cita",
+    faq: [
+      {
+        q: "¿Necesito cita?",
+        a: "Sí. Todas las sesiones son con cita previa. Escríbenos por WhatsApp y confirmamos fecha y hora.",
+      },
+      {
+        q: "¿Cuánto dura una sesión?",
+        a: "Cerca de dos horas, según el diseño y el largo que elijas.",
+      },
+      {
+        q: "¿Cada cuánto necesito retoque?",
+        a: "Depende de tu crecimiento natural. Lo habitual es entre tres y cuatro semanas.",
+      },
+      {
+        q: "¿Puedo llevar fotos de referencia?",
+        a: "Claro. Mándalas por WhatsApp antes de la cita y definimos el diseño juntas.",
+      },
+      {
+        q: "¿Cómo reservo?",
+        a: "Completa el formulario de reserva y tu solicitud llega directo a Ximena por WhatsApp.",
+      },
+    ],
   },
 
   about: {
@@ -407,6 +431,30 @@ const en: Dict = {
     ctaAccent: "nail experience",
     ctaSubtitle:
       "Send your date and service on WhatsApp. Ximena replies personally.",
+    faqEyebrow: "Frequent questions",
+    faqTitle: "Before your appointment",
+    faq: [
+      {
+        q: "Do I need an appointment?",
+        a: "Yes. Every session is by appointment. Write on WhatsApp and we confirm a date and time.",
+      },
+      {
+        q: "How long does a session take?",
+        a: "About two hours, depending on the design and the length you choose.",
+      },
+      {
+        q: "How often do I need a refill?",
+        a: "It depends on your natural growth. Three to four weeks is usual.",
+      },
+      {
+        q: "Can I bring reference photos?",
+        a: "Of course. Send them on WhatsApp before the appointment and we settle the design together.",
+      },
+      {
+        q: "How do I book?",
+        a: "Fill in the booking form and your request goes straight to Ximena on WhatsApp.",
+      },
+    ],
   },
 
   about: {

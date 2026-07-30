@@ -23,9 +23,9 @@ export function Ambient({ tone = "light" }: { tone?: "light" | "dark" }) {
           "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.34), transparent 70%)",
         ]
       : [
-          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.55), transparent 68%)",
-          "radial-gradient(circle at 60% 40%, rgba(163,91,133,0.30), transparent 70%)",
-          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.16), transparent 70%)",
+          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.34), transparent 68%)",
+          "radial-gradient(circle at 60% 40%, rgba(163,91,133,0.18), transparent 70%)",
+          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.10), transparent 70%)",
         ];
 
   return (
@@ -286,7 +286,7 @@ export function SectionHeading({
       </h2>
       {subtitle && (
         <p
-          className={`mt-6 text-sm md:text-[0.95rem] leading-relaxed ${subtitleColor} ${
+          className={`mt-6 text-[0.95rem] md:text-base leading-relaxed ${subtitleColor} ${
             align === "center" ? "max-w-xl" : "max-w-lg"
           }`}
         >

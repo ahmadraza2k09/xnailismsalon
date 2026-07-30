@@ -9,7 +9,7 @@
   Everything below is a tint/shade of those four — no colours outside the logo.
 */
 :root {
-  --font-size: 16px;
+  --font-size: 17px;
 
   /* Logo core */
   --logo-mauve: #A35B85;
@@ -57,7 +57,7 @@
   --chart-3: #8F2251;
   --chart-4: #C99BB6;
   --chart-5: #6E3A59;
-  --radius: 0.5rem;
+  --radius: 0.75rem;
   --sidebar: #FBF6F8;
   --sidebar-foreground: #2B1B24;
   --sidebar-primary: #A35B85;
@@ -244,9 +244,9 @@
   /* Wide-tracked small caps used for eyebrows, labels and captions */
   .eyebrow {
     font-family: 'Jost', sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--logo-mauve);
   }
@@ -254,9 +254,9 @@
   /* Small caps caption, one step quieter than .eyebrow */
   .caption {
     font-family: 'Jost', sans-serif;
-    font-size: 0.66rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
@@ -272,21 +272,14 @@
 
   /* ── Glass panels ──────────────────────────────────────────────── */
   .glass {
-    background: linear-gradient(
-      155deg,
-      rgba(255, 255, 255, 0.78) 0%,
-      rgba(255, 255, 255, 0.52) 55%,
-      rgba(255, 240, 244, 0.62) 100%
-    );
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
-    backdrop-filter: blur(22px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
     box-shadow:
-      0 26px 50px -30px rgba(110, 58, 89, 0.45),
-      0 2px 6px -2px rgba(110, 58, 89, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.92),
-      inset 0 -1px 0 rgba(163, 91, 133, 0.08);
+      0 20px 40px -32px rgba(110, 58, 89, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
   /* Same idea for use on the plum bands */
@@ -331,30 +324,23 @@
 
   /* ── Cards: glass with a bevelled lift ─────────────────────────── */
   .card {
-    background: linear-gradient(
-      155deg,
-      rgba(255, 255, 255, 0.82) 0%,
-      rgba(255, 255, 255, 0.58) 55%,
-      rgba(255, 240, 244, 0.66) 100%
-    );
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
-    backdrop-filter: blur(20px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.78);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    backdrop-filter: blur(22px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 1rem;
     box-shadow:
-      0 22px 44px -28px rgba(110, 58, 89, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      inset 0 -1px 0 rgba(163, 91, 133, 0.08);
+      0 18px 36px -30px rgba(110, 58, 89, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   }
 
   .card-hover:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    border-color: #FFFFFF;
     box-shadow:
-      0 34px 60px -30px rgba(110, 58, 89, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -1px 0 rgba(163, 91, 133, 0.1);
+      0 26px 48px -32px rgba(110, 58, 89, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   /* Warm carved surface for secondary blocks */
@@ -380,16 +366,7 @@
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -20px 40px -30px rgba(110, 58, 89, 0.5);
-    background: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0) 42%,
-      rgba(255, 255, 255, 0) 100%
-    );
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
   }
 
   /* ── Buttons: glossy, bevelled, pressable ──────────────────────── */
@@ -518,7 +495,7 @@
     width: 100%;
     padding: 0.85rem 1rem;
     font-family: 'Jost', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 400;
     color: var(--foreground);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.66));
@@ -538,6 +515,15 @@
     box-shadow:
       inset 0 2px 4px rgba(110, 58, 89, 0.08),
       0 0 0 3px rgba(163, 91, 133, 0.16);
+  }
+
+  /* FAQ disclosure: drop the default triangle in every engine */
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::marker {
+    content: '';
   }
 
   /* Scrolling service ribbon */

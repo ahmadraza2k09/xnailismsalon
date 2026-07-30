@@ -142,7 +142,7 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-body text-xs tracking-[0.2em] uppercase ${isActive ? "text-mauve-deep" : "text-mauve-deep/55"}`
+                `font-body text-sm tracking-[0.2em] uppercase ${isActive ? "text-mauve-deep" : "text-mauve-deep/55"}`
               }
               style={{ fontWeight: 500 }}
             >
