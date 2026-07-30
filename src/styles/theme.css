@@ -172,9 +172,10 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.015em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -185,68 +186,77 @@
   }
 
   /* ── Typography ────────────────────────────────────────────────── */
+  /*
+    Cormorant Garamond has a small x-height and fine strokes, so display type
+    runs a size larger and a weight lighter than a workhorse serif would.
+  */
   .font-display {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-style: normal;
-    letter-spacing: -0.005em;
+    font-weight: 400;
+    letter-spacing: 0.005em;
   }
 
   .font-body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-style: normal;
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-style: normal;
+    letter-spacing: 0.005em;
   }
 
   h1 {
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    line-height: 1.2;
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    line-height: 1.1;
   }
 
   h2 {
-    font-size: var(--text-xl);
-    font-weight: 600;
-    line-height: 1.25;
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    line-height: 1.15;
   }
 
   h3 {
-    font-size: var(--text-lg);
-    font-weight: 600;
-    line-height: 1.3;
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.25;
   }
 
   h4 {
-    font-size: var(--text-base);
-    font-weight: 600;
-    line-height: 1.4;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    line-height: 1.35;
   }
 
   label, button, input, select, textarea {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: var(--text-base);
+    font-weight: 400;
     line-height: 1.5;
   }
 
-  label, button {
-    font-weight: var(--font-weight-medium);
-  }
-
-  input, select, textarea {
-    font-weight: var(--font-weight-normal);
-  }
-
-  /* Wide-tracked small caps used for eyebrows and labels */
+  /* Wide-tracked small caps used for eyebrows, labels and captions */
   .eyebrow {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 400;
+    letter-spacing: 0.34em;
     text-transform: uppercase;
     color: var(--logo-mauve);
+  }
+
+  /* Small caps caption, one step quieter than .eyebrow */
+  .caption {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
   }
 }
 
@@ -280,9 +290,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     white-space: nowrap;
     border-radius: 999px;
@@ -336,7 +346,9 @@
   .field {
     width: 100%;
     padding: 0.85rem 1rem;
-    font-size: 0.875rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
     background: #FFFFFF;
     border: 1px solid var(--border);
     border-radius: 0.375rem;
@@ -346,6 +358,23 @@
   .field:focus {
     outline: none;
     border-color: var(--logo-mauve);
+  }
+
+  /* 3D scroll/hover scaffolding */
+  .scene {
+    perspective: 1200px;
+    perspective-origin: 50% 40%;
+  }
+
+  .layer-3d {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene {
+      perspective: none;
+    }
   }
 
   /* Thin engraved rule used under headings */

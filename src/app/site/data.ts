@@ -1,4 +1,8 @@
-import logo from "@/imports/85e7fa0a-69f4-487a-8b11-09f22196f1c0-modified.png";
+/*
+  On-page logo is a 700px derivative of the master artwork (the 2 MB original
+  is kept only for the favicons in public/), so the brand mark paints fast.
+*/
+import logo from "@/imports/logo-seal.jpg";
 import builderGelImg from "@/imports/8d5e0d9b-595f-4f62-bef6-e00598cbf0f7.jpeg";
 import polygelImg from "@/imports/b29a61bf-cc3d-41e2-a835-0f15e46500aa.jpeg";
 import acrylicImg from "@/imports/092385ee-ae0d-42ec-b0fc-d857f4e13718.jpeg";

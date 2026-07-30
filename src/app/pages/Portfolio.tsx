@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { FadeUp, PageHeader } from "@/app/site/ui";
+import { FadeUp, PageHeader, Reveal3D, TiltCard } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { galleryItems, routes } from "@/app/site/data";
 
@@ -29,27 +29,26 @@ export default function Portfolio() {
         subtitle={t.portfolio.headerSubtitle}
       />
 
-      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto scene">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {galleryItems.map((img, i) => (
-            <FadeUp key={img.tag} delay={(i % 3) * 0.05} className="break-inside-avoid">
-              <button
-                onClick={() => setActiveIndex(i)}
-                className="w-full text-left card card-hover overflow-hidden cursor-pointer"
-              >
-                <ImageWithFallback
-                  src={img.src}
-                  alt={t.portfolio.tags[img.tag]}
-                  className="w-full block object-cover"
-                />
-                <p
-                  className="text-[0.6rem] font-body tracking-[0.22em] uppercase text-mauve text-center py-3"
-                  style={{ fontWeight: 600 }}
+            <Reveal3D key={img.tag} delay={(i % 3) * 0.06} className="break-inside-avoid">
+              <TiltCard intensity={6}>
+                <button
+                  onClick={() => setActiveIndex(i)}
+                  className="w-full text-left card card-hover overflow-hidden cursor-pointer group"
                 >
-                  {t.portfolio.tags[img.tag]}
-                </p>
-              </button>
-            </FadeUp>
+                  <div className="overflow-hidden">
+                    <ImageWithFallback
+                      src={img.src}
+                      alt={t.portfolio.tags[img.tag]}
+                      className="w-full block object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <p className="caption text-mauve text-center py-4">{t.portfolio.tags[img.tag]}</p>
+                </button>
+              </TiltCard>
+            </Reveal3D>
           ))}
         </div>
 

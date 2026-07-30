@@ -129,7 +129,9 @@ const es = {
     headerTitle: "Servicios",
     headerAccent: "de autor",
     headerSubtitle:
-      "Experiencias de uñas a la medida, con productos premium y técnica refinada. Los precios parten de las cifras indicadas y varían según largo y diseño.",
+      "Experiencias de uñas a la medida, con productos premium y técnica refinada.",
+    priceNote:
+      "Todos los precios son «desde»: el total final puede variar según la complejidad, el largo o el diseño solicitado.",
     includesLabel: "Incluye",
     processEyebrow: "La cita",
     processTitle: "Cómo transcurre",
@@ -138,22 +140,22 @@ const es = {
     reserveCta: "Reserva tu cita",
     items: [
       {
-        title: "Gel de constructor",
-        price: "Desde $600 MXN",
+        title: "Nivelación de Builder",
+        price: "Desde 600 pesos",
         badge: "El más pedido",
-        desc: "Cobertura de gel duradera y de aspecto natural, para uñas fuertes y flexibles con acabado espejo.",
+        desc: "Nivelación con gel builder sobre la uña natural: estructura firme, forma ligera y acabado impecable.",
         detail:
-          "Una cobertura estructurada aplicada sobre la uña natural para reforzarla, manteniendo una forma ligera y creíble. Ideal si estás dejando crecer tu propio largo o quieres un set pulido para el día a día.",
+          "Se nivela la uña natural con gel builder para reforzarla y corregir la curva, manteniendo una forma ligera y creíble. Ideal si estás dejando crecer tu propio largo o quieres un set pulido para el día a día.",
         includes: [
           "Trabajo de cutícula y preparación",
-          "Cobertura de gel estructurada",
+          "Nivelación con gel builder",
           "Forma y pulido",
           "Top coat brillante o mate",
         ],
       },
       {
-        title: "Extensiones de polygel",
-        price: "Desde $700 MXN",
+        title: "Extensión de Polygel",
+        price: "Desde 700 pesos",
         badge: "Ultra ligeras",
         desc: "Extensiones de polygel ligeras y sin olor, esculpidas para un largo cómodo.",
         detail:
@@ -166,12 +168,12 @@ const es = {
         ],
       },
       {
-        title: "Extensiones de acrílico",
-        price: "Desde $700 MXN",
-        badge: "Presencia",
-        desc: "Extensiones de acrílico con carácter, esculpidas a mano y con estructura impecable.",
+        title: "Extensión de Acrílico",
+        price: "Desde 700 pesos",
+        badge: "Máxima resistencia",
+        desc: "Extensiones de acrílico esculpidas a mano, con estructura impecable y largo que aguanta.",
         detail:
-          "Para un largo que dura. Acrílico esculpido a mano con un ápice preciso y un borde libre delgado: la opción más resistente para formas largas o dramáticas.",
+          "Para un largo que dura. Acrílico esculpido a mano con un ápice preciso y un borde libre delgado: la opción más resistente para formas largas o marcadas.",
         includes: [
           "Preparación completa de la uña",
           "Acrílico esculpido a mano",
@@ -180,12 +182,12 @@ const es = {
         ],
       },
       {
-        title: "Arte y detalle en uñas",
-        price: "Precio variable",
+        title: "Diseños Asiáticos",
+        price: "Precios variables",
         badge: "Arte de autor",
-        desc: "Diseños intrincados pintados a mano: florales, gemas y detalle fino de lujo.",
+        desc: "Diseños pintados a mano al estilo asiático: florales, gemas y detalle fino.",
         detail:
-          "Trabajo de pincel fino inspirado en la cultura asiática de uñas: florales pintados a mano, detalles encapsulados, colocación de gemas y degradados. El precio depende de la complejidad del diseño.",
+          "Trabajo de pincel fino inspirado en la cultura asiática de uñas: florales pintados a mano, detalles encapsulados, colocación de gemas y degradados. El precio se define según la complejidad del diseño.",
         includes: [
           "Consulta de diseño",
           "Detalle pintado a mano",
@@ -455,7 +457,9 @@ const en: Dict = {
     headerTitle: "Signature",
     headerAccent: "services",
     headerSubtitle:
-      "Tailored nail experiences using premium products and refined technique. Pricing starts from the figures below and varies with length and design.",
+      "Tailored nail experiences using premium products and refined technique.",
+    priceNote:
+      "Every price is a starting price: the final total may vary with the complexity, the length or the design requested.",
     includesLabel: "Includes",
     processEyebrow: "The appointment",
     processTitle: "How a session",
@@ -464,22 +468,22 @@ const en: Dict = {
     reserveCta: "Reserve your appointment",
     items: [
       {
-        title: "Builder gel",
-        price: "From $600 MXN",
+        title: "Builder levelling",
+        price: "From 600 pesos",
         badge: "Most requested",
-        desc: "Durable, natural-looking gel overlays for strong, flexible nails with a mirror-clear finish.",
+        desc: "Builder gel levelled over the natural nail: firm structure, light shape, flawless finish.",
         detail:
-          "A structured overlay applied on the natural nail to reinforce it while keeping the shape light and believable. Ideal if you are growing your own length or want a polished everyday set.",
+          "The natural nail is levelled with builder gel to reinforce it and correct the curve, while keeping the shape light and believable. Ideal if you are growing your own length or want a polished everyday set.",
         includes: [
           "Cuticle work & nail prep",
-          "Structured gel overlay",
+          "Builder gel levelling",
           "Shape & buff",
           "Gloss or matte top coat",
         ],
       },
       {
-        title: "Polygel extensions",
-        price: "From $700 MXN",
+        title: "Polygel extension",
+        price: "From 700 pesos",
         badge: "Feather light",
         desc: "Lightweight, odour-free polygel extensions sculpted for comfortable added length.",
         detail:
@@ -492,12 +496,12 @@ const en: Dict = {
         ],
       },
       {
-        title: "Acrylic extensions",
-        price: "From $700 MXN",
-        badge: "Statement",
-        desc: "Statement-making acrylic extensions with custom sculpting and a flawless structure.",
+        title: "Acrylic extension",
+        price: "From 700 pesos",
+        badge: "Most resilient",
+        desc: "Hand-sculpted acrylic extensions with a flawless structure and length that holds.",
         detail:
-          "For length that lasts. Hand-sculpted acrylic with a precise apex and thin free edge — the most resilient option for long or dramatic shapes.",
+          "For length that lasts. Hand-sculpted acrylic with a precise apex and thin free edge — the most resilient option for long or bold shapes.",
         includes: [
           "Full nail prep",
           "Hand-sculpted acrylic",
@@ -506,12 +510,12 @@ const en: Dict = {
         ],
       },
       {
-        title: "Nail art & detailing",
-        price: "Variable pricing",
+        title: "Asian designs",
+        price: "Variable prices",
         badge: "Signature art",
-        desc: "Intricate hand-painted designs — florals, gems and fine-line luxury detailing.",
+        desc: "Hand-painted designs in the Asian style: florals, gems and fine detailing.",
         detail:
-          "Fine-brush work inspired by Asian nail culture: hand-painted florals, encapsulated details, gem placement and gradients, priced by the complexity of the design.",
+          "Fine-brush work inspired by Asian nail culture: hand-painted florals, encapsulated details, gem placement and gradients. The price is set by the complexity of the design.",
         includes: [
           "Design consultation",
           "Hand-painted detailing",

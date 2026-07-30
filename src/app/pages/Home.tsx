@@ -1,8 +1,17 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { ArrowRight, Instagram, Star } from "lucide-react";
+import { ArrowRight, Instagram } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { FadeUp, Rule, SectionHeading } from "@/app/site/ui";
+import {
+  Eyebrow,
+  FadeUp,
+  Parallax,
+  Reveal3D,
+  Rule,
+  ScrollZoom,
+  SectionHeading,
+  TiltCard,
+} from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { asianArtImg, brand, galleryItems, logo, routes, serviceImages } from "@/app/site/data";
 
@@ -11,185 +20,218 @@ export default function Home() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-[86vh] flex items-center justify-center px-6 pt-28 pb-20 bg-blush-mist">
-        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-9"
-          >
-            <ImageWithFallback
-              src={logo}
-              alt={`${brand.name} — ${t.common.tagline}`}
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover"
-            />
-          </motion.div>
+      {/* ── Hero: asymmetric, type on the left, image on the right ── */}
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 bg-blush-mist scene overflow-hidden">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-16 items-center">
+          <div className="order-2 md:order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Eyebrow>{t.common.tagline}</Eyebrow>
+            </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="eyebrow"
-          >
-            {t.common.tagline}
-          </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 22, rotateX: 10, transformPerspective: 1200 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.02] mt-6 text-mauve-deep"
+              style={{ fontWeight: 400, transformOrigin: "0% 100%" }}
+            >
+              {t.home.heroTitle}
+              <span className="block text-mauve mt-2" style={{ fontWeight: 300 }}>
+                {t.home.heroAccent}
+              </span>
+            </motion.h1>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.12] mt-5 text-mauve-deep"
-            style={{ fontWeight: 600 }}
-          >
-            {t.home.heroTitle}
-            <span className="block text-mauve mt-1" style={{ fontWeight: 400 }}>
-              {t.home.heroAccent}
-            </span>
-          </motion.h1>
+            <Rule className="w-32 mt-8" />
 
-          <Rule className="w-28 mt-7" />
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="text-sm md:text-[0.95rem] text-foreground/70 leading-relaxed mt-8 max-w-md"
+            >
+              {t.home.heroText}{" "}
+              <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
+                {t.common.artist}
+              </span>
+              .
+            </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.35 }}
-            className="text-sm md:text-base text-foreground/70 leading-relaxed mt-7 max-w-xl"
-          >
-            {t.home.heroText}{" "}
-            <span className="font-display text-mauve-deep" style={{ fontWeight: 600 }}>
-              {t.common.artist}
-            </span>
-            .
-          </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="flex flex-col sm:flex-row gap-4 mt-10"
+            >
+              <Link to={routes.booking} className="btn-primary text-[0.66rem] px-9 py-4">
+                {t.nav.bookAppointment}
+              </Link>
+              <Link to={routes.portfolio} className="btn-outline text-[0.66rem] px-9 py-4">
+                {t.common.viewPortfolio}
+              </Link>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row gap-4 mt-10 w-full sm:w-auto"
-          >
-            <Link to={routes.booking} className="btn-primary text-[0.68rem] px-9 py-4">
-              {t.nav.bookAppointment}
-            </Link>
-            <Link to={routes.portfolio} className="btn-outline text-[0.68rem] px-9 py-4">
-              {t.common.viewPortfolio}
-            </Link>
-          </motion.div>
+            {/* Price index — the four services as a set list */}
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mt-12 border-t border-mauve/15 max-w-md"
+            >
+              {t.services.items.map((s, i) => (
+                <li
+                  key={s.title}
+                  className="flex items-baseline justify-between gap-4 py-3 border-b border-mauve/15"
+                >
+                  <span className="flex items-baseline gap-3">
+                    <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-base md:text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
+                      {s.title}
+                    </span>
+                  </span>
+                  <span className="caption text-mauve whitespace-nowrap">{s.price}</span>
+                </li>
+              ))}
+            </motion.ul>
+          </div>
+
+          {/* Portrait with scroll drift + the logo as a seal */}
+          <div className="order-1 md:order-2 relative">
+            <Parallax distance={34} depth={40}>
+              <ScrollZoom from={1.1} className="rounded-lg border border-mauve/15 aspect-[4/5]">
+                <ImageWithFallback
+                  src={asianArtImg}
+                  alt={t.services.items[3].title}
+                  className="w-full h-full object-cover"
+                />
+              </ScrollZoom>
+            </Parallax>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute -bottom-6 -left-4 md:-left-8 w-24 h-24 md:w-28 md:h-28"
+            >
+              <ImageWithFallback
+                src={logo}
+                alt={`${brand.name} — ${t.common.tagline}`}
+                className="w-full h-full rounded-full object-cover border-4 border-blush-mist"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ── Introduction ─────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 px-6 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-14 md:gap-20 items-center">
-          <FadeUp>
-            <div className="relative overflow-hidden rounded-lg aspect-[4/5] border border-border">
-              <ImageWithFallback
-                src={asianArtImg}
-                alt={t.services.items[3].title}
-                className="w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: "linear-gradient(to top, rgba(110,58,89,0.55) 0%, transparent 55%)" }}
-              />
-              <div className="absolute bottom-5 left-5 right-5">
-                <p
-                  className="font-display text-sm tracking-[0.12em] text-white uppercase"
-                  style={{ fontWeight: 600 }}
-                >
-                  {t.home.badgeName}
-                </p>
-                <p className="text-xs text-white/75 mt-1">{t.home.badgeSub}</p>
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
+      {/* ── The studio ───────────────────────────────────────────── */}
+      <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto scene">
+        <div className="grid md:grid-cols-2 gap-14 md:gap-24 items-center">
+          <Reveal3D>
             <SectionHeading
               align="left"
               eyebrow={t.home.introEyebrow}
               title={t.home.introTitle}
               accent={t.home.introAccent}
             />
-            <div className="space-y-4 text-sm md:text-base text-foreground/70 leading-relaxed mt-7">
+            <div className="space-y-5 text-sm md:text-[0.95rem] text-foreground/70 leading-relaxed mt-8">
               <p>{t.home.introP1}</p>
               <p>{t.home.introP2}</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-10">
+            <dl className="grid grid-cols-3 gap-8 mt-12 border-t border-mauve/15 pt-8">
               {t.stats.map((s) => (
-                <div key={s.label} className="text-center card py-5 px-3">
-                  <p className="font-display text-3xl text-mauve" style={{ fontWeight: 600 }}>
+                <div key={s.label}>
+                  <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 400 }}>
                     {s.value}
-                  </p>
-                  <p
-                    className="text-[0.6rem] font-body tracking-[0.16em] uppercase text-mauve-deep/70 mt-2"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {s.label}
-                  </p>
+                  </dt>
+                  <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
 
-            <Link to={routes.about} className="btn-outline text-[0.66rem] px-7 py-3.5 mt-9">
+            <Link to={routes.about} className="btn-outline text-[0.64rem] px-7 py-3.5 mt-10">
               {t.common.moreAboutHer}
               <ArrowRight size={14} />
             </Link>
-          </FadeUp>
+          </Reveal3D>
+
+          <Parallax distance={44} className="md:pt-16">
+            <figure className="relative">
+              <ScrollZoom from={1.14} className="rounded-lg border border-mauve/15 aspect-[4/5]">
+                <ImageWithFallback
+                  src={serviceImages[0]}
+                  alt={t.services.items[0].title}
+                  className="w-full h-full object-cover"
+                />
+              </ScrollZoom>
+              <figcaption className="caption mt-4 flex items-center gap-3">
+                <span className="w-8 h-px bg-mauve/40" />
+                {t.home.badgeName} · {t.home.badgeSub}
+              </figcaption>
+            </figure>
+          </Parallax>
         </div>
       </section>
 
-      {/* ── Services preview ─────────────────────────────────────── */}
-      <section className="py-20 md:py-28 px-6 bg-ivory-warm border-y border-border">
+      {/* ── Services ─────────────────────────────────────────────── */}
+      <section className="py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="flex justify-center">
-            <SectionHeading
-              eyebrow={t.home.servicesEyebrow}
-              title={t.home.servicesTitle}
-              accent={t.home.servicesAccent}
-              subtitle={t.home.servicesSubtitle}
-            />
-          </FadeUp>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <Reveal3D>
+              <SectionHeading
+                align="left"
+                eyebrow={t.home.servicesEyebrow}
+                title={t.home.servicesTitle}
+                accent={t.home.servicesAccent}
+              />
+            </Reveal3D>
+            <FadeUp delay={0.1}>
+              <p className="text-sm text-foreground/65 max-w-sm md:text-right">
+                {t.home.servicesSubtitle}
+              </p>
+            </FadeUp>
+          </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             {t.services.items.map((s, i) => (
-              <FadeUp key={s.title} delay={i * 0.06}>
-                <Link to={routes.services} className="block h-full card card-hover overflow-hidden">
-                  <div className="relative overflow-hidden aspect-[4/3]">
-                    <ImageWithFallback
-                      src={serviceImages[i]}
-                      alt={s.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <p
-                      className="text-[0.58rem] font-body tracking-[0.18em] uppercase text-mauve/70"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {s.badge}
-                    </p>
-                    <h3 className="font-display text-lg text-mauve-deep mt-2" style={{ fontWeight: 600 }}>
-                      {s.title}
-                    </h3>
-                    <p
-                      className="text-[0.62rem] font-body tracking-[0.14em] uppercase text-mauve mt-1.5"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {s.price}
-                    </p>
-                    <p className="text-xs text-foreground/65 leading-relaxed mt-3">{s.desc}</p>
-                  </div>
-                </Link>
-              </FadeUp>
+              <Reveal3D key={s.title} delay={i * 0.08}>
+                <TiltCard className="h-full">
+                  <Link to={routes.services} className="group block h-full card card-hover overflow-hidden">
+                    <div className="overflow-hidden aspect-[4/5]">
+                      <ImageWithFallback
+                        src={serviceImages[i]}
+                        alt={s.title}
+                        className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="caption text-mauve">{s.price}</span>
+                      </div>
+                      <h3
+                        className="font-display text-xl text-mauve-deep mt-3 leading-snug"
+                        style={{ fontWeight: 500 }}
+                      >
+                        {s.title}
+                      </h3>
+                      <p className="text-xs text-foreground/65 leading-relaxed mt-3">{s.desc}</p>
+                    </div>
+                  </Link>
+                </TiltCard>
+              </Reveal3D>
             ))}
           </div>
 
-          <FadeUp className="flex justify-center mt-14">
-            <Link to={routes.services} className="btn-outline text-[0.66rem] px-8 py-3.5">
+          <FadeUp className="mt-12">
+            <p className="text-xs text-foreground/55 max-w-2xl leading-relaxed">{t.services.priceNote}</p>
+          </FadeUp>
+
+          <FadeUp className="flex mt-10">
+            <Link to={routes.services} className="btn-outline text-[0.64rem] px-8 py-3.5">
               {t.common.allServices}
               <ArrowRight size={14} />
             </Link>
@@ -197,40 +239,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Portfolio preview ────────────────────────────────────── */}
-      <section className="py-20 md:py-28 px-6 max-w-7xl mx-auto">
-        <FadeUp className="flex justify-center">
+      {/* ── Portfolio: offset editorial grid ─────────────────────── */}
+      <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto scene">
+        <Reveal3D className="flex justify-center">
           <SectionHeading
             eyebrow={t.home.portfolioEyebrow}
             title={t.home.portfolioTitle}
             subtitle={t.home.portfolioSubtitle}
           />
-        </FadeUp>
+        </Reveal3D>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-16">
           {galleryItems.slice(0, 4).map((img, i) => (
-            <FadeUp key={img.tag} delay={i * 0.06}>
-              <Link to={routes.portfolio} className="block card card-hover overflow-hidden">
-                <div className="overflow-hidden aspect-square">
-                  <ImageWithFallback
-                    src={img.src}
-                    alt={t.portfolio.tags[img.tag]}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p
-                  className="text-[0.58rem] font-body tracking-[0.2em] uppercase text-mauve text-center py-3"
-                  style={{ fontWeight: 600 }}
-                >
-                  {t.portfolio.tags[img.tag]}
-                </p>
-              </Link>
-            </FadeUp>
+            <Parallax key={img.tag} distance={i % 2 === 0 ? 26 : 46} className={i % 2 === 1 ? "md:pt-12" : ""}>
+              <TiltCard intensity={5}>
+                <Link to={routes.portfolio} className="group block">
+                  <ScrollZoom from={1.08} className="rounded-lg border border-mauve/15 aspect-[3/4]">
+                    <ImageWithFallback
+                      src={img.src}
+                      alt={t.portfolio.tags[img.tag]}
+                      className="w-full h-full object-cover"
+                    />
+                  </ScrollZoom>
+                  <p className="caption mt-4 text-center group-hover:text-mauve transition-colors">
+                    {t.portfolio.tags[img.tag]}
+                  </p>
+                </Link>
+              </TiltCard>
+            </Parallax>
           ))}
         </div>
 
-        <FadeUp className="flex justify-center mt-14">
-          <Link to={routes.portfolio} className="btn-outline text-[0.66rem] px-8 py-3.5">
+        <FadeUp className="flex justify-center mt-16">
+          <Link to={routes.portfolio} className="btn-outline text-[0.64rem] px-8 py-3.5">
             {t.common.fullGallery}
             <ArrowRight size={14} />
           </Link>
@@ -238,52 +279,39 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials ─────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 px-6 bg-ivory-warm border-y border-border">
+      <section className="py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="flex justify-center">
-            <SectionHeading
-              eyebrow={t.home.testimonialsEyebrow}
-              title={t.home.testimonialsTitle}
-            />
-          </FadeUp>
+          <Reveal3D className="flex justify-center">
+            <SectionHeading eyebrow={t.home.testimonialsEyebrow} title={t.home.testimonialsTitle} />
+          </Reveal3D>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-14">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10 mt-16">
             {t.testimonials.map((item, i) => (
-              <FadeUp key={item.name} delay={i * 0.06}>
-                <div className="h-full card p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="flex gap-1 mb-5">
-                      {Array.from({ length: 5 }).map((_, s) => (
-                        <Star key={s} size={13} className="fill-mauve text-mauve" />
-                      ))}
-                    </div>
-                    <p className="text-sm text-foreground/72 leading-relaxed">&ldquo;{item.text}&rdquo;</p>
-                  </div>
-                  <div className="flex items-center gap-3.5 pt-6 mt-6 border-t border-border">
-                    <span
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white font-display text-sm bg-mauve"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {item.name.charAt(0)}
-                    </span>
-                    <div>
-                      <p className="font-display text-sm text-mauve-deep" style={{ fontWeight: 600 }}>
-                        {item.name}
-                      </p>
-                      <p className="text-[0.68rem] text-foreground/55">{item.role}</p>
-                    </div>
-                  </div>
-                </div>
-              </FadeUp>
+              <Reveal3D key={item.name} delay={i * 0.08}>
+                <figure className="h-full flex flex-col justify-between">
+                  <span className="font-display text-5xl text-mauve/30 leading-none" aria-hidden>
+                    &ldquo;
+                  </span>
+                  <blockquote className="text-sm md:text-[0.95rem] text-foreground/72 leading-relaxed mt-3">
+                    {item.text}
+                  </blockquote>
+                  <figcaption className="mt-8 pt-5 border-t border-mauve/15">
+                    <p className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
+                      {item.name}
+                    </p>
+                    <p className="caption mt-1.5">{item.role}</p>
+                  </figcaption>
+                </figure>
+              </Reveal3D>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── Closing invitation ───────────────────────────────────── */}
-      <section className="py-20 md:py-28 px-6 text-white bg-mauve-deep">
+      <section className="py-20 md:py-32 px-6 text-white bg-mauve-deep scene">
         <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
-          <FadeUp className="flex flex-col items-center">
+          <Reveal3D className="flex flex-col items-center">
             <SectionHeading
               light
               eyebrow={t.home.ctaEyebrow}
@@ -291,21 +319,21 @@ export default function Home() {
               accent={t.home.ctaAccent}
               subtitle={t.home.ctaSubtitle}
             />
-            <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              <Link to={routes.booking} className="btn-on-dark text-[0.68rem] px-9 py-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-12">
+              <Link to={routes.booking} className="btn-on-dark text-[0.66rem] px-9 py-4">
                 {t.nav.bookNow}
               </Link>
               <a
                 href={brand.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline text-[0.68rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
+                className="btn-outline text-[0.66rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
               >
                 <Instagram size={15} />
                 {brand.instagramHandle}
               </a>
             </div>
-          </FadeUp>
+          </Reveal3D>
         </div>
       </section>
     </>

@@ -17,7 +17,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
           className={`px-2 py-1 text-[0.62rem] font-body tracking-[0.16em] uppercase rounded-full transition-colors ${
             lang === code ? "bg-mauve text-white" : "text-mauve-deep/60 hover:text-mauve"
           }`}
-          style={{ fontWeight: 600 }}
+          style={{ fontWeight: 400 }}
         >
           {code}
         </button>
@@ -67,13 +67,13 @@ export function Navbar() {
           <span className="flex flex-col leading-none">
             <span
               className="font-display text-lg md:text-xl tracking-[0.14em] text-mauve-deep"
-              style={{ fontWeight: 600 }}
+              style={{ fontWeight: 400 }}
             >
               {brand.wordmark}
             </span>
             <span
               className="text-[0.55rem] font-body tracking-[0.32em] uppercase text-mauve/75 mt-1.5"
-              style={{ fontWeight: 600 }}
+              style={{ fontWeight: 400 }}
             >
               {t.nav.studioLine}
             </span>
@@ -91,7 +91,7 @@ export function Navbar() {
                   isActive ? "text-mauve" : "text-foreground/70 hover:text-mauve"
                 }`
               }
-              style={{ fontWeight: 600 }}
+              style={{ fontWeight: 400 }}
             >
               {l.label}
             </NavLink>
@@ -139,7 +139,7 @@ export function Navbar() {
               className={({ isActive }) =>
                 `font-body text-xs tracking-[0.2em] uppercase ${isActive ? "text-mauve" : "text-foreground/75"}`
               }
-              style={{ fontWeight: 600 }}
+              style={{ fontWeight: 400 }}
             >
               {l.label}
             </NavLink>

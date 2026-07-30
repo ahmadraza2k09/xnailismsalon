@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { FadeUp, PageHeader } from "@/app/site/ui";
+import { FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand, studioHours } from "@/app/site/data";
 
@@ -50,9 +50,9 @@ export default function Booking() {
         subtitle={t.booking.headerSubtitle}
       />
 
-      <section className="py-16 md:py-24 px-6">
+      <section className="py-16 md:py-24 px-6 scene">
         <div className="max-w-3xl mx-auto">
-          <FadeUp>
+          <Reveal3D>
             <div className="card p-8 md:p-12">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -105,6 +105,7 @@ export default function Booking() {
                       </option>
                     ))}
                   </select>
+                  <p className="text-xs text-foreground/55 leading-relaxed mt-3">{t.services.priceNote}</p>
                 </div>
                 <div className="md:col-span-2">
                   <label className={labelCls} htmlFor="bk-notes">
@@ -135,30 +136,20 @@ export default function Booking() {
                 </p>
               </div>
             </div>
-          </FadeUp>
+          </Reveal3D>
 
           <FadeUp delay={0.1}>
-            <p
-              className="text-[0.6rem] font-body tracking-[0.22em] uppercase text-mauve-deep/60 mt-12 mb-4 text-center"
-              style={{ fontWeight: 600 }}
-            >
-              {t.booking.hoursTitle}
-            </p>
-            <div className="grid sm:grid-cols-3 gap-5">
+            <p className="caption text-center mt-14 mb-5">{t.booking.hoursTitle}</p>
+            <ul className="border-t border-mauve/15 max-w-xl mx-auto">
               {studioHours.map((h) => (
-                <div key={h.day} className="card-tint p-6 text-center">
-                  <p
-                    className="text-[0.6rem] font-body tracking-[0.16em] uppercase text-mauve"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {t.common.hours[h.day]}
-                  </p>
-                  <p className="font-display text-lg text-mauve-deep mt-2" style={{ fontWeight: 600 }}>
+                <li key={h.day} className="flex items-baseline justify-between gap-4 py-4 border-b border-mauve/15">
+                  <span className="caption text-mauve-deep">{t.common.hours[h.day]}</span>
+                  <span className="font-display text-lg text-mauve" style={{ fontWeight: 500 }}>
                     {h.time ?? t.common.hours.byAppointment}
-                  </p>
-                </div>
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </FadeUp>
         </div>
       </section>

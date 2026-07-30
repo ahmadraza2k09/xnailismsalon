@@ -30,12 +30,12 @@ export function Footer() {
           <div className="flex items-start gap-4">
             <ImageWithFallback src={logo} alt={brand.name} className="w-14 h-14 rounded-full object-cover" />
             <div>
-              <p className="font-display text-xl tracking-[0.14em] text-white" style={{ fontWeight: 600 }}>
+              <p className="font-display text-xl tracking-[0.14em] text-white" style={{ fontWeight: 400 }}>
                 {brand.wordmark}
               </p>
               <p
                 className="text-[0.6rem] font-body tracking-[0.28em] uppercase text-blush mt-1.5"
-                style={{ fontWeight: 600 }}
+                style={{ fontWeight: 400 }}
               >
                 {t.common.tagline}
               </p>
@@ -52,7 +52,7 @@ export function Footer() {
                   <Link
                     to={l.to}
                     className="font-body text-[0.7rem] tracking-[0.2em] uppercase text-white/65 hover:text-white transition-colors"
-                    style={{ fontWeight: 500 }}
+                    style={{ fontWeight: 400 }}
                   >
                     {l.label}
                   </Link>

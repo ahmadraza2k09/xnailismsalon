@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router";
 import { MessageCircle } from "lucide-react";
 import { Navbar } from "@/app/site/Navbar";
 import { Footer } from "@/app/site/Footer";
+import { ScrollProgress } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand } from "@/app/site/data";
 
@@ -24,6 +25,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-background text-foreground font-body overflow-x-hidden selection:bg-mauve/20">
       <ScrollToTop />
       <Navbar />
+      <ScrollProgress />
 
       <main className="flex-1">
         <Outlet />

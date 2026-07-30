@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Instagram, MessageCircle, Phone } from "lucide-react";
-import { FadeUp, PageHeader, SectionHeading } from "@/app/site/ui";
+import { FadeUp, PageHeader, Reveal3D, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand, routes, studioHours } from "@/app/site/data";
 
@@ -46,15 +46,15 @@ export default function Contact() {
         subtitle={t.contact.headerSubtitle}
       />
 
-      <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto">
+      <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto scene">
         <div className="grid md:grid-cols-3 gap-6">
           {channels.map((c, i) => (
-            <FadeUp key={c.label} delay={i * 0.06}>
+            <Reveal3D key={c.label} delay={i * 0.07}>
               <div className="h-full card p-8 text-center flex flex-col items-center justify-between">
                 <div>
                   <c.icon size={22} className="text-mauve mx-auto" />
                   <p className="eyebrow mt-5">{c.label}</p>
-                  <p className="font-display text-lg text-mauve-deep mt-2.5" style={{ fontWeight: 600 }}>
+                  <p className="font-display text-2xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {c.value}
                   </p>
                   <p className="text-xs text-foreground/55 mt-2">{c.sub}</p>
@@ -67,7 +67,7 @@ export default function Contact() {
                   {c.cta}
                 </a>
               </div>
-            </FadeUp>
+            </Reveal3D>
           ))}
         </div>
 
@@ -83,14 +83,9 @@ export default function Contact() {
               />
               <ul className="divide-y divide-border">
                 {studioHours.map((h) => (
-                  <li key={h.day} className="flex items-center justify-between py-4">
-                    <span
-                      className="text-[0.68rem] font-body tracking-[0.14em] uppercase text-mauve-deep"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {t.common.hours[h.day]}
-                    </span>
-                    <span className="font-display text-base text-mauve" style={{ fontWeight: 600 }}>
+                  <li key={h.day} className="flex items-baseline justify-between py-4">
+                    <span className="caption text-mauve-deep">{t.common.hours[h.day]}</span>
+                    <span className="font-display text-lg text-mauve" style={{ fontWeight: 500 }}>
                       {h.time ?? t.common.hours.byAppointment}
                     </span>
                   </li>
