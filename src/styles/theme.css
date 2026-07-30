@@ -285,7 +285,8 @@
 
   /* ── Buttons: solid fill, single colour change on hover ─────────── */
   .btn-primary,
-  .btn-outline {
+  .btn-outline,
+  .btn-on-dark {
     display: inline-flex;
     align-items: center;
     justify-content: center;
