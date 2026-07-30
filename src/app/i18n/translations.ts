@@ -28,7 +28,6 @@ const es = {
   },
 
   common: {
-    tagline: "Creación · Arte · Poder",
     artist: "Ximena Moreno",
     viewPortfolio: "Ver el portafolio",
     allServices: "Todos los servicios y precios",
@@ -48,6 +47,7 @@ const es = {
   },
 
   home: {
+    heroEyebrow: "Estudio privado · Con cita previa",
     heroTitle: "Donde las uñas",
     heroAccent: "se vuelven arte",
     heroText:
@@ -356,7 +356,6 @@ const en: Dict = {
   },
 
   common: {
-    tagline: "Creación · Arte · Poder",
     artist: "Ximena Moreno",
     viewPortfolio: "View the portfolio",
     allServices: "All services & pricing",
@@ -376,6 +375,7 @@ const en: Dict = {
   },
 
   home: {
+    heroEyebrow: "Private studio · By appointment",
     heroTitle: "Where nails",
     heroAccent: "become art",
     heroText:

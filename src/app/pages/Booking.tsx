@@ -4,7 +4,7 @@ import { FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand, studioHours } from "@/app/site/data";
 
-const labelCls = "block text-[0.62rem] font-body tracking-[0.18em] uppercase text-mauve-deep mb-2.5";
+const labelCls = "block text-[0.74rem] font-body tracking-[0.18em] uppercase text-mauve-deep mb-2.5";
 
 export default function Booking() {
   const t = useT();
@@ -105,7 +105,7 @@ export default function Booking() {
                       </option>
                     ))}
                   </select>
-                  <p className="text-xs text-foreground/55 leading-relaxed mt-3">{t.services.priceNote}</p>
+                  <p className="text-sm text-foreground/85 leading-relaxed mt-3">{t.services.priceNote}</p>
                 </div>
                 <div className="md:col-span-2">
                   <label className={labelCls} htmlFor="bk-notes">
@@ -126,12 +126,12 @@ export default function Booking() {
                 <button
                   onClick={sendToWhatsApp}
                   disabled={!ready}
-                  className="btn-primary text-[0.66rem] px-8 py-4 w-full sm:w-auto"
+                  className="btn-primary text-[0.78rem] px-8 py-4 w-full sm:w-auto"
                 >
                   <MessageCircle size={16} />
                   {t.booking.send}
                 </button>
-                <p className="text-xs text-foreground/55 text-center sm:text-left leading-relaxed">
+                <p className="text-sm text-foreground/85 text-center sm:text-left leading-relaxed">
                   {t.booking.sendNote}
                 </p>
               </div>

@@ -57,12 +57,12 @@ export default function Contact() {
                   <p className="font-display text-2xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {c.value}
                   </p>
-                  <p className="text-xs text-foreground/55 mt-2">{c.sub}</p>
+                  <p className="text-sm text-foreground/85 mt-2">{c.sub}</p>
                 </div>
                 <a
                   href={c.href}
                   {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="btn-primary text-[0.6rem] px-6 py-3.5 mt-7 w-full"
+                  className="btn-primary text-[0.72rem] px-6 py-3.5 mt-7 w-full"
                 >
                   {c.cta}
                 </a>
@@ -113,13 +113,13 @@ export default function Contact() {
                 href={brand.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-on-dark text-[0.68rem] px-9 py-4"
+                className="btn-on-dark text-[0.8rem] px-9 py-4"
               >
                 {brand.instagramHandle}
               </a>
               <Link
                 to={routes.booking}
-                className="btn-outline text-[0.68rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
+                className="btn-outline text-[0.8rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
               >
                 {t.nav.bookAppointment}
               </Link>

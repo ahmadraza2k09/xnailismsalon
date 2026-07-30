@@ -36,7 +36,7 @@ export default function About() {
               title={t.about.storyTitle}
               accent={t.about.storyAccent}
             />
-            <div className="space-y-5 text-sm md:text-[0.95rem] text-foreground/70 leading-relaxed mt-8">
+            <div className="space-y-5 text-base md:text-[1.05rem] text-foreground/85 leading-relaxed mt-8">
               <p>
                 {t.about.storyP1a}{" "}
                 <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
@@ -51,7 +51,7 @@ export default function About() {
             <dl className="grid grid-cols-3 gap-8 mt-12 border-t border-mauve/15 pt-8">
               {t.stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 400 }}>
+                  <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
                     {s.value}
                   </dt>
                   <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
@@ -82,7 +82,7 @@ export default function About() {
                   <h3 className="font-display text-2xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {v.title}
                   </h3>
-                  <p className="text-sm text-foreground/68 leading-relaxed mt-4">{v.text}</p>
+                  <p className="text-sm text-foreground/80 leading-relaxed mt-4">{v.text}</p>
                 </div>
               </Reveal3D>
             ))}
@@ -104,11 +104,11 @@ export default function About() {
               {t.about.studioPoints.map((line) => (
                 <li key={line} className="flex gap-4 items-start py-4 border-b border-mauve/15">
                   <span className="mt-2 w-1.5 h-1.5 rotate-45 bg-mauve/60 shrink-0" />
-                  <span className="text-sm text-foreground/70 leading-relaxed">{line}</span>
+                  <span className="text-sm text-foreground/85 leading-relaxed">{line}</span>
                 </li>
               ))}
             </ul>
-            <Link to={routes.booking} className="btn-primary text-[0.64rem] px-8 py-4 mt-10">
+            <Link to={routes.booking} className="btn-primary text-[0.76rem] px-8 py-4 mt-10">
               {t.common.bookSession}
               <ArrowRight size={14} />
             </Link>
