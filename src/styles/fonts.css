@@ -1,5 +1,14 @@
 /*
-  The exact pairing used by the reference site: Cormorant Garamond for
-  display, Inter for interface. Upright axes only — no italics on this site.
+  Cormorant Garamond for display, Garet for everything else.
+
+  Garet is not served by Google Fonts, so it leads every UI stack and Jost
+  (its closest free geometric match) renders wherever Garet is unavailable.
+  Drop Garet .woff2 files into the project and add an @font-face here to
+  serve it directly.
 */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --font-ui: 'Garet', 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+}

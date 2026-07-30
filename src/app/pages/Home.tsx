@@ -9,7 +9,6 @@ import {
   Reveal3D,
   ScrollZoom,
   SectionHeading,
-  TiltCard,
 } from "@/app/site/ui";
 import { Testimonials } from "@/app/site/Testimonials";
 import { Faq } from "@/app/site/Faq";
@@ -190,33 +189,27 @@ export default function Home() {
             </FadeUp>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
             {t.services.items.map((s, i) => (
-              <Reveal3D key={s.title} delay={i * 0.08}>
-                <TiltCard className="h-full">
-                  <Link to={routes.services} className="group block h-full card card-hover overflow-hidden">
-                    <div className="overflow-hidden aspect-[4/5]">
-                      <ImageWithFallback
-                        src={serviceImages[i]}
-                        alt={s.title}
-                        className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="caption text-mauve">{s.price}</span>
-                      </div>
-                      <h3
-                        className="font-display text-xl text-mauve-deep mt-3 leading-snug"
-                        style={{ fontWeight: 500 }}
-                      >
-                        {s.title}
-                      </h3>
-                      <p className="text-sm text-foreground/78 leading-relaxed mt-3">{s.desc}</p>
-                    </div>
-                  </Link>
-                </TiltCard>
+              <Reveal3D key={s.title} delay={i * 0.07}>
+                <Link to={routes.services} className="media group block h-full aspect-[3/4]">
+                  <ImageWithFallback
+                    src={serviceImages[i]}
+                    alt={s.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <span className="media-scrim" />
+                  <span className="absolute inset-x-0 bottom-0 p-6 flex flex-col gap-1.5">
+                    <span className="caption text-white/70">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-2xl text-white leading-tight" style={{ fontWeight: 500 }}>
+                      {s.title}
+                    </span>
+                    <span className="caption text-blush">{s.price}</span>
+                  </span>
+                  <span className="absolute top-5 right-5 w-9 h-9 rounded-full grid place-items-center bg-white/85 text-mauve-deep opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ArrowRight size={15} />
+                  </span>
+                </Link>
               </Reveal3D>
             ))}
           </div>
@@ -249,20 +242,17 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-16">
           {galleryItems.slice(0, 4).map((img, i) => (
             <Parallax key={img.tag} distance={12}>
-              <TiltCard intensity={3}>
-                <Link to={routes.portfolio} className="group block">
-                  <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[3/4] w-full">
-                    <ImageWithFallback
-                      src={img.src}
-                      alt={t.portfolio.tags[img.tag]}
-                      className="w-full h-full object-cover"
-                    />
-                  </ScrollZoom>
-                  <p className="caption mt-4 text-center group-hover:text-mauve transition-colors">
-                    {t.portfolio.tags[img.tag]}
-                  </p>
-                </Link>
-              </TiltCard>
+              <Link to={routes.portfolio} className="media group block aspect-[3/4]">
+                <ImageWithFallback
+                  src={img.src}
+                  alt={t.portfolio.tags[img.tag]}
+                  className="w-full h-full object-cover"
+                />
+                <span className="media-scrim" />
+                <span className="absolute inset-x-0 bottom-0 p-5 caption text-white/90">
+                  {t.portfolio.tags[img.tag]}
+                </span>
+              </Link>
             </Parallax>
           ))}
         </div>

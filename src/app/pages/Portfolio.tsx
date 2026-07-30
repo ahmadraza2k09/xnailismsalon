@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Ambient, FadeUp, PageHeader, Reveal3D, TiltCard } from "@/app/site/ui";
+import { Ambient, FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { galleryItems, routes } from "@/app/site/data";
 
@@ -35,21 +35,20 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryItems.map((img, i) => (
             <Reveal3D key={img.tag} delay={(i % 3) * 0.06} className="h-full">
-              <TiltCard intensity={3} className="h-full">
-                <button
-                  onClick={() => setActiveIndex(i)}
-                  className="w-full h-full text-left card card-hover overflow-hidden cursor-pointer group p-2.5"
-                >
-                  <div className="relative overflow-hidden rounded-lg frame-gloss aspect-[3/4]">
-                    <ImageWithFallback
-                      src={img.src}
-                      alt={t.portfolio.tags[img.tag]}
-                      className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                    />
-                  </div>
-                  <p className="caption text-mauve text-center py-3.5">{t.portfolio.tags[img.tag]}</p>
-                </button>
-              </TiltCard>
+              <button
+                onClick={() => setActiveIndex(i)}
+                className="media group block w-full aspect-[3/4] cursor-pointer"
+              >
+                <ImageWithFallback
+                  src={img.src}
+                  alt={t.portfolio.tags[img.tag]}
+                  className="w-full h-full object-cover"
+                />
+                <span className="media-scrim" />
+                <span className="absolute inset-x-0 bottom-0 p-5 caption text-white/90 text-left">
+                  {t.portfolio.tags[img.tag]}
+                </span>
+              </button>
             </Reveal3D>
           ))}
         </div>

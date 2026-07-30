@@ -274,7 +274,7 @@ export function SectionHeading({
     <div className={`flex flex-col ${alignment}`}>
       {eyebrow && <Eyebrow className={eyebrowColor}>{eyebrow}</Eyebrow>}
       <h2
-        className={`font-display text-4xl md:text-6xl leading-[1.08] mt-4 ${titleColor}`}
+        className={`font-display text-[2.6rem] md:text-[4.2rem] leading-[0.98] tracking-[-0.02em] mt-5 ${titleColor}`}
         style={{ fontWeight: 500 }}
       >
         {title}

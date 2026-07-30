@@ -174,7 +174,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-ui);
     font-weight: 400;
     font-size: 1rem;
     letter-spacing: 0;
@@ -193,7 +193,7 @@
     x-height is small, so display type runs large and never below 400.
   */
   .font-display {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-style: normal;
     font-weight: 500;
     letter-spacing: 0.005em;
@@ -201,17 +201,17 @@
 
   /* Geometric sans for navigation and controls */
   .font-nav {
-    font-family: 'Jost', sans-serif;
+    font-family: var(--font-ui);
     font-style: normal;
   }
 
   .font-body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-style: normal;
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-style: normal;
     letter-spacing: 0.005em;
   }
@@ -241,7 +241,7 @@
   }
 
   label, button, input, select, textarea {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: var(--text-base);
     font-weight: 400;
     line-height: 1.5;
@@ -249,7 +249,7 @@
 
   /* Wide-tracked small caps used for eyebrows, labels and captions */
   .eyebrow {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.22em;
@@ -259,7 +259,7 @@
 
   /* Small caps caption, one step quieter than .eyebrow */
   .caption {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -386,7 +386,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    font-family: 'Jost', sans-serif;
+    font-family: var(--font-ui);
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -500,7 +500,7 @@
   .field {
     width: 100%;
     padding: 0.85rem 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.95rem;
     font-weight: 400;
     color: var(--foreground);
@@ -552,6 +552,41 @@
     box-shadow:
       0 26px 50px -30px rgba(110, 58, 89, 0.5),
       0 2px 6px -2px rgba(110, 58, 89, 0.12);
+  }
+
+  /* Media tile: image with a scrim and a caption that lifts on hover */
+  .media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: var(--ivory-warm);
+  }
+
+  .media img {
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .media:hover img {
+    transform: scale(1.05);
+  }
+
+  .media-scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(43, 27, 36, 0.72) 0%, rgba(43, 27, 36, 0.12) 45%, transparent 70%);
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+  }
+
+  .media:hover .media-scrim {
+    opacity: 1;
+  }
+
+  /* Quiet divider used between stacked rows */
+  .rule-soft {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(163, 91, 133, 0.22), rgba(163, 91, 133, 0.04));
   }
 
   /* 3D scroll/hover scaffolding */
