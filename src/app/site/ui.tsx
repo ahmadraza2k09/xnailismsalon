@@ -213,6 +213,7 @@ export function SectionHeading({
   subtitle,
   align = "center",
   light = false,
+  tone = light ? "light" : "default",
 }: {
   eyebrow?: string;
   title: string;
@@ -220,31 +221,36 @@ export function SectionHeading({
   subtitle?: string;
   align?: "center" | "left";
   light?: boolean;
+  tone?: "default" | "light" | "pink";
 }) {
+  const titleColor = tone === "light" ? "text-white" : "text-mauve-deep";
+  const accentColor =
+    tone === "light" ? "text-blush" : tone === "pink" ? "text-mauve-dark" : "text-mauve";
+  const eyebrowColor = tone === "light" ? "text-blush" : tone === "pink" ? "text-mauve-deep" : "";
+  const subtitleColor =
+    tone === "light" ? "text-white/85" : tone === "pink" ? "text-mauve-deep/80" : "text-foreground/82";
   const alignment =
     align === "center" ? "text-center mx-auto items-center max-w-2xl" : "text-left items-start";
 
   return (
     <div className={`flex flex-col ${alignment}`}>
-      {eyebrow && <Eyebrow className={light ? "text-blush" : ""}>{eyebrow}</Eyebrow>}
+      {eyebrow && <Eyebrow className={eyebrowColor}>{eyebrow}</Eyebrow>}
       <h2
-        className={`font-display text-4xl md:text-6xl leading-[1.08] mt-4 ${
-          light ? "text-white" : "text-mauve-deep"
-        }`}
+        className={`font-display text-4xl md:text-6xl leading-[1.08] mt-4 ${titleColor}`}
         style={{ fontWeight: 500 }}
       >
         {title}
         {accent && (
-          <span className={`block mt-1 ${light ? "text-blush" : "text-mauve"}`} style={{ fontWeight: 400 }}>
+          <span className={`block mt-1 ${accentColor}`} style={{ fontWeight: 400 }}>
             {accent}
           </span>
         )}
       </h2>
       {subtitle && (
         <p
-          className={`mt-6 text-sm md:text-[0.95rem] leading-relaxed ${
-            light ? "text-white/85" : "text-foreground/82"
-          } ${align === "center" ? "max-w-xl" : "max-w-lg"}`}
+          className={`mt-6 text-sm md:text-[0.95rem] leading-relaxed ${subtitleColor} ${
+            align === "center" ? "max-w-xl" : "max-w-lg"
+          }`}
         >
           {subtitle}
         </p>
@@ -266,10 +272,10 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <header className="pt-32 pb-14 md:pt-40 md:pb-16 px-6 bg-blush-mist border-b border-border scene">
+    <header className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 bg-mauve-deep scene">
       <div className="max-w-3xl mx-auto flex justify-center">
         <Reveal3D>
-          <SectionHeading eyebrow={eyebrow} title={title} accent={accent} subtitle={subtitle} />
+          <SectionHeading tone="light" eyebrow={eyebrow} title={title} accent={accent} subtitle={subtitle} />
         </Reveal3D>
       </div>
     </header>

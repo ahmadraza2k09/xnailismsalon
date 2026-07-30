@@ -15,7 +15,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
           onClick={() => setLang(code)}
           aria-pressed={lang === code}
           className={`px-2 py-1 text-[0.62rem] font-body tracking-[0.16em] uppercase rounded-full transition-colors ${
-            lang === code ? "bg-mauve text-white" : "text-mauve-deep/60 hover:text-mauve"
+            lang === code ? "bg-mauve-deep text-white" : "text-mauve-deep/55 hover:text-mauve-deep"
           }`}
           style={{ fontWeight: 500 }}
         >
@@ -53,10 +53,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "bg-white/95 border-b border-border"
-          : "bg-transparent border-b border-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
+        scrolled ? "border-b border-border" : "border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 h-20 flex items-center justify-between">
@@ -84,7 +82,7 @@ export function Navbar() {
               to={l.to}
               className={({ isActive }) =>
                 `font-body text-[0.7rem] tracking-[0.2em] uppercase transition-colors ${
-                  isActive ? "text-mauve" : "text-foreground/82 hover:text-mauve"
+                  isActive ? "text-mauve-deep" : "text-mauve-deep/55 hover:text-mauve-deep"
                 }`
               }
               style={{ fontWeight: 500 }}
@@ -133,7 +131,7 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-body text-xs tracking-[0.2em] uppercase ${isActive ? "text-mauve" : "text-foreground/82"}`
+                `font-body text-xs tracking-[0.2em] uppercase ${isActive ? "text-mauve-deep" : "text-mauve-deep/55"}`
               }
               style={{ fontWeight: 500 }}
             >
