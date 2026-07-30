@@ -239,10 +239,10 @@ export default function Home() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-16">
           {galleryItems.slice(0, 4).map((img, i) => (
-            <Parallax key={img.tag} distance={i % 2 === 0 ? 26 : 46} className={i % 2 === 1 ? "md:pt-12" : ""}>
+            <Parallax key={img.tag} distance={30}>
               <TiltCard intensity={5}>
                 <Link to={routes.portfolio} className="group block">
-                  <ScrollZoom from={1.08} className="rounded-lg aspect-[3/4]">
+                  <ScrollZoom from={1.08} className="rounded-lg aspect-[3/4] w-full">
                     <ImageWithFallback
                       src={img.src}
                       alt={t.portfolio.tags[img.tag]}

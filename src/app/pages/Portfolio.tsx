@@ -30,19 +30,19 @@ export default function Portfolio() {
       />
 
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto scene">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryItems.map((img, i) => (
-            <Reveal3D key={img.tag} delay={(i % 3) * 0.06} className="break-inside-avoid">
-              <TiltCard intensity={6}>
+            <Reveal3D key={img.tag} delay={(i % 3) * 0.06} className="h-full">
+              <TiltCard intensity={6} className="h-full">
                 <button
                   onClick={() => setActiveIndex(i)}
-                  className="w-full text-left card card-hover overflow-hidden cursor-pointer group"
+                  className="w-full h-full text-left card card-hover overflow-hidden cursor-pointer group"
                 >
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden aspect-[3/4]">
                     <ImageWithFallback
                       src={img.src}
                       alt={t.portfolio.tags[img.tag]}
-                      className="w-full block object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                      className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
                   <p className="caption text-mauve text-center py-4">{t.portfolio.tags[img.tag]}</p>
