@@ -79,7 +79,6 @@ const es = {
     ctaAccent: "experiencia de uñas",
     ctaSubtitle:
       "Envía tu fecha y servicio por WhatsApp. Ximena responde personalmente.",
-    trust: ["Casi 9 años de oficio", "Limas nuevas por clienta", "Lunes a sábado"],
   },
 
   about: {
@@ -412,7 +411,6 @@ const en: Dict = {
     ctaAccent: "nail experience",
     ctaSubtitle:
       "Send your date and service on WhatsApp. Ximena replies personally.",
-    trust: ["Nearly 9 years of craft", "New files per client", "Monday to Saturday"],
   },
 
   about: {

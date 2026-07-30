@@ -65,20 +65,6 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* Quick reassurances */}
-            <motion.ul
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-wrap gap-2.5 mt-8"
-            >
-              {t.home.trust.map((item) => (
-                <li key={item} className="glass-chip caption text-mauve-deep px-4 py-2">
-                  {item}
-                </li>
-              ))}
-            </motion.ul>
-
           </div>
 
           {/* Two prints in white frames, lightly tilted */}
