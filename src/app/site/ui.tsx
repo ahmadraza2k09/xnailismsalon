@@ -201,11 +201,6 @@ export function ScrollProgress() {
   );
 }
 
-/* ── Engraved rule with a small centred lozenge ───────────────────── */
-export function Rule({ className = "" }: { className?: string }) {
-  return <div aria-hidden className={`rule-lux ${className}`} />;
-}
-
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <p className={`eyebrow ${className}`}>{children}</p>;
 }
@@ -245,7 +240,6 @@ export function SectionHeading({
           </span>
         )}
       </h2>
-      <Rule className="w-14 mt-6" />
       {subtitle && (
         <p
           className={`mt-6 text-sm md:text-[0.95rem] leading-relaxed ${
@@ -272,7 +266,7 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <header className="pt-32 pb-14 md:pt-40 md:pb-16 px-6 bg-white border-b border-border scene">
+    <header className="pt-32 pb-14 md:pt-40 md:pb-16 px-6 bg-blush-mist border-b border-border scene">
       <div className="max-w-3xl mx-auto flex justify-center">
         <Reveal3D>
           <SectionHeading eyebrow={eyebrow} title={title} accent={accent} subtitle={subtitle} />

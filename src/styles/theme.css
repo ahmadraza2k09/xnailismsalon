@@ -378,9 +378,4 @@
     }
   }
 
-  /* Thin engraved rule used under headings */
-  .rule-lux {
-    height: 1px;
-    background: rgba(163, 91, 133, 0.3);
-  }
 }

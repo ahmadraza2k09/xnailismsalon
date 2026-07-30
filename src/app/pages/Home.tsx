@@ -156,8 +156,7 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </ScrollZoom>
-              <figcaption className="caption mt-4 flex items-center gap-3">
-                <span className="w-8 h-px bg-mauve/40" />
+              <figcaption className="caption mt-4">
                 {t.home.badgeName} · {t.home.badgeSub}
               </figcaption>
             </figure>

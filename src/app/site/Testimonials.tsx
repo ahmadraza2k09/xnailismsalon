@@ -68,10 +68,6 @@ export function Testimonials() {
                     >
                       {item.name}
                     </span>
-                    <span
-                      className="ml-auto h-px bg-mauve transition-all duration-500"
-                      style={{ width: isActive ? "2.5rem" : "0rem" }}
-                    />
                   </button>
                 </li>
               );
@@ -98,8 +94,7 @@ export function Testimonials() {
               <blockquote className="font-display text-2xl md:text-4xl leading-[1.3] text-mauve-deep">
                 {current.text}
               </blockquote>
-              <figcaption className="caption mt-8 flex items-center gap-3">
-                <span className="w-8 h-px bg-mauve/40" />
+              <figcaption className="caption mt-8">
                 {current.name} · {current.role}
               </figcaption>
               </motion.figure>
@@ -107,11 +102,10 @@ export function Testimonials() {
           </div>
 
           {/* Counter and manual controls */}
-          <div className="flex items-center gap-6 mt-12">
+          <div className="flex items-center gap-8 mt-12">
             <span className="caption text-mauve">
               {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
-            <span className="flex-1 h-px bg-mauve/20" />
             <div className="flex gap-2">
               <button
                 onClick={() => go(active - 1)}
