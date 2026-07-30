@@ -1,45 +1,53 @@
 import { Link } from "react-router";
 import { Instagram, MessageCircle, Phone } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { brand, logo, navLinks } from "./data";
-
-const socials = [
-  { href: brand.instagram, label: "Instagram", icon: Instagram, external: true },
-  { href: brand.whatsapp, label: "WhatsApp", icon: MessageCircle, external: true },
-  { href: brand.phoneHref, label: "Phone", icon: Phone, external: false },
-];
+import { useT } from "@/app/i18n";
+import { brand, logo, routes, studioHours } from "./data";
 
 export function Footer() {
+  const t = useT();
+
+  const links = [
+    { label: t.nav.home, to: routes.home },
+    { label: t.nav.about, to: routes.about },
+    { label: t.nav.services, to: routes.services },
+    { label: t.nav.portfolio, to: routes.portfolio },
+    { label: t.nav.contact, to: routes.contact },
+    { label: t.nav.booking, to: routes.booking },
+  ];
+
+  const socials = [
+    { href: brand.instagram, label: t.common.instagram, icon: Instagram, external: true },
+    { href: brand.whatsapp, label: t.common.whatsapp, icon: MessageCircle, external: true },
+    { href: brand.phoneHref, label: t.common.phone, icon: Phone, external: false },
+  ];
+
   return (
     <footer className="bg-mauve-deep text-white pt-16 pb-10 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-12 items-start">
           {/* Brand */}
           <div className="flex items-start gap-4">
-            <ImageWithFallback
-              src={logo}
-              alt={brand.name}
-              className="w-14 h-14 rounded-full object-cover"
-              style={{ boxShadow: "0 0 0 1px rgba(254,181,203,0.5), 0 8px 18px -8px rgba(0,0,0,0.5)" }}
-            />
+            <ImageWithFallback src={logo} alt={brand.name} className="w-14 h-14 rounded-full object-cover" />
             <div>
               <p className="font-display text-xl tracking-[0.14em] text-white" style={{ fontWeight: 600 }}>
                 {brand.wordmark}
               </p>
-              <p className="text-[0.6rem] font-body tracking-[0.3em] uppercase text-blush mt-1.5" style={{ fontWeight: 600 }}>
-                {brand.tagline}
+              <p
+                className="text-[0.6rem] font-body tracking-[0.28em] uppercase text-blush mt-1.5"
+                style={{ fontWeight: 600 }}
+              >
+                {t.common.tagline}
               </p>
-              <p className="text-xs text-white/60 mt-4 leading-relaxed max-w-xs">
-                The nail atelier of {brand.artist} — structured extensions and hand-painted detail, by appointment.
-              </p>
+              <p className="text-xs text-white/60 mt-4 leading-relaxed max-w-xs">{t.footer.about}</p>
             </div>
           </div>
 
           {/* Navigation */}
           <div className="md:text-center">
-            <p className="eyebrow text-blush">Explore</p>
+            <p className="eyebrow text-blush">{t.footer.explore}</p>
             <ul className="mt-5 flex flex-col gap-3">
-              {[...navLinks, { label: "Booking", to: "/booking" }].map((l) => (
+              {links.map((l) => (
                 <li key={l.to}>
                   <Link
                     to={l.to}
@@ -55,21 +63,31 @@ export function Footer() {
 
           {/* Contact */}
           <div className="md:text-right">
-            <p className="eyebrow text-blush">Studio</p>
+            <p className="eyebrow text-blush">{t.footer.studio}</p>
             <ul className="mt-5 flex flex-col gap-2 text-sm text-white/75">
               <li>
-                <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                  WhatsApp · {brand.phone}
+                <a
+                  href={brand.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {t.common.whatsapp} · {brand.phone}
                 </a>
               </li>
               <li>
-                <a href={brand.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                  Instagram · {brand.instagramHandle}
+                <a
+                  href={brand.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {t.common.instagram} · {brand.instagramHandle}
                 </a>
               </li>
-              {brand.hours.map((h) => (
+              {studioHours.map((h) => (
                 <li key={h.day} className="text-xs text-white/55">
-                  {h.day} — {h.time}
+                  {t.common.hours[h.day]} — {h.time ?? t.common.hours.byAppointment}
                 </li>
               ))}
             </ul>
@@ -81,8 +99,7 @@ export function Footer() {
                   href={s.href}
                   aria-label={s.label}
                   {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="p-3 rounded-full bg-white/10 hover:bg-mauve transition-colors"
-                  style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.18)" }}
+                  className="p-3 rounded-full border border-white/20 hover:bg-mauve hover:border-mauve transition-colors"
                 >
                   <s.icon size={17} />
                 </a>
@@ -93,9 +110,9 @@ export function Footer() {
 
         <div className="mt-14 pt-7 border-t border-white/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-white/45">
           <p>
-            © {new Date().getFullYear()} {brand.name} · {brand.artist}. All rights reserved.
+            © {new Date().getFullYear()} {brand.name} · {t.common.artist}. {t.footer.rights}
           </p>
-          <p className="font-display tracking-wide text-blush/80 text-sm">Where every nail tells a story.</p>
+          <p className="font-display tracking-wide text-blush/80 text-sm">{t.footer.motto}</p>
         </div>
       </div>
     </footer>

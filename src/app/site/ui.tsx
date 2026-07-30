@@ -13,10 +13,10 @@ export function FadeUp({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -53,13 +53,11 @@ export function SectionHeading({
   align?: "center" | "left";
   light?: boolean;
 }) {
-  const alignment = align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
+  const alignment = align === "center" ? "text-center mx-auto items-center max-w-2xl" : "text-left items-start";
 
   return (
-    <div className={`flex flex-col ${alignment} ${align === "center" ? "max-w-2xl" : ""}`}>
-      {eyebrow && (
-        <Eyebrow className={light ? "text-blush" : ""}>{eyebrow}</Eyebrow>
-      )}
+    <div className={`flex flex-col ${alignment}`}>
+      {eyebrow && <Eyebrow className={light ? "text-blush" : ""}>{eyebrow}</Eyebrow>}
       <h2
         className={`font-display text-3xl md:text-5xl leading-[1.15] mt-3 ${
           light ? "text-white" : "text-mauve-deep"
@@ -73,7 +71,7 @@ export function SectionHeading({
           </span>
         )}
       </h2>
-      <Rule className={`w-24 mt-5 ${align === "center" ? "" : "self-start"}`} />
+      <Rule className="w-24 mt-5" />
       {subtitle && (
         <p
           className={`mt-5 text-sm md:text-base leading-relaxed ${
@@ -100,14 +98,8 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <header
-      className="pt-32 pb-16 md:pt-40 md:pb-20 px-6"
-      style={{
-        background:
-          "linear-gradient(180deg, #FFF0F4 0%, #F6EBF0 55%, #FBF6F8 100%)",
-      }}
-    >
-      <div className="max-w-3xl mx-auto text-center">
+    <header className="pt-32 pb-14 md:pt-40 md:pb-16 px-6 bg-ivory-warm border-b border-border">
+      <div className="max-w-3xl mx-auto flex justify-center">
         <FadeUp>
           <SectionHeading eyebrow={eyebrow} title={title} accent={accent} subtitle={subtitle} />
         </FadeUp>

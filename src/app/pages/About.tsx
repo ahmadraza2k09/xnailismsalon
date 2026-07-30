@@ -2,80 +2,60 @@ import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { FadeUp, PageHeader, SectionHeading } from "@/app/site/ui";
-import { asianArtImg, brand, builderGelImg, stats } from "@/app/site/data";
-
-const values = [
-  {
-    no: "01",
-    title: "Preparation first",
-    text: "Every set begins with meticulous cuticle work and a properly prepared nail plate. It is the reason the work lasts.",
-  },
-  {
-    no: "02",
-    title: "Structure over speed",
-    text: "A correct apex and a thin free edge make a set strong and comfortable. Nothing is rushed to save a few minutes.",
-  },
-  {
-    no: "03",
-    title: "Quiet luxury",
-    text: "Premium products, a calm studio and a design language that stays elegant long after the appointment ends.",
-  },
-];
+import { useT } from "@/app/i18n";
+import { asianArtImg, builderGelImg, routes } from "@/app/site/data";
 
 export default function About() {
+  const t = useT();
+
   return (
     <>
       <PageHeader
-        eyebrow="About the artist"
-        title="Ximena Moreno"
-        accent="nail artist & founder"
-        subtitle="Nearly nine years spent turning nail care into a considered, personal ritual."
+        eyebrow={t.about.headerEyebrow}
+        title={t.about.headerTitle}
+        accent={t.about.headerAccent}
+        subtitle={t.about.headerSubtitle}
       />
 
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-14 md:gap-20 items-center">
           <FadeUp>
-            <div className="rounded-2xl p-3 neo-panel">
-              <div className="overflow-hidden rounded-xl aspect-[4/5]">
-                <ImageWithFallback
-                  src={asianArtImg}
-                  alt="Hand-painted floral nail art by Ximena Moreno"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="overflow-hidden rounded-lg aspect-[4/5] border border-border">
+              <ImageWithFallback
+                src={asianArtImg}
+                alt={t.services.items[3].title}
+                className="w-full h-full object-cover"
+              />
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.12}>
-            <SectionHeading align="left" eyebrow="The story" title="A studio built on" accent="craft and care" />
+          <FadeUp delay={0.1}>
+            <SectionHeading
+              align="left"
+              eyebrow={t.about.storyEyebrow}
+              title={t.about.storyTitle}
+              accent={t.about.storyAccent}
+            />
             <div className="space-y-4 text-sm md:text-base text-foreground/70 leading-relaxed mt-7">
               <p>
-                With nearly{" "}
+                {t.about.storyP1a}{" "}
                 <span className="font-display text-mauve-deep" style={{ fontWeight: 600 }}>
-                  nine years of professional mastery
+                  {t.about.storyP1Strong}
                 </span>
-                , {brand.artist} has transformed nail care into a personalised ritual where clients
-                leave feeling composed and confident.
+                {t.about.storyP1b}
               </p>
-              <p>
-                Staying at the forefront of global nail aesthetics — from sculpted builder gels to
-                detailed hand-painted art — she combines technical precision with a restrained
-                creative eye.
-              </p>
-              <p>
-                Your session is more than an appointment: it is a calm, private studio experience
-                centred on your comfort and your own sense of style.
-              </p>
+              <p>{t.about.storyP2}</p>
+              <p>{t.about.storyP3}</p>
             </div>
 
             <div className="grid grid-cols-3 gap-4 mt-10">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center rounded-xl py-5 px-3 neo-panel-sm">
+              {t.stats.map((s) => (
+                <div key={s.label} className="text-center card py-5 px-3">
                   <p className="font-display text-3xl text-mauve" style={{ fontWeight: 600 }}>
                     {s.value}
                   </p>
                   <p
-                    className="text-[0.6rem] font-body tracking-[0.18em] uppercase text-mauve-deep/70 mt-2"
+                    className="text-[0.6rem] font-body tracking-[0.16em] uppercase text-mauve-deep/70 mt-2"
                     style={{ fontWeight: 600 }}
                   >
                     {s.label}
@@ -87,32 +67,26 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
-      <section
-        className="py-16 md:py-24 px-6"
-        style={{ background: "linear-gradient(180deg, #FBF6F8 0%, #F6EBF0 50%, #FBF6F8 100%)" }}
-      >
+      {/* Principles */}
+      <section className="py-16 md:py-24 px-6 bg-ivory-warm border-y border-border">
         <div className="max-w-7xl mx-auto">
           <FadeUp className="flex justify-center">
             <SectionHeading
-              eyebrow="How we work"
-              title="Three quiet"
-              accent="principles"
-              subtitle="The habits behind every set that leaves the studio."
+              eyebrow={t.about.valuesEyebrow}
+              title={t.about.valuesTitle}
+              accent={t.about.valuesAccent}
+              subtitle={t.about.valuesSubtitle}
             />
           </FadeUp>
 
           <div className="grid md:grid-cols-3 gap-6 mt-14">
-            {values.map((v, i) => (
-              <FadeUp key={v.no} delay={i * 0.08}>
-                <div className="h-full rounded-2xl p-8 neo-panel">
-                  <span
-                    className="inline-flex items-center justify-center w-12 h-12 rounded-full font-display text-sm text-mauve-deep neo-inset"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {v.no}
-                  </span>
-                  <h3 className="font-display text-lg text-mauve-deep mt-6" style={{ fontWeight: 600 }}>
+            {t.about.values.map((v, i) => (
+              <FadeUp key={v.title} delay={i * 0.06}>
+                <div className="h-full card p-8">
+                  <p className="font-display text-sm tracking-[0.28em] text-mauve/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="font-display text-lg text-mauve-deep mt-4" style={{ fontWeight: 600 }}>
                     {v.title}
                   </h3>
                   <p className="text-sm text-foreground/68 leading-relaxed mt-3">{v.text}</p>
@@ -123,39 +97,37 @@ export default function About() {
         </div>
       </section>
 
-      {/* Studio strip */}
+      {/* Studio */}
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-14 items-center">
           <FadeUp>
-            <SectionHeading align="left" eyebrow="The experience" title="Inside the" accent="studio" />
+            <SectionHeading
+              align="left"
+              eyebrow={t.about.studioEyebrow}
+              title={t.about.studioTitle}
+              accent={t.about.studioAccent}
+            />
             <ul className="mt-8 space-y-4">
-              {[
-                "Private one-to-one appointments, never overlapping.",
-                "Sterilised tooling and single-use files for every client.",
-                "Design consultation before the first brush stroke.",
-                "Aftercare guidance so your set lasts its full life.",
-              ].map((line) => (
+              {t.about.studioPoints.map((line) => (
                 <li key={line} className="flex gap-4 items-start">
                   <span className="mt-2 w-1.5 h-1.5 rotate-45 bg-mauve/60 shrink-0" />
                   <span className="text-sm text-foreground/70 leading-relaxed">{line}</span>
                 </li>
               ))}
             </ul>
-            <Link to="/booking" className="btn-lux text-[0.68rem] px-8 py-4 mt-10">
-              Book a session
+            <Link to={routes.booking} className="btn-primary text-[0.66rem] px-8 py-4 mt-10">
+              {t.common.bookSession}
               <ArrowRight size={14} />
             </Link>
           </FadeUp>
 
-          <FadeUp delay={0.12}>
-            <div className="rounded-2xl p-3 neo-panel">
-              <div className="overflow-hidden rounded-xl aspect-[5/4]">
-                <ImageWithFallback
-                  src={builderGelImg}
-                  alt="Copper chrome builder gel nails"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+          <FadeUp delay={0.1}>
+            <div className="overflow-hidden rounded-lg aspect-[5/4] border border-border">
+              <ImageWithFallback
+                src={builderGelImg}
+                alt={t.services.items[0].title}
+                className="w-full h-full object-cover"
+              />
             </div>
           </FadeUp>
         </div>

@@ -1,58 +1,59 @@
 import { Link } from "react-router";
 import { Instagram, MessageCircle, Phone } from "lucide-react";
 import { FadeUp, PageHeader, SectionHeading } from "@/app/site/ui";
-import { brand } from "@/app/site/data";
-
-const channels = [
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: brand.phone,
-    sub: "Fastest response · Mon–Sat",
-    href: brand.whatsapp,
-    cta: "Chat on WhatsApp",
-    external: true,
-  },
-  {
-    icon: Instagram,
-    label: "Instagram",
-    value: brand.instagramHandle,
-    sub: "Direct messages open",
-    href: brand.instagram,
-    cta: "Message on Instagram",
-    external: true,
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: brand.phone,
-    sub: "For direct enquiries",
-    href: brand.phoneHref,
-    cta: "Call the studio",
-    external: false,
-  },
-];
+import { useT } from "@/app/i18n";
+import { brand, routes, studioHours } from "@/app/site/data";
 
 export default function Contact() {
+  const t = useT();
+
+  const channels = [
+    {
+      icon: MessageCircle,
+      label: t.common.whatsapp,
+      value: brand.phone,
+      sub: t.contact.channels.whatsappSub,
+      href: brand.whatsapp,
+      cta: t.contact.channels.whatsappCta,
+      external: true,
+    },
+    {
+      icon: Instagram,
+      label: t.common.instagram,
+      value: brand.instagramHandle,
+      sub: t.contact.channels.instagramSub,
+      href: brand.instagram,
+      cta: t.contact.channels.instagramCta,
+      external: true,
+    },
+    {
+      icon: Phone,
+      label: t.common.phone,
+      value: brand.phone,
+      sub: t.contact.channels.phoneSub,
+      href: brand.phoneHref,
+      cta: t.contact.channels.phoneCta,
+      external: false,
+    },
+  ];
+
   return (
     <>
       <PageHeader
-        eyebrow="Get in touch"
-        title="Let us"
-        accent="connect"
-        subtitle="Questions about a design, pricing or availability? Reach out through any channel below."
+        eyebrow={t.contact.headerEyebrow}
+        title={t.contact.headerTitle}
+        accent={t.contact.headerAccent}
+        subtitle={t.contact.headerSubtitle}
       />
 
       <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
           {channels.map((c, i) => (
-            <FadeUp key={c.label} delay={i * 0.08}>
-              <div className="h-full rounded-2xl p-8 text-center neo-panel flex flex-col items-center justify-between">
+            <FadeUp key={c.label} delay={i * 0.06}>
+              <div className="h-full card p-8 text-center flex flex-col items-center justify-between">
                 <div>
-                  <span className="inline-flex w-14 h-14 items-center justify-center rounded-full neo-inset text-mauve">
-                    <c.icon size={22} />
-                  </span>
-                  <p className="eyebrow mt-6">{c.label}</p>
+                  <c.icon size={22} className="text-mauve mx-auto" />
+                  <p className="eyebrow mt-5">{c.label}</p>
                   <p className="font-display text-lg text-mauve-deep mt-2.5" style={{ fontWeight: 600 }}>
                     {c.value}
                   </p>
@@ -61,7 +62,7 @@ export default function Contact() {
                 <a
                   href={c.href}
                   {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="btn-lux text-[0.62rem] px-6 py-3.5 mt-7 w-full"
+                  className="btn-primary text-[0.6rem] px-6 py-3.5 mt-7 w-full"
                 >
                   {c.cta}
                 </a>
@@ -72,17 +73,25 @@ export default function Contact() {
 
         {/* Hours */}
         <FadeUp delay={0.1}>
-          <div className="rounded-2xl p-8 md:p-12 neo-panel mt-12">
+          <div className="card p-8 md:p-12 mt-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
-              <SectionHeading align="left" eyebrow="Studio hours" title="When we are" accent="open" />
-              <ul className="divide-y divide-mauve/12">
-                {brand.hours.map((h) => (
+              <SectionHeading
+                align="left"
+                eyebrow={t.contact.hoursEyebrow}
+                title={t.contact.hoursTitle}
+                accent={t.contact.hoursAccent}
+              />
+              <ul className="divide-y divide-border">
+                {studioHours.map((h) => (
                   <li key={h.day} className="flex items-center justify-between py-4">
-                    <span className="text-[0.68rem] font-body tracking-[0.16em] uppercase text-mauve-deep" style={{ fontWeight: 600 }}>
-                      {h.day}
+                    <span
+                      className="text-[0.68rem] font-body tracking-[0.14em] uppercase text-mauve-deep"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {t.common.hours[h.day]}
                     </span>
                     <span className="font-display text-base text-mauve" style={{ fontWeight: 600 }}>
-                      {h.time}
+                      {h.time ?? t.common.hours.byAppointment}
                     </span>
                   </li>
                 ))}
@@ -93,40 +102,31 @@ export default function Contact() {
       </section>
 
       {/* Instagram invitation */}
-      <section
-        className="py-20 md:py-28 px-6 text-white"
-        style={{ background: "linear-gradient(135deg, #6E3A59 0%, #8B4A70 50%, #A35B85 100%)" }}
-      >
+      <section className="py-20 md:py-28 px-6 text-white bg-mauve-deep">
         <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
           <FadeUp className="flex flex-col items-center">
-            <span
-              className="inline-flex w-16 h-16 items-center justify-center rounded-full mb-8"
-              style={{
-                background: "rgba(255,255,255,0.12)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.28), 0 12px 26px -14px rgba(0,0,0,0.6)",
-              }}
-            >
-              <Instagram size={26} />
-            </span>
+            <Instagram size={26} className="mb-6" />
             <SectionHeading
               light
-              eyebrow="Follow along"
-              title="Daily nail inspiration"
-              accent="from the atelier"
-              subtitle="Studio updates, finished sets and behind-the-scenes detail."
+              eyebrow={t.contact.followEyebrow}
+              title={t.contact.followTitle}
+              accent={t.contact.followAccent}
+              subtitle={t.contact.followSubtitle}
             />
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
                 href={brand.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-quiet text-[0.7rem] px-9 py-4"
-                style={{ color: "#6E3A59" }}
+                className="btn-on-dark text-[0.68rem] px-9 py-4"
               >
                 {brand.instagramHandle}
               </a>
-              <Link to="/booking" className="btn-lux text-[0.7rem] px-9 py-4">
-                Book an appointment
+              <Link
+                to={routes.booking}
+                className="btn-outline text-[0.68rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
+              >
+                {t.nav.bookAppointment}
               </Link>
             </div>
           </FadeUp>

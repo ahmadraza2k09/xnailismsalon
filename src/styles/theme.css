@@ -46,7 +46,7 @@
   --destructive-foreground: #FFFFFF;
   --border: rgba(163, 91, 133, 0.16);
   --input: transparent;
-  --input-background: #F6EBF0;
+  --input-background: #FFFFFF;
   --switch-background: #C99BB6;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
@@ -56,7 +56,7 @@
   --chart-3: #8F2251;
   --chart-4: #C99BB6;
   --chart-5: #6E3A59;
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   --sidebar: #FBF6F8;
   --sidebar-foreground: #2B1B24;
   --sidebar-primary: #A35B85;
@@ -65,10 +65,6 @@
   --sidebar-accent-foreground: #2B1B24;
   --sidebar-border: rgba(163, 91, 133, 0.16);
   --sidebar-ring: #A35B85;
-
-  /* Soft-UI (neumorphic) light/shadow pair, tinted with the logo mauve */
-  --neo-light: rgba(255, 255, 255, 0.95);
-  --neo-shadow: rgba(163, 91, 133, 0.18);
 }
 
 .dark {
@@ -90,6 +86,7 @@
   --destructive-foreground: #FFFFFF;
   --border: rgba(254, 181, 203, 0.18);
   --input: #3A2430;
+  --input-background: #2A1A23;
   --ring: #C99BB6;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
@@ -106,8 +103,6 @@
   --sidebar-accent-foreground: #FBF6F8;
   --sidebar-border: rgba(254, 181, 203, 0.18);
   --sidebar-ring: #C99BB6;
-  --neo-light: rgba(255, 255, 255, 0.06);
-  --neo-shadow: rgba(0, 0, 0, 0.55);
 }
 
 @theme inline {
@@ -137,10 +132,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -256,46 +251,31 @@
 }
 
 @layer components {
-  /* ── Soft UI: raised panel (neumorphism, kept deliberately gentle) ── */
-  .neo-panel {
-    background: linear-gradient(145deg, #FFFFFF 0%, var(--ivory-warm) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow:
-      10px 10px 24px var(--neo-shadow),
-      -10px -10px 24px var(--neo-light);
+  /*
+    Flat, classic surfaces — a hairline border and a whisper of shadow.
+    No embossing, no bevels, no glass.
+  */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
   }
 
-  .neo-panel-sm {
-    background: linear-gradient(145deg, #FFFFFF 0%, var(--ivory-warm) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow:
-      6px 6px 14px var(--neo-shadow),
-      -6px -6px 14px var(--neo-light);
+  .card-hover:hover {
+    border-color: rgba(163, 91, 133, 0.4);
   }
 
-  /* Pressed / carved surface — used for inputs and quiet wells */
-  .neo-inset {
+  /* Quiet tinted surface for secondary blocks */
+  .card-tint {
     background: var(--ivory-warm);
-    box-shadow:
-      inset 4px 4px 9px rgba(163, 91, 133, 0.14),
-      inset -4px -4px 9px rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
   }
 
-  .neo-hover {
-    transition: box-shadow 0.35s ease, transform 0.35s ease;
-  }
-
-  .neo-hover:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      14px 14px 30px var(--neo-shadow),
-      -12px -12px 28px var(--neo-light);
-  }
-
-  /* ── Skeuomorphic buttons: bevel, gloss, seated shadow ──────────── */
-  .btn-lux {
-    position: relative;
-    overflow: hidden;
+  /* ── Buttons: solid fill, single colour change on hover ─────────── */
+  .btn-primary,
+  .btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -305,79 +285,70 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     white-space: nowrap;
+    border-radius: 999px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .btn-primary {
     color: #FFFFFF;
-    background: linear-gradient(180deg, #B96E9A 0%, #A35B85 48%, #8B4A70 100%);
-    border: 1px solid #8F4A70;
-    border-radius: 999px;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.45),
-      inset 0 -2px 5px rgba(110, 58, 89, 0.4),
-      0 10px 20px -10px rgba(163, 91, 133, 0.75);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    background: var(--logo-mauve);
+    border: 1px solid var(--logo-mauve);
   }
 
-  /* Glass highlight across the top half — the skeuomorphic tell */
-  .btn-lux::before {
-    content: '';
-    position: absolute;
-    inset: 1px 1px 55% 1px;
-    border-radius: 999px 999px 40% 40% / 999px 999px 100% 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
-    pointer-events: none;
+  .btn-primary:hover {
+    background: var(--mauve-deep);
+    border-color: var(--mauve-deep);
   }
 
-  .btn-lux:hover {
-    filter: brightness(1.04);
-    transform: translateY(-2px);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -2px 5px rgba(110, 58, 89, 0.35),
-      0 16px 26px -12px rgba(163, 91, 133, 0.8);
-  }
-
-  .btn-lux:active {
-    transform: translateY(1px);
-    box-shadow:
-      inset 0 3px 7px rgba(110, 58, 89, 0.5),
-      0 4px 10px -8px rgba(163, 91, 133, 0.7);
-  }
-
-  .btn-lux:disabled {
-    opacity: 0.45;
+  .btn-primary:disabled {
+    opacity: 0.4;
     cursor: not-allowed;
-    transform: none;
-    filter: none;
+    background: var(--logo-mauve);
+    border-color: var(--logo-mauve);
   }
 
-  .btn-quiet {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    white-space: nowrap;
+  .btn-outline {
     color: var(--mauve-deep);
-    background: linear-gradient(180deg, #FFFFFF 0%, var(--ivory-warm) 100%);
-    border: 1px solid rgba(163, 91, 133, 0.3);
-    border-radius: 999px;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      0 8px 16px -10px rgba(163, 91, 133, 0.55);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    background: transparent;
+    border: 1px solid rgba(163, 91, 133, 0.45);
   }
 
-  .btn-quiet:hover {
-    transform: translateY(-2px);
-    border-color: rgba(163, 91, 133, 0.55);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      0 14px 22px -12px rgba(163, 91, 133, 0.6);
+  .btn-outline:hover {
+    color: #FFFFFF;
+    background: var(--logo-mauve);
+    border-color: var(--logo-mauve);
   }
 
-  /* Thin engraved rule with a centre diamond of the brand mauve */
+  /* Light variant for use on the mauve bands */
+  .btn-on-dark {
+    color: var(--mauve-deep);
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+  }
+
+  .btn-on-dark:hover {
+    color: #FFFFFF;
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Form fields: flat, hairline, mauve focus ring */
+  .field {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.875rem;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    transition: border-color 0.25s ease;
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--logo-mauve);
+  }
+
+  /* Thin engraved rule used under headings */
   .rule-lux {
     display: flex;
     align-items: center;
