@@ -189,14 +189,14 @@
 
   /* ── Typography ────────────────────────────────────────────────── */
   /*
-    Playfair Display carries the headings: high contrast, generous x-height,
-    set at 400–500 so the hairlines stay elegant at display sizes.
+    Cormorant Garamond carries the headings, as on the reference site. Its
+    x-height is small, so display type runs large and never below 400.
   */
   .font-display {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-style: normal;
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.005em;
   }
 
   .font-body {
@@ -205,9 +205,9 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-style: normal;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.005em;
   }
 
   h1 {
