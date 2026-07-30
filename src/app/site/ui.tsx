@@ -8,6 +8,44 @@ import {
   useTransform,
 } from "motion/react";
 
+/*
+  ── Ambient ────────────────────────────────────────────────────────
+  Soft out-of-focus colour behind a section. It exists so the frosted
+  panels above it have something to refract — glass over flat white
+  reads as nothing at all.
+*/
+export function Ambient({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const orbs =
+    tone === "dark"
+      ? [
+          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.30), transparent 68%)",
+          "radial-gradient(circle at 60% 40%, rgba(201,155,182,0.24), transparent 70%)",
+          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.34), transparent 70%)",
+        ]
+      : [
+          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.55), transparent 68%)",
+          "radial-gradient(circle at 60% 40%, rgba(163,91,133,0.30), transparent 70%)",
+          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.16), transparent 70%)",
+        ];
+
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        className="absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full blur-3xl"
+        style={{ background: orbs[0] }}
+      />
+      <div
+        className="absolute top-1/4 -right-32 w-[32rem] h-[32rem] rounded-full blur-3xl"
+        style={{ background: orbs[1] }}
+      />
+      <div
+        className="absolute -bottom-40 left-1/3 w-[26rem] h-[26rem] rounded-full blur-3xl"
+        style={{ background: orbs[2] }}
+      />
+    </div>
+  );
+}
+
 /* ── Quiet entrance animation ─────────────────────────────────────── */
 export function FadeUp({
   children,
@@ -33,13 +71,13 @@ export function FadeUp({
 
 /*
   ── Reveal3D ───────────────────────────────────────────────────────
-  Enters by rotating up out of the page plane. Subtle by design: a
-  14° start angle reads as depth without looking like a slideshow.
+  Enters with a hint of rotation out of the page plane. Kept to a few
+  degrees so it reads as softness, not as a 3D effect.
 */
 export function Reveal3D({
   children,
   delay = 0,
-  angle = 14,
+  angle = 5,
   className = "",
 }: {
   children: ReactNode;
@@ -74,7 +112,7 @@ export function Reveal3D({
 */
 export function Parallax({
   children,
-  distance = 60,
+  distance = 20,
   depth = 0,
   className = "",
 }: {
@@ -109,12 +147,12 @@ export function Parallax({
 
 /*
   ── TiltCard ───────────────────────────────────────────────────────
-  Pointer-driven tilt on a real perspective. Capped at a few degrees so
-  it feels like a card catching light, not a toy.
+  Pointer-driven tilt, capped at a couple of degrees: enough for a card
+  to catch the light, not enough to read as a 3D toy.
 */
 export function TiltCard({
   children,
-  intensity = 7,
+  intensity = 3,
   className = "",
 }: {
   children: ReactNode;
@@ -162,7 +200,7 @@ export function TiltCard({
 */
 export function ScrollZoom({
   children,
-  from = 1.12,
+  from = 1.04,
   className = "",
 }: {
   children: ReactNode;
@@ -272,8 +310,9 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <header className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 bg-mauve-deep scene">
-      <div className="max-w-3xl mx-auto flex justify-center">
+    <header className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20 px-6 bg-mauve-deep scene">
+      <Ambient tone="dark" />
+      <div className="relative max-w-3xl mx-auto flex justify-center">
         <Reveal3D>
           <SectionHeading tone="light" eyebrow={eyebrow} title={title} accent={accent} subtitle={subtitle} />
         </Reveal3D>

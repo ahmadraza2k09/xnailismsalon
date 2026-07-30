@@ -15,7 +15,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
           onClick={() => setLang(code)}
           aria-pressed={lang === code}
           className={`px-2 py-1 text-[0.62rem] font-body tracking-[0.16em] uppercase rounded-full transition-colors ${
-            lang === code ? "bg-mauve-deep text-white" : "text-mauve-deep/55 hover:text-mauve-deep"
+            lang === code ? "btn-primary !px-2.5 !py-1" : "text-mauve-deep/55 hover:text-mauve-deep"
           }`}
           style={{ fontWeight: 500 }}
         >
@@ -53,17 +53,28 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        scrolled ? "border-b border-border" : "border-b border-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled
+          ? "linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.82))"
+          : "linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.72))",
+        backdropFilter: "blur(22px) saturate(160%)",
+        WebkitBackdropFilter: "blur(22px) saturate(160%)",
+        borderBottom: `1px solid ${scrolled ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.4)"}`,
+        boxShadow: scrolled
+          ? "0 18px 36px -30px rgba(110,58,89,0.55), inset 0 1px 0 rgba(255,255,255,0.9)"
+          : "inset 0 1px 0 rgba(255,255,255,0.7)",
+      }}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 h-20 flex items-center justify-between">
-        <Link to={routes.home} className="flex items-center gap-3.5">
-          <ImageWithFallback
-            src={logo}
-            alt={`${brand.name} logo`}
-            className="w-11 h-11 rounded-full object-cover"
-          />
+        <Link to={routes.home} aria-label={`${brand.name} · ${t.nav.home}`} className="flex items-center gap-3.5">
+          <span className="glass-chip w-11 h-11 shrink-0 grid place-items-center p-[3px]">
+            <ImageWithFallback
+              src={logo}
+              alt={`${brand.name} logo`}
+              className="relative z-[1] w-full h-full rounded-full object-cover"
+            />
+          </span>
           <span className="flex flex-col leading-none">
             <span
               className="font-display text-2xl md:text-[1.6rem] tracking-[0.02em] text-mauve-deep"
@@ -122,7 +133,7 @@ export function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className="lg:hidden overflow-hidden transition-all duration-400 bg-white"
+        className="lg:hidden overflow-hidden transition-all duration-400 glass !rounded-none !border-x-0 !border-t-0"
         style={{ maxHeight: open ? "24rem" : "0" }}
       >
         <div className="px-6 py-7 flex flex-col gap-5 border-t border-border">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useT } from "@/app/i18n";
-import { Eyebrow, Reveal3D } from "./ui";
+import { Ambient, Eyebrow, Reveal3D } from "./ui";
 
 const ROTATE_MS = 9000;
 
@@ -33,10 +33,11 @@ export function Testimonials() {
   return (
     <section
       id="opiniones"
-      className="py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene"
+      className="relative overflow-hidden py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene"
       onPointerEnter={() => setHeld(true)}
     >
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-[0.85fr_1.15fr] gap-14 lg:gap-24">
+      <Ambient />
+      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[0.85fr_1.15fr] gap-14 lg:gap-24">
         {/* Index of clients */}
         <Reveal3D>
           <Eyebrow>{t.home.testimonialsEyebrow}</Eyebrow>
@@ -47,11 +48,11 @@ export function Testimonials() {
             {t.home.testimonialsTitle}
           </h2>
 
-          <ul className="mt-10 border-t border-mauve/15">
+          <ul className="glass mt-10 px-5 py-1">
             {t.testimonials.map((item, i) => {
               const isActive = i === active;
               return (
-                <li key={item.name} className="border-b border-mauve/15">
+                <li key={item.name} className="border-b border-white/60 last:border-b-0">
                   <button
                     onClick={() => go(i)}
                     aria-current={isActive}
@@ -76,13 +77,13 @@ export function Testimonials() {
         </Reveal3D>
 
         {/* The quote itself */}
-        <div className="flex flex-col lg:pt-14">
+        <div className="glass flex flex-col p-8 md:p-10 lg:mt-10">
           <div className="min-h-[15rem] md:min-h-[17rem]">
             <AnimatePresence mode="wait">
             <motion.figure
               key={active}
-              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 22, rotateX: 8, transformPerspective: 1200 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={reduced ? { opacity: 0 } : { opacity: 0, y: -12 }}
               transition={{
                 duration: 0.5,
@@ -110,14 +111,14 @@ export function Testimonials() {
               <button
                 onClick={() => go(active - 1)}
                 aria-label={t.common.previous}
-                className="p-2.5 rounded-full border border-mauve/30 text-mauve-deep hover:bg-mauve hover:text-white hover:border-mauve transition-colors cursor-pointer"
+                className="btn-icon p-2.5 cursor-pointer"
               >
                 <ArrowLeft size={15} />
               </button>
               <button
                 onClick={() => go(active + 1)}
                 aria-label={t.common.next}
-                className="p-2.5 rounded-full border border-mauve/30 text-mauve-deep hover:bg-mauve hover:text-white hover:border-mauve transition-colors cursor-pointer"
+                className="btn-icon p-2.5 cursor-pointer"
               >
                 <ArrowRight size={15} />
               </button>

@@ -39,7 +39,7 @@ export default function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.common.whatsapp}
-        className="fixed bottom-6 right-6 z-40 p-3.5 rounded-full text-white bg-mauve hover:bg-mauve-deep transition-colors"
+        className="btn-primary fixed bottom-6 right-6 z-40 p-4"
       >
         <MessageCircle size={22} />
       </a>

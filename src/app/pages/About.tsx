@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { PageHeader, Parallax, Reveal3D, ScrollZoom, SectionHeading } from "@/app/site/ui";
+import { Ambient, PageHeader, Parallax, Reveal3D, ScrollZoom, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { asianArtImg, builderGelImg, routes } from "@/app/site/data";
 
@@ -19,8 +19,8 @@ export default function About() {
 
       <section className="py-16 md:py-28 px-6 max-w-7xl mx-auto scene">
         <div className="grid md:grid-cols-2 gap-14 md:gap-24 items-center">
-          <Parallax distance={34} depth={30}>
-            <ScrollZoom from={1.12} className="rounded-lg aspect-[4/5]">
+          <Parallax distance={13}>
+            <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[4/5]">
               <ImageWithFallback
                 src={asianArtImg}
                 alt={t.services.items[3].title}
@@ -48,7 +48,7 @@ export default function About() {
               <p>{t.about.storyP3}</p>
             </div>
 
-            <dl className="grid grid-cols-3 gap-8 mt-12 border-t border-mauve/15 pt-8">
+            <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6">
               {t.stats.map((s) => (
                 <div key={s.label}>
                   <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
@@ -63,8 +63,9 @@ export default function About() {
       </section>
 
       {/* Principles */}
-      <section className="py-16 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative overflow-hidden py-16 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
+        <Ambient />
+        <div className="relative max-w-7xl mx-auto">
           <Reveal3D className="flex justify-center">
             <SectionHeading
               eyebrow={t.about.valuesEyebrow}
@@ -77,7 +78,7 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-10 md:gap-12 mt-16">
             {t.about.values.map((v, i) => (
               <Reveal3D key={v.title} delay={i * 0.08}>
-                <div className="border-t border-mauve/25 pt-6">
+                <div className="card card-hover h-full p-7">
                   <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="font-display text-2xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {v.title}
@@ -100,9 +101,9 @@ export default function About() {
               title={t.about.studioTitle}
               accent={t.about.studioAccent}
             />
-            <ul className="mt-10 border-t border-mauve/15">
+            <ul className="glass mt-10 px-6 py-2">
               {t.about.studioPoints.map((line) => (
-                <li key={line} className="flex gap-4 items-start py-4 border-b border-mauve/15">
+                <li key={line} className="flex gap-4 items-start py-4 border-b border-white/60 last:border-b-0">
                   <span className="mt-2 w-1.5 h-1.5 rotate-45 bg-mauve/60 shrink-0" />
                   <span className="text-sm text-foreground/82 leading-relaxed">{line}</span>
                 </li>
@@ -114,8 +115,8 @@ export default function About() {
             </Link>
           </Reveal3D>
 
-          <Parallax distance={40} className="md:pt-10">
-            <ScrollZoom from={1.12} className="rounded-lg aspect-[5/6]">
+          <Parallax distance={16} className="md:pt-10">
+            <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[5/6]">
               <ImageWithFallback
                 src={builderGelImg}
                 alt={t.services.items[0].title}

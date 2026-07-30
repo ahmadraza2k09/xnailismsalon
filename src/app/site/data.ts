@@ -48,9 +48,9 @@ export const galleryItems = [
   { src: gallery3, tag: "french" },
 ] as const;
 
-/* `day` keys into t.common.hours; a null time means "by appointment" */
+/* `day` keys into t.common.hours; no `to` means "by appointment" */
 export const studioHours = [
-  { day: "weekdays", time: "10:00 — 19:00" },
-  { day: "saturday", time: "10:00 — 16:00" },
-  { day: "sunday", time: null },
+  { day: "weekdays", from: "10:00", to: "19:00" },
+  { day: "saturday", from: "10:00", to: "16:00" },
+  { day: "sunday", from: null, to: null },
 ] as const;

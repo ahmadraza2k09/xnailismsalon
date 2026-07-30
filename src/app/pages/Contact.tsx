@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Instagram, MessageCircle, Phone } from "lucide-react";
-import { FadeUp, PageHeader, Reveal3D, SectionHeading } from "@/app/site/ui";
+import { Ambient, FadeUp, PageHeader, Reveal3D, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand, routes, studioHours } from "@/app/site/data";
 
@@ -46,7 +46,9 @@ export default function Contact() {
         subtitle={t.contact.headerSubtitle}
       />
 
-      <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto scene">
+      <section className="relative overflow-hidden py-16 md:py-24 px-6 scene">
+        <Ambient />
+        <div className="relative max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
           {channels.map((c, i) => (
             <Reveal3D key={c.label} delay={i * 0.07}>
@@ -86,7 +88,7 @@ export default function Contact() {
                   <li key={h.day} className="flex items-baseline justify-between py-4">
                     <span className="caption text-mauve-deep">{t.common.hours[h.day]}</span>
                     <span className="font-display text-lg text-mauve" style={{ fontWeight: 500 }}>
-                      {h.time ?? t.common.hours.byAppointment}
+                      {h.to ? `${h.from} ${t.common.hours.to} ${h.to}` : t.common.hours.byAppointment}
                     </span>
                   </li>
                 ))}
@@ -94,11 +96,13 @@ export default function Contact() {
             </div>
           </div>
         </FadeUp>
+        </div>
       </section>
 
       {/* Instagram invitation */}
-      <section className="py-20 md:py-28 px-6 text-white bg-mauve-deep">
-        <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+      <section className="relative overflow-hidden py-20 md:py-28 px-6 text-white bg-mauve-deep">
+        <Ambient tone="dark" />
+        <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center">
           <FadeUp className="flex flex-col items-center">
             <Instagram size={26} className="mb-6" />
             <SectionHeading
@@ -119,7 +123,7 @@ export default function Contact() {
               </a>
               <Link
                 to={routes.booking}
-                className="btn-outline text-[0.68rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
+                className="btn-ghost-light text-[0.68rem] px-9 py-4"
               >
                 {t.nav.bookAppointment}
               </Link>

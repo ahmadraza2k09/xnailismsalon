@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
+import { Ambient, FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand, studioHours } from "@/app/site/data";
 
@@ -21,7 +21,7 @@ export default function Booking() {
     setForm({ ...form, [key]: e.target.value });
 
   const ready = Boolean(form.name && form.phone && form.service);
-  const serviceOptions = t.services.items.map((s) => `${s.title} — ${s.price}`);
+  const serviceOptions = t.services.items.map((s) => `${s.title} · ${s.price}`);
 
   const sendToWhatsApp = () => {
     const m = t.booking.message;
@@ -50,8 +50,9 @@ export default function Booking() {
         subtitle={t.booking.headerSubtitle}
       />
 
-      <section className="py-16 md:py-24 px-6 scene">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative overflow-hidden py-16 md:py-24 px-6 scene">
+        <Ambient />
+        <div className="relative max-w-3xl mx-auto">
           <Reveal3D>
             <div className="card p-8 md:p-12">
               <div className="grid md:grid-cols-2 gap-6">
@@ -140,12 +141,12 @@ export default function Booking() {
 
           <FadeUp delay={0.1}>
             <p className="caption text-center mt-14 mb-5">{t.booking.hoursTitle}</p>
-            <ul className="border-t border-mauve/15 max-w-xl mx-auto">
+            <ul className="glass px-6 py-2 max-w-xl mx-auto">
               {studioHours.map((h) => (
-                <li key={h.day} className="flex items-baseline justify-between gap-4 py-4 border-b border-mauve/15">
+                <li key={h.day} className="flex items-baseline justify-between gap-4 py-4 border-b border-white/60 last:border-b-0">
                   <span className="caption text-mauve-deep">{t.common.hours[h.day]}</span>
                   <span className="font-display text-lg text-mauve" style={{ fontWeight: 500 }}>
-                    {h.time ?? t.common.hours.byAppointment}
+                    {h.to ? `${h.from} ${t.common.hours.to} ${h.to}` : t.common.hours.byAppointment}
                   </span>
                 </li>
               ))}

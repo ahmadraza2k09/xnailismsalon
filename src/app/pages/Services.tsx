@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { FadeUp, PageHeader, Parallax, Reveal3D, ScrollZoom, SectionHeading } from "@/app/site/ui";
+import { Ambient, FadeUp, PageHeader, Parallax, Reveal3D, ScrollZoom, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { routes, serviceImages } from "@/app/site/data";
 
@@ -18,13 +18,15 @@ export default function Services() {
       />
 
       {/* Price list — the whole offer at a glance */}
-      <section className="px-6 pt-16 md:pt-20 max-w-4xl mx-auto">
+      <section className="relative overflow-hidden px-6 pt-16 md:pt-20 pb-4">
+        <Ambient />
+        <div className="relative max-w-4xl mx-auto">
         <FadeUp>
-          <ul className="border-t border-mauve/15">
+          <ul className="glass px-6 py-2">
             {t.services.items.map((s, i) => (
               <li
                 key={s.title}
-                className="flex items-baseline justify-between gap-6 py-4 border-b border-mauve/15"
+                className="flex items-baseline justify-between gap-6 py-4 border-b border-white/60 last:border-b-0"
               >
                 <span className="flex items-baseline gap-4">
                   <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
@@ -38,14 +40,15 @@ export default function Services() {
           </ul>
           <p className="text-xs text-foreground/82 leading-relaxed mt-5">{t.services.priceNote}</p>
         </FadeUp>
+        </div>
       </section>
 
       {/* Each service in detail */}
       <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto space-y-20 md:space-y-32 scene">
         {t.services.items.map((s, i) => (
           <div key={s.title} className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-            <Parallax distance={30} className={i % 2 === 1 ? "md:order-2" : ""}>
-              <ScrollZoom from={1.1} className="rounded-lg aspect-[4/3]">
+            <Parallax distance={12} className={i % 2 === 1 ? "md:order-2" : ""}>
+              <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[4/3]">
                 <ImageWithFallback
                   src={serviceImages[i]}
                   alt={s.title}
@@ -87,8 +90,9 @@ export default function Services() {
       </section>
 
       {/* Process */}
-      <section className="py-16 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative overflow-hidden py-16 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
+        <Ambient />
+        <div className="relative max-w-7xl mx-auto">
           <Reveal3D className="flex justify-center">
             <SectionHeading
               eyebrow={t.services.processEyebrow}
@@ -101,7 +105,7 @@ export default function Services() {
           <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mt-16">
             {t.services.steps.map((st, i) => (
               <Reveal3D key={st.title} delay={i * 0.08}>
-                <li className="border-t border-mauve/25 pt-6">
+                <li className="card card-hover h-full p-7">
                   <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="font-display text-xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {st.title}

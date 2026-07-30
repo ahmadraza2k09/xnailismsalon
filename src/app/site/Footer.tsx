@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Instagram, MessageCircle, Phone } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useT } from "@/app/i18n";
+import { Ambient } from "./ui";
 import { brand, logo, routes, studioHours } from "./data";
 
 export function Footer() {
@@ -23,16 +24,31 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-mauve-deep text-white pt-16 pb-10 px-6">
-      <div className="max-w-7xl mx-auto">
+    <footer className="relative overflow-hidden bg-plum-dark text-white pt-16 pb-10 px-6">
+      <Ambient tone="dark" />
+      <div className="relative max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-12 items-start">
           {/* Brand */}
           <div className="flex items-start gap-4">
-            <ImageWithFallback src={logo} alt={brand.name} className="w-14 h-14 rounded-full object-cover" />
+            <Link
+              to={routes.home}
+              aria-label={`${brand.name} · ${t.nav.home}`}
+              className="glass-dark w-14 h-14 shrink-0 !rounded-full p-1"
+            >
+              <ImageWithFallback
+                src={logo}
+                alt={brand.name}
+                className="relative z-[1] w-full h-full rounded-full object-cover"
+              />
+            </Link>
             <div>
-              <p className="font-display text-2xl tracking-[0.02em] text-white" style={{ fontWeight: 500 }}>
+              <Link
+                to={routes.home}
+                className="font-display text-2xl tracking-[0.02em] text-white hover:text-blush transition-colors"
+                style={{ fontWeight: 500 }}
+              >
                 {brand.wordmark}
-              </p>
+              </Link>
               <p className="text-xs text-white/72 mt-4 leading-relaxed max-w-xs">{t.footer.about}</p>
             </div>
           </div>
@@ -81,7 +97,7 @@ export function Footer() {
               </li>
               {studioHours.map((h) => (
                 <li key={h.day} className="text-xs text-white/70">
-                  {t.common.hours[h.day]} — {h.time ?? t.common.hours.byAppointment}
+                  {t.common.hours[h.day]} · {h.to ? `${h.from} ${t.common.hours.to} ${h.to}` : t.common.hours.byAppointment}
                 </li>
               ))}
             </ul>
@@ -93,7 +109,7 @@ export function Footer() {
                   href={s.href}
                   aria-label={s.label}
                   {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="p-3 rounded-full border border-white/20 hover:bg-mauve hover:border-mauve transition-colors"
+                  className="glass-dark p-3 !rounded-full hover:bg-white/25 transition-colors"
                 >
                   <s.icon size={17} />
                 </a>
@@ -108,6 +124,18 @@ export function Footer() {
           </p>
           <p className="font-display tracking-wide text-blush/80 text-sm">{t.footer.motto}</p>
         </div>
+
+        <p className="mt-6 text-center text-[0.68rem] text-white/60">
+          {t.footer.credit}{" "}
+          <a
+            href="https://mazharcreativeagency.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blush hover:text-white underline decoration-blush/40 hover:decoration-white underline-offset-4 transition-colors"
+          >
+            Mazhar Creative Agency
+          </a>
+        </p>
       </div>
     </footer>
   );

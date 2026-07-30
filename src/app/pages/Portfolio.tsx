@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { FadeUp, PageHeader, Reveal3D, TiltCard } from "@/app/site/ui";
+import { Ambient, FadeUp, PageHeader, Reveal3D, TiltCard } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { galleryItems, routes } from "@/app/site/data";
 
@@ -29,23 +29,25 @@ export default function Portfolio() {
         subtitle={t.portfolio.headerSubtitle}
       />
 
-      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto scene">
+      <section className="relative overflow-hidden py-16 md:py-24 px-6 scene">
+        <Ambient />
+        <div className="relative max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryItems.map((img, i) => (
             <Reveal3D key={img.tag} delay={(i % 3) * 0.06} className="h-full">
-              <TiltCard intensity={6} className="h-full">
+              <TiltCard intensity={3} className="h-full">
                 <button
                   onClick={() => setActiveIndex(i)}
-                  className="w-full h-full text-left card card-hover overflow-hidden cursor-pointer group"
+                  className="w-full h-full text-left card card-hover overflow-hidden cursor-pointer group p-2.5"
                 >
-                  <div className="overflow-hidden aspect-[3/4]">
+                  <div className="relative overflow-hidden rounded-lg frame-gloss aspect-[3/4]">
                     <ImageWithFallback
                       src={img.src}
                       alt={t.portfolio.tags[img.tag]}
                       className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
-                  <p className="caption text-mauve text-center py-4">{t.portfolio.tags[img.tag]}</p>
+                  <p className="caption text-mauve text-center py-3.5">{t.portfolio.tags[img.tag]}</p>
                 </button>
               </TiltCard>
             </Reveal3D>
@@ -57,6 +59,7 @@ export default function Portfolio() {
             {t.portfolio.cta}
           </Link>
         </FadeUp>
+        </div>
       </section>
 
       <AnimatePresence>
@@ -69,7 +72,7 @@ export default function Portfolio() {
             onClick={() => setActiveIndex(null)}
           >
             <button
-              className="absolute top-6 right-6 p-3 rounded-full text-white/80 hover:text-white border border-white/25 cursor-pointer"
+              className="glass-dark absolute top-6 right-6 p-3 text-white/90 hover:text-white cursor-pointer !rounded-full"
               onClick={() => setActiveIndex(null)}
               aria-label={t.portfolio.close}
             >
@@ -81,15 +84,15 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 12 }}
               transition={{ duration: 0.3 }}
-              className="max-w-2xl w-full bg-white rounded-lg overflow-hidden"
+              className="glass max-w-2xl w-full overflow-hidden p-2.5"
               onClick={(e) => e.stopPropagation()}
             >
               <ImageWithFallback
                 src={current.src}
                 alt={t.portfolio.tags[current.tag]}
-                className="w-full max-h-[72vh] object-contain"
+                className="w-full max-h-[72vh] object-contain rounded-lg"
               />
-              <figcaption className="text-center py-4 border-t border-border">
+              <figcaption className="text-center pt-4 pb-2">
                 <p className="eyebrow">{t.portfolio.tags[current.tag]}</p>
               </figcaption>
             </motion.figure>

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Instagram } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import {
+  Ambient,
   FadeUp,
   Parallax,
   Reveal3D,
@@ -21,12 +22,13 @@ export default function Home() {
     <>
       {/* ── Hero: asymmetric, type on the left, image on the right ── */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 bg-white scene overflow-hidden">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+        <Ambient />
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
           <div>
             <motion.h1
-              initial={{ opacity: 0, y: 22, rotateX: 10, transformPerspective: 1200 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.02] text-mauve-deep"
               style={{ fontWeight: 500, transformOrigin: "0% 100%" }}
             >
@@ -63,17 +65,31 @@ export default function Home() {
               </Link>
             </motion.div>
 
+            {/* Quick reassurances */}
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.45 }}
+              className="flex flex-wrap gap-2.5 mt-8"
+            >
+              {t.home.trust.map((item) => (
+                <li key={item} className="glass-chip caption text-mauve-deep px-4 py-2">
+                  {item}
+                </li>
+              ))}
+            </motion.ul>
+
             {/* Price index — the four services as a set list */}
             <motion.ul
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-12 border-t border-mauve/15 max-w-md"
+              className="glass mt-12 max-w-md px-6 py-2"
             >
               {t.services.items.map((s, i) => (
                 <li
                   key={s.title}
-                  className="flex items-baseline justify-between gap-4 py-3 border-b border-mauve/15"
+                  className="flex items-baseline justify-between gap-4 py-3 border-b border-white/60 last:border-b-0"
                 >
                   <span className="flex items-baseline gap-3">
                     <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
@@ -87,33 +103,72 @@ export default function Home() {
             </motion.ul>
           </div>
 
-          {/* Portrait with scroll drift + the logo as a seal */}
+          {/* Two prints in white frames, lightly tilted */}
           <div className="relative">
-            <Parallax distance={34} depth={40}>
-              <ScrollZoom from={1.1} className="rounded-lg aspect-[4/3] lg:aspect-[4/5]">
-                <ImageWithFallback
-                  src={asianArtImg}
-                  alt={t.services.items[3].title}
-                  className="w-full h-full object-cover"
-                />
-              </ScrollZoom>
-            </Parallax>
+            <Parallax distance={14}>
+              <div className="relative mx-auto max-w-md lg:max-w-none aspect-[4/5]">
+                <motion.div
+                  initial={{ opacity: 0, y: 24, rotate: -6 }}
+                  animate={{ opacity: 1, y: 0, rotate: -4 }}
+                  transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  className="photo-frame absolute left-0 bottom-0 w-[54%]"
+                >
+                  <ScrollZoom from={1.04} className="rounded-lg aspect-[3/4]">
+                    <ImageWithFallback
+                      src={serviceImages[0]}
+                      alt={t.services.items[0].title}
+                      className="w-full h-full object-cover"
+                    />
+                  </ScrollZoom>
+                </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute bottom-4 left-4 lg:-bottom-6 lg:-left-8 w-20 h-20 lg:w-28 lg:h-28"
-            >
-              <ImageWithFallback
-                src={logo}
-                alt={brand.name}
-                className="w-full h-full rounded-full object-cover border-4 border-white"
-              />
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 24, rotate: 6 }}
+                  animate={{ opacity: 1, y: 0, rotate: 3 }}
+                  transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="photo-frame absolute right-0 top-0 w-[60%]"
+                >
+                  <ScrollZoom from={1.04} className="rounded-lg aspect-[4/5]">
+                    <ImageWithFallback
+                      src={asianArtImg}
+                      alt={t.services.items[3].title}
+                      className="w-full h-full object-cover"
+                    />
+                  </ScrollZoom>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass-chip absolute left-[42%] bottom-[10%] w-20 h-20 lg:w-24 lg:h-24 p-1.5 z-10"
+                >
+                  <ImageWithFallback
+                    src={logo}
+                    alt={brand.name}
+                    className="relative z-[1] w-full h-full rounded-full object-cover"
+                  />
+                </motion.div>
+              </div>
+            </Parallax>
           </div>
         </div>
       </section>
+
+      {/* ── Service ribbon ───────────────────────────────────────── */}
+      <div className="border-y border-border bg-white overflow-hidden py-4">
+        <div className="marquee gap-10">
+          {[0, 1].map((copy) => (
+            <ul key={copy} className="flex items-center gap-10 pr-10" aria-hidden={copy === 1}>
+              {t.services.items.map((s) => (
+                <li key={s.title} className="caption text-mauve/70 whitespace-nowrap">
+                  {s.title}
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
 
       {/* ── The studio ───────────────────────────────────────────── */}
       <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto scene">
@@ -130,7 +185,7 @@ export default function Home() {
               <p>{t.home.introP2}</p>
             </div>
 
-            <dl className="grid grid-cols-3 gap-8 mt-12 border-t border-mauve/15 pt-8">
+            <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6">
               {t.stats.map((s) => (
                 <div key={s.label}>
                   <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
@@ -147,9 +202,9 @@ export default function Home() {
             </Link>
           </Reveal3D>
 
-          <Parallax distance={44} className="md:pt-16">
+          <Parallax distance={17} className="md:pt-16">
             <figure className="relative">
-              <ScrollZoom from={1.14} className="rounded-lg aspect-[4/5]">
+              <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[4/5]">
                 <ImageWithFallback
                   src={serviceImages[0]}
                   alt={t.services.items[0].title}
@@ -165,8 +220,9 @@ export default function Home() {
       </section>
 
       {/* ── Services ─────────────────────────────────────────────── */}
-      <section className="py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative overflow-hidden py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene">
+        <Ambient />
+        <div className="relative max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <Reveal3D>
               <SectionHeading
@@ -228,7 +284,9 @@ export default function Home() {
       </section>
 
       {/* ── Portfolio: offset editorial grid ─────────────────────── */}
-      <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto scene">
+      <section className="relative overflow-hidden py-20 md:py-32 px-6 scene">
+        <Ambient />
+        <div className="relative max-w-7xl mx-auto">
         <Reveal3D className="flex justify-center">
           <SectionHeading
             eyebrow={t.home.portfolioEyebrow}
@@ -239,10 +297,10 @@ export default function Home() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-16">
           {galleryItems.slice(0, 4).map((img, i) => (
-            <Parallax key={img.tag} distance={30}>
-              <TiltCard intensity={5}>
+            <Parallax key={img.tag} distance={12}>
+              <TiltCard intensity={3}>
                 <Link to={routes.portfolio} className="group block">
-                  <ScrollZoom from={1.08} className="rounded-lg aspect-[3/4] w-full">
+                  <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[3/4] w-full">
                     <ImageWithFallback
                       src={img.src}
                       alt={t.portfolio.tags[img.tag]}
@@ -264,14 +322,16 @@ export default function Home() {
             <ArrowRight size={14} />
           </Link>
         </FadeUp>
+        </div>
       </section>
 
       {/* ── Testimonials ─────────────────────────────────────────── */}
       <Testimonials />
 
       {/* ── Closing invitation ───────────────────────────────────── */}
-      <section className="py-20 md:py-32 px-6 text-white bg-mauve-deep scene">
-        <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+      <section className="relative overflow-hidden py-20 md:py-32 px-6 text-white bg-mauve-deep scene">
+        <Ambient tone="dark" />
+        <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center">
           <Reveal3D className="flex flex-col items-center">
             <SectionHeading
               light
@@ -288,7 +348,7 @@ export default function Home() {
                 href={brand.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline text-[0.66rem] px-9 py-4 text-white border-white/40 hover:bg-white hover:text-mauve-deep"
+                className="btn-ghost-light text-[0.66rem] px-9 py-4"
               >
                 <Instagram size={15} />
                 {brand.instagramHandle}

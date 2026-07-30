@@ -19,6 +19,7 @@
 
   /* Tints & shades derived from the core */
   --mauve-deep: #6E3A59;
+  --plum-dark: #46223A;
   --mauve-dark: #8A4B70;
   --mauve-soft: #C99BB6;
   --mauve-mist: #EFDFE8;
@@ -148,6 +149,7 @@
   /* Brand colours available as Tailwind utilities: bg-mauve, text-orchid, … */
   --color-mauve: var(--logo-mauve);
   --color-mauve-deep: var(--mauve-deep);
+  --color-plum-dark: var(--plum-dark);
   --color-mauve-dark: var(--mauve-dark);
   --color-mauve-soft: var(--mauve-soft);
   --color-mauve-mist: var(--mauve-mist);
@@ -262,31 +264,141 @@
 
 @layer components {
   /*
-    Flat, classic surfaces — a hairline border and a whisper of shadow.
-    No embossing, no bevels, no glass.
+    Surfaces combine two ideas:
+      · glass  — frosted, translucent panels that pick up the tint behind them
+      · skeuo  — a physical bevel: top highlight, bottom shade, seated shadow
+    The glass carries the panels; the bevel carries anything you touch.
   */
+
+  /* ── Glass panels ──────────────────────────────────────────────── */
+  .glass {
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(255, 255, 255, 0.52) 55%,
+      rgba(255, 240, 244, 0.62) 100%
+    );
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 26px 50px -30px rgba(110, 58, 89, 0.45),
+      0 2px 6px -2px rgba(110, 58, 89, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      inset 0 -1px 0 rgba(163, 91, 133, 0.08);
+  }
+
+  /* Same idea for use on the plum bands */
+  .glass-dark {
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.07) 60%,
+      rgba(254, 181, 203, 0.1) 100%
+    );
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 24px 44px -28px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  }
+
+  /* Small frosted pill for tags and counters */
+  .glass-chip {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.62);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 999px;
+    box-shadow:
+      0 10px 20px -14px rgba(110, 58, 89, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .glass-chip::after {
+    content: '';
+    position: absolute;
+    inset: 1px 1px 55% 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    pointer-events: none;
+  }
+
+  /* ── Cards: glass with a bevelled lift ─────────────────────────── */
   .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    transition: border-color 0.3s ease;
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(255, 255, 255, 0.58) 55%,
+      rgba(255, 240, 244, 0.66) 100%
+    );
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 22px 44px -28px rgba(110, 58, 89, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(163, 91, 133, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   }
 
   .card-hover:hover {
-    border-color: rgba(163, 91, 133, 0.4);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow:
+      0 34px 60px -30px rgba(110, 58, 89, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(163, 91, 133, 0.1);
   }
 
-  /* Quiet tinted surface for secondary blocks */
+  /* Warm carved surface for secondary blocks */
   .card-tint {
-    background: var(--ivory-warm);
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(246, 235, 240, 0.85));
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 0.75rem;
+    box-shadow:
+      inset 0 2px 5px rgba(110, 58, 89, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.9);
   }
 
-  /* ── Buttons: solid fill, single colour change on hover ─────────── */
+  /* Photo frame: an inner glass ring and a diagonal light catch */
+  .frame-gloss {
+    position: relative;
+  }
+
+  .frame-gloss::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -20px 40px -30px rgba(110, 58, 89, 0.5);
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0) 42%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  /* ── Buttons: glossy, bevelled, pressable ──────────────────────── */
   .btn-primary,
   .btn-outline,
-  .btn-on-dark {
+  .btn-on-dark,
+  .btn-ghost-light {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -297,68 +409,204 @@
     text-transform: uppercase;
     white-space: nowrap;
     border-radius: 999px;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease,
+      background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Gloss across the top half — the skeuomorphic tell */
+  .btn-primary::before,
+  .btn-outline::before,
+  .btn-on-dark::before,
+  .btn-ghost-light::before {
+    content: '';
+    position: absolute;
+    inset: 1px 1px 52% 1px;
+    border-radius: 999px 999px 40% 40% / 999px 999px 100% 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+    pointer-events: none;
   }
 
   .btn-primary {
     color: #FFFFFF;
-    background: var(--logo-mauve);
-    border: 1px solid var(--logo-mauve);
+    background: linear-gradient(180deg, #BE79A0 0%, #A35B85 52%, #8A4B70 100%);
+    border: 1px solid #8A4B70;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -2px 5px rgba(110, 58, 89, 0.35),
+      0 14px 26px -14px rgba(163, 91, 133, 0.75);
   }
 
   .btn-primary:hover {
-    background: var(--mauve-deep);
-    border-color: var(--mauve-deep);
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -2px 5px rgba(110, 58, 89, 0.3),
+      0 20px 32px -16px rgba(163, 91, 133, 0.8);
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+    box-shadow:
+      inset 0 3px 7px rgba(110, 58, 89, 0.5),
+      0 6px 12px -10px rgba(163, 91, 133, 0.7);
   }
 
   .btn-primary:disabled {
-    opacity: 0.4;
+    opacity: 0.45;
     cursor: not-allowed;
-    background: var(--logo-mauve);
-    border-color: var(--logo-mauve);
+    transform: none;
+    filter: none;
   }
 
+  /* Frosted outline button */
   .btn-outline {
     color: var(--mauve-deep);
-    background: transparent;
-    border: 1px solid rgba(163, 91, 133, 0.45);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5));
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(163, 91, 133, 0.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 12px 22px -16px rgba(110, 58, 89, 0.55);
   }
 
   .btn-outline:hover {
     color: #FFFFFF;
-    background: var(--logo-mauve);
-    border-color: var(--logo-mauve);
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, #BE79A0 0%, #A35B85 55%, #8A4B70 100%);
+    border-color: #8A4B70;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 18px 28px -16px rgba(163, 91, 133, 0.7);
   }
 
-  /* Light variant for use on the mauve bands */
+  .btn-outline:active {
+    transform: translateY(1px);
+  }
+
+  /* Light variant for the plum bands */
   .btn-on-dark {
     color: var(--mauve-deep);
-    background: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFEAF1 100%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -2px 4px rgba(163, 91, 133, 0.18),
+      0 16px 28px -16px rgba(0, 0, 0, 0.5);
   }
 
   .btn-on-dark:hover {
-    color: #FFFFFF;
-    background: transparent;
-    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      0 22px 34px -18px rgba(0, 0, 0, 0.55);
   }
 
-  /* Form fields: flat, hairline, mauve focus ring */
+  .btn-on-dark:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 3px 7px rgba(163, 91, 133, 0.35);
+  }
+
+  /* Outline button for use on the plum bands */
+  .btn-ghost-light {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-ghost-light:hover {
+    color: var(--mauve-deep);
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost-light:active {
+    transform: translateY(1px);
+  }
+
+  /* Circular icon control: same bevel, no label */
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mauve-deep);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 999px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 12px 22px -16px rgba(110, 58, 89, 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-icon:hover {
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, #BE79A0, #8A4B70);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 18px 26px -16px rgba(163, 91, 133, 0.7);
+  }
+
+  .btn-icon:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 3px 6px rgba(110, 58, 89, 0.45);
+  }
+
+  /* ── Form fields: carved glass ─────────────────────────────────── */
   .field {
     width: 100%;
     padding: 0.85rem 1rem;
     font-family: 'Jost', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 0.375rem;
-    transition: border-color 0.25s ease;
+    color: var(--foreground);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.66));
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(163, 91, 133, 0.22);
+    border-radius: 0.5rem;
+    box-shadow:
+      inset 0 2px 4px rgba(110, 58, 89, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.9);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
 
   .field:focus {
     outline: none;
     border-color: var(--logo-mauve);
+    box-shadow:
+      inset 0 2px 4px rgba(110, 58, 89, 0.08),
+      0 0 0 3px rgba(163, 91, 133, 0.16);
+  }
+
+  /* Scrolling service ribbon */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Photo held in a white frame, tilted slightly like a print on a table */
+  .photo-frame {
+    background: #FFFFFF;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    box-shadow:
+      0 26px 50px -30px rgba(110, 58, 89, 0.5),
+      0 2px 6px -2px rgba(110, 58, 89, 0.12);
   }
 
   /* 3D scroll/hover scaffolding */
@@ -376,6 +624,17 @@
     .scene {
       perspective: none;
     }
-  }
 
+    .marquee {
+      animation: none;
+    }
+
+    .card-hover:hover,
+    .btn-primary:hover,
+    .btn-outline:hover,
+    .btn-on-dark:hover,
+    .btn-icon:hover {
+      transform: none;
+    }
+  }
 }

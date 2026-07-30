@@ -10,7 +10,7 @@ const es = {
   meta: {
     title: "X.Nailsm",
     description:
-      "X.Nailsm — el estudio de uñas de Ximena Moreno. Gel de constructor, extensiones de polygel y acrílico con arte pintado a mano, con reserva directa por WhatsApp.",
+      "Estudio de uñas de Ximena Moreno. Nivelación de builder, extensiones de polygel y acrílico, y diseños pintados a mano. Reserva directa por WhatsApp.",
     langName: "Español",
   },
 
@@ -41,10 +41,11 @@ const es = {
     previous: "Anterior",
     next: "Siguiente",
     hours: {
-      weekdays: "Lunes — Viernes",
+      weekdays: "Lunes a viernes",
       saturday: "Sábado",
       sunday: "Domingo",
       byAppointment: "Con cita previa",
+      to: "a",
     },
   },
 
@@ -53,31 +54,32 @@ const es = {
     heroTitle: "Donde las uñas",
     heroAccent: "se vuelven arte",
     heroText:
-      "Servicios de uñas personalizados, hechos con precisión y lujo discreto: extensiones estructuradas, acabados refinados y arte pintado a mano por",
+      "Extensiones estructuradas, acabados refinados y arte pintado a mano por",
     introEyebrow: "El estudio",
     introTitle: "Pasión trabajada",
     introAccent: "en cada detalle",
     introP1:
-      "X.Nailsm es un estudio privado construido sobre una idea: un manicure debe sentirse como un ritual pensado, no como un trámite. Cada set comienza con una preparación cuidadosa y termina con un acabado que dura.",
+      "Un estudio privado con una idea: el manicure es un ritual, no un trámite. Cada set empieza con preparación cuidadosa y termina con un acabado que dura.",
     introP2:
-      "Del gel de constructor esculpido al detalle fino pintado a mano, Ximena Moreno combina precisión técnica con un estilo sobrio y clásico.",
+      "Del builder esculpido al detalle fino pintado a mano, con un estilo sobrio y clásico.",
     badgeName: "Ximena Moreno",
-    badgeSub: "Casi nueve años de artesanía profesional",
+    badgeSub: "Casi nueve años de oficio",
     servicesEyebrow: "Lo que ofrecemos",
     servicesTitle: "Servicios",
     servicesAccent: "de autor",
     servicesSubtitle:
-      "Cuatro técnicas, cada una adaptada a la forma de tus manos y a tu día a día.",
+      "Cuatro técnicas, adaptadas a tus manos y a tu día a día.",
     portfolioEyebrow: "Trabajo reciente",
     portfolioTitle: "El portafolio",
-    portfolioSubtitle: "Una selección de sets recientes del estudio.",
+    portfolioSubtitle: "Sets recientes del estudio.",
     testimonialsEyebrow: "Palabras de clientas",
     testimonialsTitle: "Lo que dicen",
     ctaEyebrow: "Con cita previa",
     ctaTitle: "Reserva tu",
     ctaAccent: "experiencia de uñas",
     ctaSubtitle:
-      "Envía tu fecha y servicio preferidos por WhatsApp — Ximena responde personalmente.",
+      "Envía tu fecha y servicio por WhatsApp. Ximena responde personalmente.",
+    trust: ["Casi 9 años de oficio", "Limas nuevas por clienta", "Lunes a sábado"],
   },
 
   about: {
@@ -85,18 +87,18 @@ const es = {
     headerTitle: "Ximena Moreno",
     headerAccent: "artista de uñas y fundadora",
     headerSubtitle:
-      "Casi nueve años convirtiendo el cuidado de las uñas en un ritual personal y bien pensado.",
+      "Casi nueve años convirtiendo el cuidado de las uñas en un ritual personal.",
     storyEyebrow: "La historia",
     storyTitle: "Un estudio construido",
     storyAccent: "sobre oficio y cuidado",
     storyP1a: "Con casi",
     storyP1Strong: "nueve años de dominio profesional",
     storyP1b:
-      ", Ximena Moreno ha convertido el cuidado de las uñas en un ritual personalizado del que sus clientas salen serenas y seguras.",
+      ", Ximena Moreno convierte cada cita en un ritual del que sus clientas salen serenas y seguras.",
     storyP2:
-      "Siempre al frente de la estética global de uñas —del gel de constructor esculpido al arte detallado pintado a mano— une precisión técnica con una mirada creativa contenida.",
+      "Domina desde el builder esculpido hasta el arte pintado a mano, y une precisión técnica con una mirada creativa contenida.",
     storyP3:
-      "Tu sesión es más que una cita: es una experiencia de estudio tranquila y privada, centrada en tu comodidad y en tu propio estilo.",
+      "Tu sesión es privada y tranquila, centrada en tu comodidad y en tu estilo.",
     valuesEyebrow: "Cómo trabajamos",
     valuesTitle: "Tres principios",
     valuesAccent: "silenciosos",
@@ -104,25 +106,25 @@ const es = {
     values: [
       {
         title: "La preparación primero",
-        text: "Cada set empieza con un trabajo meticuloso de cutícula y una lámina ungueal bien preparada. Es la razón por la que el trabajo dura.",
+        text: "Cada set empieza con trabajo meticuloso de cutícula y una lámina bien preparada. Por eso dura.",
       },
       {
         title: "Estructura antes que prisa",
-        text: "Un ápice correcto y un borde libre delgado hacen que un set sea fuerte y cómodo. Nada se apresura por ahorrar unos minutos.",
+        text: "Un ápice correcto y un borde delgado hacen un set fuerte y cómodo. Nada se apresura.",
       },
       {
         title: "Lujo discreto",
-        text: "Productos premium, un estudio tranquilo y un lenguaje de diseño que sigue siendo elegante mucho después de la cita.",
+        text: "Productos premium, un estudio tranquilo y un diseño que sigue elegante semanas después.",
       },
     ],
     studioEyebrow: "La experiencia",
     studioTitle: "Dentro del",
     studioAccent: "estudio",
     studioPoints: [
-      "Citas privadas, una a la vez, sin empalmes.",
-      "Herramienta esterilizada y limas de un solo uso para cada clienta.",
+      "Citas privadas, una a la vez.",
+      "Herramienta esterilizada y limas nuevas para cada clienta.",
       "Consulta de diseño antes de la primera pincelada.",
-      "Indicaciones de cuidado para que tu set dure todo lo que debe.",
+      "Indicaciones de cuidado para que tu set dure.",
     ],
   },
 
@@ -131,23 +133,23 @@ const es = {
     headerTitle: "Servicios",
     headerAccent: "de autor",
     headerSubtitle:
-      "Experiencias de uñas a la medida, con productos premium y técnica refinada.",
+      "Uñas a la medida, con productos premium y técnica refinada.",
     priceNote:
-      "Todos los precios son «desde»: el total final puede variar según la complejidad, el largo o el diseño solicitado.",
+      "Todos los precios son desde. El total varía según la complejidad, el largo y el diseño.",
     includesLabel: "Incluye",
     processEyebrow: "La cita",
     processTitle: "Cómo transcurre",
     processAccent: "una sesión",
-    processSubtitle: "Alrededor de dos horas de principio a fin, según el diseño.",
+    processSubtitle: "Cerca de dos horas, según el diseño.",
     reserveCta: "Reserva tu cita",
     items: [
       {
         title: "Nivelación de Builder",
         price: "Desde 600 pesos",
         badge: "El más pedido",
-        desc: "Nivelación con gel builder sobre la uña natural: estructura firme, forma ligera y acabado impecable.",
+        desc: "Builder sobre la uña natural: estructura firme, forma ligera y acabado impecable.",
         detail:
-          "Se nivela la uña natural con gel builder para reforzarla y corregir la curva, manteniendo una forma ligera y creíble. Ideal si estás dejando crecer tu propio largo o quieres un set pulido para el día a día.",
+          "Se nivela la uña natural con builder para reforzarla y corregir la curva, con una forma ligera y creíble. Ideal si dejas crecer tu largo o quieres un set pulido para el diario.",
         includes: [
           "Trabajo de cutícula y preparación",
           "Nivelación con gel builder",
@@ -159,9 +161,9 @@ const es = {
         title: "Extensión de Polygel",
         price: "Desde 700 pesos",
         badge: "Ultra ligeras",
-        desc: "Extensiones de polygel ligeras y sin olor, esculpidas para un largo cómodo.",
+        desc: "Polygel ligero y sin olor, esculpido para un largo cómodo.",
         detail:
-          "El polygel se esculpe sobre molde dual: te da la resistencia del acrílico con el peso del gel. El resultado se siente ligero en la mano y conserva un ápice definido.",
+          "Se esculpe sobre molde dual: la resistencia del acrílico con el peso del gel. Ligero en la mano y con un ápice definido.",
         includes: [
           "Preparación completa de la uña",
           "Extensión esculpida en molde dual",
@@ -173,9 +175,9 @@ const es = {
         title: "Extensión de Acrílico",
         price: "Desde 700 pesos",
         badge: "Máxima resistencia",
-        desc: "Extensiones de acrílico esculpidas a mano, con estructura impecable y largo que aguanta.",
+        desc: "Acrílico esculpido a mano, con estructura impecable y largo que aguanta.",
         detail:
-          "Para un largo que dura. Acrílico esculpido a mano con un ápice preciso y un borde libre delgado: la opción más resistente para formas largas o marcadas.",
+          "Acrílico esculpido a mano, con ápice preciso y borde delgado. La opción más resistente para formas largas o marcadas.",
         includes: [
           "Preparación completa de la uña",
           "Acrílico esculpido a mano",
@@ -187,9 +189,9 @@ const es = {
         title: "Diseños Asiáticos",
         price: "Precios variables",
         badge: "Arte de autor",
-        desc: "Diseños pintados a mano al estilo asiático: florales, gemas y detalle fino.",
+        desc: "Pintado a mano al estilo asiático: florales, gemas y detalle fino.",
         detail:
-          "Trabajo de pincel fino inspirado en la cultura asiática de uñas: florales pintados a mano, detalles encapsulados, colocación de gemas y degradados. El precio se define según la complejidad del diseño.",
+          "Pincel fino inspirado en la cultura asiática de uñas: florales, detalles encapsulados, gemas y degradados. El precio se define según la complejidad.",
         includes: [
           "Consulta de diseño",
           "Detalle pintado a mano",
@@ -201,19 +203,19 @@ const es = {
     steps: [
       {
         title: "Consulta",
-        text: "Definimos forma, largo y acabado, y revisamos la salud de tu uña natural.",
+        text: "Definimos forma, largo y acabado, y revisamos tu uña natural.",
       },
       {
         title: "Preparación",
-        text: "Cutícula, deshidratación y primer: la base que hace que un set dure.",
+        text: "Cutícula, deshidratación y primer. La base de un set que dura.",
       },
       {
         title: "Aplicación",
-        text: "Cobertura, escultura o extensión, construida con un ápice correcto y borde delgado.",
+        text: "Cobertura, escultura o extensión, con ápice correcto y borde delgado.",
       },
       {
         title: "Acabado",
-        text: "Color, arte y top coat, con indicaciones de cuidado para las semanas siguientes.",
+        text: "Color, arte y top coat, más indicaciones de cuidado.",
       },
     ],
   },
@@ -222,7 +224,7 @@ const es = {
     headerEyebrow: "El portafolio",
     headerTitle: "Trabajo reciente",
     headerAccent: "del estudio",
-    headerSubtitle: "Selecciona cualquier set para verlo de cerca.",
+    headerSubtitle: "Selecciona un set para verlo de cerca.",
     cta: "Reservar un set como estos",
     close: "Cerrar",
     tags: {
@@ -241,7 +243,7 @@ const es = {
     headerTitle: "Reserva tu",
     headerAccent: "experiencia de uñas",
     headerSubtitle:
-      "Completa tus datos y tu solicitud llega directo a Ximena por WhatsApp: sin cuentas, sin esperas.",
+      "Completa tus datos y tu solicitud llega directo a Ximena por WhatsApp. Sin cuentas, sin esperas.",
     name: "Nombre completo",
     namePlaceholder: "Sofía Rodríguez",
     phone: "Número de teléfono",
@@ -254,7 +256,7 @@ const es = {
     notesPlaceholder: "Forma, largo, colores o fotos de referencia…",
     send: "Enviar por WhatsApp",
     sendNote:
-      "Línea directa con Ximena. Tu mensaje se abre ya escrito: revísalo y envíalo.",
+      "Línea directa con Ximena. El mensaje se abre ya escrito: revísalo y envíalo.",
     hoursTitle: "Horario del estudio",
     required: "obligatorio",
     message: {
@@ -276,9 +278,9 @@ const es = {
     headerTitle: "Hablemos",
     headerAccent: "de tu próximo set",
     headerSubtitle:
-      "¿Dudas sobre un diseño, precios o disponibilidad? Escríbenos por cualquier canal.",
+      "¿Dudas sobre un diseño, precio o disponibilidad? Escríbenos por cualquier canal.",
     channels: {
-      whatsappSub: "Respuesta más rápida · Lun–Sáb",
+      whatsappSub: "Respuesta más rápida. Lunes a sábado",
       whatsappCta: "Escribir por WhatsApp",
       instagramSub: "Mensajes directos abiertos",
       instagramCta: "Escribir por Instagram",
@@ -291,21 +293,22 @@ const es = {
     followEyebrow: "Síguenos",
     followTitle: "Inspiración diaria",
     followAccent: "desde el estudio",
-    followSubtitle: "Novedades, sets terminados y detalle detrás de cámaras.",
+    followSubtitle: "Novedades, sets terminados y trabajo en proceso.",
   },
 
   footer: {
     explore: "Explorar",
     studio: "Estudio",
     about:
-      "El estudio de uñas de Ximena Moreno — extensiones estructuradas y detalle pintado a mano, con cita previa.",
+      "Estudio de uñas de Ximena Moreno. Extensiones estructuradas y detalle pintado a mano, con cita previa.",
     rights: "Todos los derechos reservados.",
+    credit: "Diseñado y desarrollado por",
     motto: "Donde cada uña cuenta una historia.",
   },
 
   notFound: {
     eyebrow: "Página no encontrada",
-    text: "La página que buscas no forma parte del estudio X.Nailsm. Te llevamos de vuelta.",
+    text: "Esta página no existe en X.Nailsm. Te llevamos de vuelta.",
     cta: "Volver al inicio",
   },
 
@@ -319,17 +322,17 @@ const es = {
     {
       name: "Sofía R.",
       role: "Clienta frecuente",
-      text: "Ximena es una artista absoluta. Cada vez que salgo, siento que llevo una pequeña obra de arte en las manos. El detalle pintado a mano no tiene comparación.",
+      text: "Ximena es una artista. Cada vez que salgo siento que llevo una obra de arte en las manos. El detalle pintado a mano no tiene comparación.",
     },
     {
       name: "Valentina M.",
       role: "Clienta nueva",
-      text: "Estaba nerviosa por mis primeras extensiones, pero toda la experiencia fue relajante y realmente lujosa. El set de polygel se ve completamente natural.",
+      text: "Llegué nerviosa a mis primeras extensiones y la experiencia fue relajante y lujosa. El polygel se ve natural.",
     },
     {
       name: "Daniela L.",
       role: "Clienta fiel",
-      text: "Los casi nueve años de experiencia se notan: la estructura, el trabajo de preparación y la visión creativa están en otro nivel.",
+      text: "Los casi nueve años se notan: estructura, preparación y visión creativa en otro nivel.",
     },
   ],
 };
@@ -340,7 +343,7 @@ const en: Dict = {
   meta: {
     title: "X.Nailsm",
     description:
-      "X.Nailsm — the nail studio of Ximena Moreno. Builder gel, polygel and acrylic extensions with hand-painted art, booked directly by WhatsApp.",
+      "The nail studio of Ximena Moreno. Builder levelling, polygel and acrylic extensions, and designs painted by hand. Book directly on WhatsApp.",
     langName: "English",
   },
 
@@ -371,10 +374,11 @@ const en: Dict = {
     previous: "Previous",
     next: "Next",
     hours: {
-      weekdays: "Monday — Friday",
+      weekdays: "Monday to Friday",
       saturday: "Saturday",
       sunday: "Sunday",
       byAppointment: "By appointment",
+      to: "to",
     },
   },
 
@@ -383,31 +387,32 @@ const en: Dict = {
     heroTitle: "Where nails",
     heroAccent: "become art",
     heroText:
-      "Personalised nail services crafted with precision and quiet luxury — structured extensions, refined finishes and hand-painted detail by",
+      "Structured extensions, refined finishes and detail painted by hand, by",
     introEyebrow: "The studio",
     introTitle: "Passion crafted",
     introAccent: "into every detail",
     introP1:
-      "X.Nailsm is a private studio built around one idea: a manicure should feel like a considered ritual, not an errand. Every set begins with careful preparation and ends with a finish that holds.",
+      "A private studio with one idea: a manicure is a ritual, not an errand. Every set begins with careful preparation and ends with a finish that holds.",
     introP2:
-      "From sculpted builder gel to fine hand-painted detail, Ximena Moreno combines technical precision with a restrained, classic sense of style.",
+      "From sculpted builder to fine detail painted by hand, with a restrained, classic sense of style.",
     badgeName: "Ximena Moreno",
-    badgeSub: "Nearly nine years of professional craft",
+    badgeSub: "Nearly nine years of craft",
     servicesEyebrow: "What we offer",
     servicesTitle: "Signature",
     servicesAccent: "services",
     servicesSubtitle:
-      "Four techniques, each tailored to the shape of your hands and the way you live.",
+      "Four techniques, tailored to your hands and your routine.",
     portfolioEyebrow: "Recent work",
     portfolioTitle: "The portfolio",
-    portfolioSubtitle: "A selection of recent sets from the studio.",
+    portfolioSubtitle: "Recent sets from the studio.",
     testimonialsEyebrow: "Client words",
     testimonialsTitle: "What they say",
     ctaEyebrow: "By appointment",
     ctaTitle: "Reserve your",
     ctaAccent: "nail experience",
     ctaSubtitle:
-      "Send your preferred date and service through WhatsApp — Ximena replies personally.",
+      "Send your date and service on WhatsApp. Ximena replies personally.",
+    trust: ["Nearly 9 years of craft", "New files per client", "Monday to Saturday"],
   },
 
   about: {
@@ -415,18 +420,18 @@ const en: Dict = {
     headerTitle: "Ximena Moreno",
     headerAccent: "nail artist & founder",
     headerSubtitle:
-      "Nearly nine years spent turning nail care into a considered, personal ritual.",
+      "Nearly nine years turning nail care into a personal ritual.",
     storyEyebrow: "The story",
     storyTitle: "A studio built on",
     storyAccent: "craft and care",
     storyP1a: "With nearly",
     storyP1Strong: "nine years of professional mastery",
     storyP1b:
-      ", Ximena Moreno has transformed nail care into a personalised ritual where clients leave feeling composed and confident.",
+      ", Ximena Moreno turns every appointment into a ritual clients leave feeling composed and confident.",
     storyP2:
-      "Staying at the forefront of global nail aesthetics — from sculpted builder gels to detailed hand-painted art — she combines technical precision with a restrained creative eye.",
+      "She works across the range, from sculpted builder to detailed art painted by hand, with technical precision and a restrained creative eye.",
     storyP3:
-      "Your session is more than an appointment: it is a calm, private studio experience centred on your comfort and your own sense of style.",
+      "Your session is calm and private, centred on your comfort and your own style.",
     valuesEyebrow: "How we work",
     valuesTitle: "Three quiet",
     valuesAccent: "principles",
@@ -434,25 +439,25 @@ const en: Dict = {
     values: [
       {
         title: "Preparation first",
-        text: "Every set begins with meticulous cuticle work and a properly prepared nail plate. It is the reason the work lasts.",
+        text: "Every set begins with meticulous cuticle work and a properly prepared plate. That is why it lasts.",
       },
       {
         title: "Structure over speed",
-        text: "A correct apex and a thin free edge make a set strong and comfortable. Nothing is rushed to save a few minutes.",
+        text: "A correct apex and a thin edge make a set strong and comfortable. Nothing is rushed.",
       },
       {
         title: "Quiet luxury",
-        text: "Premium products, a calm studio and a design language that stays elegant long after the appointment ends.",
+        text: "Premium products, a calm studio and a design that stays elegant weeks later.",
       },
     ],
     studioEyebrow: "The experience",
     studioTitle: "Inside the",
     studioAccent: "studio",
     studioPoints: [
-      "Private one-to-one appointments, never overlapping.",
-      "Sterilised tooling and single-use files for every client.",
+      "Private appointments, one client at a time.",
+      "Sterilised tooling and new files for every client.",
       "Design consultation before the first brush stroke.",
-      "Aftercare guidance so your set lasts its full life.",
+      "Aftercare guidance so your set lasts.",
     ],
   },
 
@@ -461,23 +466,23 @@ const en: Dict = {
     headerTitle: "Signature",
     headerAccent: "services",
     headerSubtitle:
-      "Tailored nail experiences using premium products and refined technique.",
+      "Nails made to measure, with premium products and refined technique.",
     priceNote:
-      "Every price is a starting price: the final total may vary with the complexity, the length or the design requested.",
+      "Every price is a starting price. The total varies with complexity, length and design.",
     includesLabel: "Includes",
     processEyebrow: "The appointment",
     processTitle: "How a session",
     processAccent: "unfolds",
-    processSubtitle: "Around two hours, start to finish, depending on the design.",
+    processSubtitle: "About two hours, depending on the design.",
     reserveCta: "Reserve your appointment",
     items: [
       {
         title: "Builder levelling",
         price: "From 600 pesos",
         badge: "Most requested",
-        desc: "Builder gel levelled over the natural nail: firm structure, light shape, flawless finish.",
+        desc: "Builder over the natural nail: firm structure, light shape, flawless finish.",
         detail:
-          "The natural nail is levelled with builder gel to reinforce it and correct the curve, while keeping the shape light and believable. Ideal if you are growing your own length or want a polished everyday set.",
+          "The natural nail is levelled with builder to reinforce it and correct the curve, keeping the shape light and believable. Ideal if you are growing your length or want a polished everyday set.",
         includes: [
           "Cuticle work & nail prep",
           "Builder gel levelling",
@@ -489,12 +494,12 @@ const en: Dict = {
         title: "Polygel extension",
         price: "From 700 pesos",
         badge: "Feather light",
-        desc: "Lightweight, odour-free polygel extensions sculpted for comfortable added length.",
+        desc: "Light polygel with no odour, sculpted for comfortable added length.",
         detail:
-          "Polygel is sculpted on a dual form, giving you the strength of acrylic with the weight of gel. The result feels light on the hand and holds a crisp apex.",
+          "Sculpted on a dual form: the strength of acrylic with the weight of gel. Light on the hand, with a crisp apex.",
         includes: [
           "Full nail prep",
-          "Sculpted dual-form extension",
+          "Extension sculpted on a dual form",
           "Custom length & shape",
           "Finish of your choice",
         ],
@@ -503,12 +508,12 @@ const en: Dict = {
         title: "Acrylic extension",
         price: "From 700 pesos",
         badge: "Most resilient",
-        desc: "Hand-sculpted acrylic extensions with a flawless structure and length that holds.",
+        desc: "Acrylic sculpted by hand, with a flawless structure and length that holds.",
         detail:
-          "For length that lasts. Hand-sculpted acrylic with a precise apex and thin free edge — the most resilient option for long or bold shapes.",
+          "Acrylic sculpted by hand, with a precise apex and thin edge. The most resilient option for long or bold shapes.",
         includes: [
           "Full nail prep",
-          "Hand-sculpted acrylic",
+          "Acrylic sculpted by hand",
           "Precision apex & structure",
           "Colour or art of your choice",
         ],
@@ -517,12 +522,12 @@ const en: Dict = {
         title: "Asian designs",
         price: "Variable prices",
         badge: "Signature art",
-        desc: "Hand-painted designs in the Asian style: florals, gems and fine detailing.",
+        desc: "Painted by hand in the Asian style: florals, gems and fine detail.",
         detail:
-          "Fine-brush work inspired by Asian nail culture: hand-painted florals, encapsulated details, gem placement and gradients. The price is set by the complexity of the design.",
+          "Fine brush work inspired by Asian nail culture: florals, encapsulated details, gems and gradients. The price is set by the complexity.",
         includes: [
           "Design consultation",
-          "Hand-painted detailing",
+          "Detail painted by hand",
           "Gem & foil placement",
           "Protective top coat",
         ],
@@ -531,19 +536,19 @@ const en: Dict = {
     steps: [
       {
         title: "Consultation",
-        text: "We agree on shape, length and finish, and check the health of your natural nail.",
+        text: "We agree on shape, length and finish, and check your natural nail.",
       },
       {
         title: "Preparation",
-        text: "Cuticle work, dehydration and priming — the groundwork that makes a set last.",
+        text: "Cuticle work, dehydration and priming. The groundwork of a set that lasts.",
       },
       {
         title: "Application",
-        text: "Overlay, sculpting or extension, built with a correct apex and a thin edge.",
+        text: "Overlay, sculpting or extension, with a correct apex and a thin edge.",
       },
       {
         title: "Finish",
-        text: "Colour, art and top coat, followed by aftercare guidance for the weeks ahead.",
+        text: "Colour, art and top coat, plus aftercare guidance.",
       },
     ],
   },
@@ -552,12 +557,12 @@ const en: Dict = {
     headerEyebrow: "The portfolio",
     headerTitle: "Recent work",
     headerAccent: "from the studio",
-    headerSubtitle: "Select any set to view it up close.",
+    headerSubtitle: "Select a set to view it up close.",
     cta: "Book a set like these",
     close: "Close",
     tags: {
       builder: "Builder gel",
-      handPainted: "Hand-painted",
+      handPainted: "Painted by hand",
       fineLine: "Fine line",
       acrylic: "Acrylic",
       polygel: "Polygel",
@@ -571,7 +576,7 @@ const en: Dict = {
     headerTitle: "Reserve your",
     headerAccent: "nail experience",
     headerSubtitle:
-      "Fill in your details and your request is sent straight to Ximena on WhatsApp — no account, no waiting.",
+      "Fill in your details and your request goes straight to Ximena on WhatsApp. No account, no waiting.",
     name: "Full name",
     namePlaceholder: "Sofía Rodríguez",
     phone: "Phone number",
@@ -584,7 +589,7 @@ const en: Dict = {
     notesPlaceholder: "Preferred shape, length, colours or reference photos…",
     send: "Send via WhatsApp",
     sendNote:
-      "A direct line to Ximena. Your message opens pre-filled — review it, then send.",
+      "A direct line to Ximena. The message opens ready written: review it, then send.",
     hoursTitle: "Studio hours",
     required: "required",
     message: {
@@ -606,9 +611,9 @@ const en: Dict = {
     headerTitle: "Let us talk",
     headerAccent: "about your next set",
     headerSubtitle:
-      "Questions about a design, pricing or availability? Reach out through any channel below.",
+      "Questions about a design, price or availability? Reach out on any channel.",
     channels: {
-      whatsappSub: "Fastest response · Mon–Sat",
+      whatsappSub: "Fastest response. Monday to Saturday",
       whatsappCta: "Chat on WhatsApp",
       instagramSub: "Direct messages open",
       instagramCta: "Message on Instagram",
@@ -621,21 +626,22 @@ const en: Dict = {
     followEyebrow: "Follow along",
     followTitle: "Daily inspiration",
     followAccent: "from the studio",
-    followSubtitle: "Studio updates, finished sets and behind-the-scenes detail.",
+    followSubtitle: "Studio updates, finished sets and work in progress.",
   },
 
   footer: {
     explore: "Explore",
     studio: "Studio",
     about:
-      "The nail studio of Ximena Moreno — structured extensions and hand-painted detail, by appointment.",
+      "The nail studio of Ximena Moreno. Structured extensions and detail painted by hand, by appointment.",
     rights: "All rights reserved.",
+    credit: "Designed and developed by",
     motto: "Where every nail tells a story.",
   },
 
   notFound: {
     eyebrow: "Page not found",
-    text: "The page you were looking for is not part of the X.Nailsm studio. Let us take you back.",
+    text: "This page does not exist at X.Nailsm. Let us take you back.",
     cta: "Return home",
   },
 
@@ -649,17 +655,17 @@ const en: Dict = {
     {
       name: "Sofía R.",
       role: "Regular client",
-      text: "Ximena is an absolute artist. Every time I leave, I feel like I have a small masterpiece on my hands. The hand-painted detail is unmatched.",
+      text: "Ximena is an artist. Every time I leave I feel like I have a work of art on my hands. The detail painted by hand is unmatched.",
     },
     {
       name: "Valentina M.",
       role: "New client",
-      text: "I was nervous about extensions for the first time, but the whole experience was relaxing and genuinely luxurious. The polygel set looks completely natural.",
+      text: "I came in nervous about my first extensions and the whole experience was relaxing and luxurious. The polygel looks natural.",
     },
     {
       name: "Daniela L.",
       role: "Loyal client",
-      text: "Nearly nine years of expertise really shows — the structure, the prep work and the creative vision are on another level.",
+      text: "The nine years show: structure, prep work and creative vision on another level.",
     },
   ],
 };
