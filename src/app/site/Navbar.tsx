@@ -14,7 +14,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
           key={code}
           onClick={() => setLang(code)}
           aria-pressed={lang === code}
-          className={`px-2 py-1 text-[0.62rem] font-body tracking-[0.16em] uppercase rounded-full transition-colors ${
+          className={`px-2 py-1 text-[0.66rem] font-nav tracking-[0.16em] uppercase rounded-full transition-colors ${
             lang === code ? "btn-primary !px-2.5 !py-1" : "text-mauve-deep/55 hover:text-mauve-deep"
           }`}
           style={{ fontWeight: 500 }}
@@ -92,7 +92,7 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-body text-[0.7rem] tracking-[0.2em] uppercase transition-colors ${
+                `font-nav text-[0.72rem] tracking-[0.2em] uppercase transition-colors ${
                   isActive ? "text-mauve-deep" : "text-mauve-deep/55 hover:text-mauve-deep"
                 }`
               }
@@ -142,7 +142,7 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-body text-sm tracking-[0.2em] uppercase ${isActive ? "text-mauve-deep" : "text-mauve-deep/55"}`
+                `font-nav text-sm tracking-[0.2em] uppercase ${isActive ? "text-mauve-deep" : "text-mauve-deep/55"}`
               }
               style={{ fontWeight: 500 }}
             >

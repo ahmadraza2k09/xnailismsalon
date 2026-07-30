@@ -20,8 +20,14 @@ export function Testimonials() {
         <div className="grid md:grid-cols-3 gap-6 mt-16">
           {t.testimonials.map((item, i) => (
             <Reveal3D key={item.name} delay={i * 0.08}>
-              <figure className="card h-full p-8 flex flex-col justify-between">
-                <blockquote className="font-display text-xl md:text-2xl leading-[1.35] text-mauve-deep">
+              <figure className="card h-full p-8 flex flex-col justify-between relative overflow-hidden">
+                <span
+                  aria-hidden
+                  className="font-display absolute -top-2 left-5 text-[7rem] leading-none text-mauve/10 select-none pointer-events-none"
+                >
+                  &ldquo;
+                </span>
+                <blockquote className="relative font-display text-xl md:text-2xl leading-[1.35] text-mauve-deep">
                   {item.text}
                 </blockquote>
                 <figcaption className="mt-8 pt-6 border-t border-white/60">

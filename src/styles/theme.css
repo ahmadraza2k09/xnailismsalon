@@ -199,6 +199,12 @@
     letter-spacing: 0.005em;
   }
 
+  /* Geometric sans for navigation and controls */
+  .font-nav {
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+  }
+
   .font-body {
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -380,9 +386,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     white-space: nowrap;
     border-radius: 999px;

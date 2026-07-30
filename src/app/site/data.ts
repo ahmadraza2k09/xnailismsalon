@@ -60,7 +60,7 @@ export const studioHours = [
   studio hours above. Sunday is by appointment only, so it has no slots.
 */
 export const timeSlots: Record<number, string[]> = {
-  0: [],
+  0: ["10:00", "12:30"],
   1: ["10:00", "12:30", "15:00", "17:00"],
   2: ["10:00", "12:30", "15:00", "17:00"],
   3: ["10:00", "12:30", "15:00", "17:00"],

@@ -22,9 +22,9 @@ export default function Home() {
   return (
     <>
       {/* ── Hero: asymmetric, type on the left, image on the right ── */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 bg-white scene overflow-hidden">
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-24 px-6 bg-white scene overflow-hidden">
         <Ambient />
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center lg:items-start">
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
