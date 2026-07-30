@@ -5,6 +5,9 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import {
   Ambient,
   FadeUp,
+  MediaParallax,
+  ScrollDepth,
+  ScrollExit,
   Parallax,
   Reveal3D,
   ScrollZoom,
@@ -24,7 +27,7 @@ export default function Home() {
       <section className="relative pt-24 pb-12 md:pt-24 md:pb-16 px-6 bg-white scene overflow-hidden">
         <Ambient />
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-14 items-center lg:items-start">
-          <div>
+          <ScrollExit>
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -64,12 +67,11 @@ export default function Home() {
                 {t.common.viewPortfolio}
               </Link>
             </motion.div>
-
-          </div>
+          </ScrollExit>
 
           {/* Two prints in white frames, lightly tilted */}
           <div className="relative">
-            <Parallax distance={14}>
+            <ScrollDepth turn={7} lift={26}>
               <div className="relative mx-auto max-w-sm lg:max-w-none aspect-[4/4.4]">
                 <motion.div
                   initial={{ opacity: 0, y: 24, rotate: -6 }}
@@ -114,7 +116,7 @@ export default function Home() {
                   />
                 </motion.div>
               </div>
-            </Parallax>
+            </ScrollDepth>
           </div>
         </div>
       </section>
@@ -193,11 +195,13 @@ export default function Home() {
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
                 <Link to={routes.services} className="media group block h-full aspect-[3/4]">
-                  <ImageWithFallback
-                    src={serviceImages[i]}
-                    alt={s.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <MediaParallax className="absolute inset-0" amount={7}>
+                    <ImageWithFallback
+                      src={serviceImages[i]}
+                      alt={s.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </MediaParallax>
                   <span className="media-scrim" />
                   <span className="absolute inset-x-0 bottom-0 p-6 flex flex-col gap-1.5">
                     <span className="caption text-white/70">{String(i + 1).padStart(2, "0")}</span>
@@ -243,11 +247,13 @@ export default function Home() {
           {galleryItems.slice(0, 4).map((img, i) => (
             <Parallax key={img.tag} distance={12}>
               <Link to={routes.portfolio} className="media group block aspect-[3/4]">
-                <ImageWithFallback
-                  src={img.src}
-                  alt={t.portfolio.tags[img.tag]}
-                  className="w-full h-full object-cover"
-                />
+                <MediaParallax className="absolute inset-0" amount={8}>
+                  <ImageWithFallback
+                    src={img.src}
+                    alt={t.portfolio.tags[img.tag]}
+                    className="w-full h-full object-cover"
+                  />
+                </MediaParallax>
                 <span className="media-scrim" />
                 <span className="absolute inset-x-0 bottom-0 p-5 caption text-white/90">
                   {t.portfolio.tags[img.tag]}

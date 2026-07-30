@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Ambient, FadeUp, PageHeader, Parallax, Reveal3D, SectionHeading } from "@/app/site/ui";
+import { Ambient, FadeUp, MediaParallax, PageHeader, Parallax, Reveal3D, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { routes, serviceImages } from "@/app/site/data";
 
@@ -49,11 +49,13 @@ export default function Services() {
           <div key={s.title} className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Parallax distance={12} className={i % 2 === 1 ? "md:order-2" : ""}>
               <div className="media aspect-[4/3]">
-                <ImageWithFallback
+                <MediaParallax className="absolute inset-0" amount={7}>
+                  <ImageWithFallback
                   src={serviceImages[i]}
                   alt={s.title}
                   className="w-full h-full object-cover"
                 />
+                </MediaParallax>
               </div>
             </Parallax>
 

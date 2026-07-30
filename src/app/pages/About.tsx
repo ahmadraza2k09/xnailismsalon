@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Ambient, PageHeader, Parallax, Reveal3D, SectionHeading } from "@/app/site/ui";
+import { Ambient, MediaParallax, PageHeader, Parallax, Reveal3D, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { asianArtImg, builderGelImg, routes } from "@/app/site/data";
 
@@ -21,11 +21,13 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <Parallax distance={13}>
             <div className="media aspect-[4/5]">
-                <ImageWithFallback
+                <MediaParallax className="absolute inset-0" amount={7}>
+                  <ImageWithFallback
                 src={asianArtImg}
                 alt={t.services.items[3].title}
                 className="w-full h-full object-cover"
               />
+                </MediaParallax>
               </div>
           </Parallax>
 
@@ -117,11 +119,13 @@ export default function About() {
 
           <Parallax distance={16} className="md:pt-10">
             <div className="media aspect-[5/6]">
-                <ImageWithFallback
+                <MediaParallax className="absolute inset-0" amount={7}>
+                  <ImageWithFallback
                 src={builderGelImg}
                 alt={t.services.items[0].title}
                 className="w-full h-full object-cover"
               />
+                </MediaParallax>
               </div>
           </Parallax>
         </div>

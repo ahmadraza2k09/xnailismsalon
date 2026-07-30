@@ -46,6 +46,95 @@ export function Ambient({ tone = "light" }: { tone?: "light" | "dark" }) {
   );
 }
 
+
+/*
+  ── MediaParallax ──────────────────────────────────────────────────
+  The image drifts inside its own frame as the tile crosses the
+  viewport, so the photo feels set behind the crop rather than pasted
+  into it. Pair with .media, which already clips and zooms on hover.
+*/
+export function MediaParallax({
+  children,
+  amount = 8,
+  className = "",
+}: {
+  children: ReactNode;
+  amount?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const yRaw = useTransform(scrollYProgress, [0, 1], [`-${amount}%`, `${amount}%`]);
+  const y = useSpring(yRaw, { stiffness: 80, damping: 26, mass: 0.4 });
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div className="w-full h-full" style={reduced ? undefined : { y, scale: 1 + amount / 100 }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+/*
+  ── ScrollDepth ────────────────────────────────────────────────────
+  Scroll-linked rotation and lift on a real perspective. Used for the
+  hero stack, where a few degrees of turn as the page moves reads as
+  depth rather than as a gimmick.
+*/
+export function ScrollDepth({
+  children,
+  turn = 6,
+  lift = 30,
+  className = "",
+}: {
+  children: ReactNode;
+  turn?: number;
+  lift?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+
+  const rotateRaw = useTransform(scrollYProgress, [0, 1], [turn, -turn]);
+  const yRaw = useTransform(scrollYProgress, [0, 1], [lift, -lift]);
+  const rotateY = useSpring(rotateRaw, { stiffness: 60, damping: 24, mass: 0.5 });
+  const y = useSpring(yRaw, { stiffness: 60, damping: 24, mass: 0.5 });
+
+  return (
+    <div ref={ref} className={`scene ${className}`}>
+      <motion.div
+        className="layer-3d"
+        style={reduced ? undefined : { rotateY, y, transformPerspective: 1400 }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+/*
+  ── ScrollExit ─────────────────────────────────────────────────────
+  Content settles back and fades as it leaves the top of the screen,
+  so one section hands over to the next instead of cutting.
+*/
+export function ScrollExit({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 60]);
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div style={reduced ? undefined : { opacity, scale, y }}>{children}</motion.div>
+    </div>
+  );
+}
+
 /* ── Quiet entrance animation ─────────────────────────────────────── */
 export function FadeUp({
   children,

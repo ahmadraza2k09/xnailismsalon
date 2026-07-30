@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Ambient, FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
+import { Ambient, FadeUp, MediaParallax, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { galleryItems, routes } from "@/app/site/data";
 
@@ -39,11 +39,13 @@ export default function Portfolio() {
                 onClick={() => setActiveIndex(i)}
                 className="media group block w-full aspect-[3/4] cursor-pointer"
               >
-                <ImageWithFallback
-                  src={img.src}
-                  alt={t.portfolio.tags[img.tag]}
-                  className="w-full h-full object-cover"
-                />
+                <MediaParallax className="absolute inset-0" amount={8}>
+                  <ImageWithFallback
+                    src={img.src}
+                    alt={t.portfolio.tags[img.tag]}
+                    className="w-full h-full object-cover"
+                  />
+                </MediaParallax>
                 <span className="media-scrim" />
                 <span className="absolute inset-x-0 bottom-0 p-5 caption text-white/90 text-left">
                   {t.portfolio.tags[img.tag]}
