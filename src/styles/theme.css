@@ -174,10 +174,10 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
     font-size: 1rem;
-    letter-spacing: 0.015em;
+    letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -189,25 +189,25 @@
 
   /* ── Typography ────────────────────────────────────────────────── */
   /*
-    Cormorant Garamond has a small x-height and fine strokes, so display type
-    runs a size larger and a weight lighter than a workhorse serif would.
+    Playfair Display carries the headings: high contrast, generous x-height,
+    set at 400–500 so the hairlines stay elegant at display sizes.
   */
   .font-display {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
     font-style: normal;
     font-weight: 500;
-    letter-spacing: 0.005em;
+    letter-spacing: -0.01em;
   }
 
   .font-body {
-    font-family: 'Jost', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
     font-style: normal;
-    letter-spacing: 0.005em;
+    letter-spacing: -0.01em;
   }
 
   h1 {
@@ -235,7 +235,7 @@
   }
 
   label, button, input, select, textarea {
-    font-family: 'Jost', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: var(--text-base);
     font-weight: 400;
     line-height: 1.5;
@@ -243,20 +243,20 @@
 
   /* Wide-tracked small caps used for eyebrows, labels and captions */
   .eyebrow {
-    font-family: 'Jost', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--logo-mauve);
   }
 
   /* Small caps caption, one step quieter than .eyebrow */
   .caption {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
@@ -380,9 +380,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     white-space: nowrap;
     border-radius: 999px;
@@ -494,7 +494,7 @@
   .field {
     width: 100%;
     padding: 0.85rem 1rem;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     font-weight: 400;
     color: var(--foreground);

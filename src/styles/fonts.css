@@ -1,5 +1,5 @@
 /*
-  Cormorant Garamond (display) + Jost (interface).
+  Playfair Display (high contrast display serif) + Inter (neutral UI sans).
   Upright axes only — the site never uses italics.
 */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');

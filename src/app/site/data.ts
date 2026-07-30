@@ -54,3 +54,17 @@ export const studioHours = [
   { day: "saturday", from: "10:00", to: "16:00" },
   { day: "sunday", from: null, to: null },
 ] as const;
+
+/*
+  Appointment starts, spaced so a two hour session finishes inside the
+  studio hours above. Sunday is by appointment only, so it has no slots.
+*/
+export const timeSlots: Record<number, string[]> = {
+  0: [],
+  1: ["10:00", "12:30", "15:00", "17:00"],
+  2: ["10:00", "12:30", "15:00", "17:00"],
+  3: ["10:00", "12:30", "15:00", "17:00"],
+  4: ["10:00", "12:30", "15:00", "17:00"],
+  5: ["10:00", "12:30", "15:00", "17:00"],
+  6: ["10:00", "12:30", "14:00"],
+};
