@@ -10,6 +10,7 @@ import {
   SectionHeading,
   TiltCard,
 } from "@/app/site/ui";
+import { Testimonials } from "@/app/site/Testimonials";
 import { useT } from "@/app/i18n";
 import { asianArtImg, brand, galleryItems, logo, routes, serviceImages } from "@/app/site/data";
 
@@ -267,34 +268,7 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials ─────────────────────────────────────────── */}
-      <section className="py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene">
-        <div className="max-w-7xl mx-auto">
-          <Reveal3D className="flex justify-center">
-            <SectionHeading eyebrow={t.home.testimonialsEyebrow} title={t.home.testimonialsTitle} />
-          </Reveal3D>
-
-          <div className="grid md:grid-cols-3 gap-8 md:gap-10 mt-16">
-            {t.testimonials.map((item, i) => (
-              <Reveal3D key={item.name} delay={i * 0.08}>
-                <figure className="h-full flex flex-col justify-between">
-                  <span className="font-display text-5xl text-mauve/30 leading-none" aria-hidden>
-                    &ldquo;
-                  </span>
-                  <blockquote className="text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-3">
-                    {item.text}
-                  </blockquote>
-                  <figcaption className="mt-8 pt-5 border-t border-mauve/15">
-                    <p className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
-                      {item.name}
-                    </p>
-                    <p className="caption mt-1.5">{item.role}</p>
-                  </figcaption>
-                </figure>
-              </Reveal3D>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* ── Closing invitation ───────────────────────────────────── */}
       <section className="py-20 md:py-32 px-6 text-white bg-mauve-deep scene">
