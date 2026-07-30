@@ -29,7 +29,7 @@ export default function Portfolio() {
         subtitle={t.portfolio.headerSubtitle}
       />
 
-      <section className="relative overflow-hidden py-16 md:py-24 px-6 scene">
+      <section className="relative overflow-hidden py-12 md:py-20 px-6 scene">
         <Ambient />
         <div className="relative max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -53,7 +53,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <FadeUp className="flex justify-center mt-16">
+        <FadeUp className="flex justify-center mt-12">
           <Link to={routes.booking} className="btn-primary text-[0.66rem] px-9 py-4">
             {t.portfolio.cta}
           </Link>

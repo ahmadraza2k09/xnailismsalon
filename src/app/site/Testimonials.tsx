@@ -9,7 +9,7 @@ export function Testimonials() {
   return (
     <section
       id="opiniones"
-      className="relative overflow-hidden py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene"
+      className="relative overflow-hidden py-14 md:py-24 px-6 bg-ivory-warm border-y border-border scene"
     >
       <Ambient />
       <div className="relative max-w-7xl mx-auto">
@@ -17,7 +17,7 @@ export function Testimonials() {
           <SectionHeading eyebrow={t.home.testimonialsEyebrow} title={t.home.testimonialsTitle} />
         </Reveal3D>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-16">
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
           {t.testimonials.map((item, i) => (
             <Reveal3D key={item.name} delay={i * 0.08}>
               <figure className="card h-full p-8 flex flex-col justify-between relative overflow-hidden">

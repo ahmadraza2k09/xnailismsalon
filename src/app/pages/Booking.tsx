@@ -111,11 +111,11 @@ export default function Booking() {
         subtitle={t.booking.headerSubtitle}
       />
 
-      <section className="relative overflow-hidden py-14 md:py-20 px-6 scene">
+      <section className="relative overflow-hidden py-12 md:py-18 px-6 scene">
         <Ambient />
         <div className="relative max-w-4xl mx-auto">
           {/* Progress */}
-          <ol className="flex items-center justify-center gap-2 md:gap-3 mb-12">
+          <ol className="flex items-center justify-center gap-2 md:gap-3 mb-9">
             {Array.from({ length: TOTAL_STEPS }, (_, i) => i + 1).map((n) => (
               <li key={n} className="flex items-center gap-2 md:gap-3">
                 <span

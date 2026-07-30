@@ -310,7 +310,7 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <header className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20 px-6 bg-mauve-deep scene">
+    <header className="relative overflow-hidden pt-28 pb-12 md:pt-32 md:pb-16 px-6 bg-mauve-deep scene">
       <Ambient tone="dark" />
       <div className="relative max-w-3xl mx-auto flex justify-center">
         <Reveal3D>

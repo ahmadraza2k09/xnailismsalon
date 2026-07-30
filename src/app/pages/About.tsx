@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Ambient, PageHeader, Parallax, Reveal3D, ScrollZoom, SectionHeading } from "@/app/site/ui";
+import { Ambient, PageHeader, Parallax, Reveal3D, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { asianArtImg, builderGelImg, routes } from "@/app/site/data";
 
@@ -17,16 +17,16 @@ export default function About() {
         subtitle={t.about.headerSubtitle}
       />
 
-      <section className="py-16 md:py-28 px-6 max-w-7xl mx-auto scene">
-        <div className="grid md:grid-cols-2 gap-14 md:gap-24 items-center">
+      <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto scene">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <Parallax distance={13}>
-            <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[4/5]">
-              <ImageWithFallback
+            <div className="media aspect-[4/5]">
+                <ImageWithFallback
                 src={asianArtImg}
                 alt={t.services.items[3].title}
                 className="w-full h-full object-cover"
               />
-            </ScrollZoom>
+              </div>
           </Parallax>
 
           <Reveal3D>
@@ -63,7 +63,7 @@ export default function About() {
       </section>
 
       {/* Principles */}
-      <section className="relative overflow-hidden py-16 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
+      <section className="relative overflow-hidden py-12 md:py-20 px-6 bg-ivory-warm border-y border-border scene">
         <Ambient />
         <div className="relative max-w-7xl mx-auto">
           <Reveal3D className="flex justify-center">
@@ -75,7 +75,7 @@ export default function About() {
             />
           </Reveal3D>
 
-          <div className="grid md:grid-cols-3 gap-10 md:gap-12 mt-16">
+          <div className="grid md:grid-cols-3 gap-10 md:gap-12 mt-12">
             {t.about.values.map((v, i) => (
               <Reveal3D key={v.title} delay={i * 0.08}>
                 <div className="card card-hover h-full p-7">
@@ -92,8 +92,8 @@ export default function About() {
       </section>
 
       {/* Studio */}
-      <section className="py-16 md:py-28 px-6 max-w-7xl mx-auto scene">
-        <div className="grid md:grid-cols-2 gap-14 md:gap-24 items-center">
+      <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto scene">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <Reveal3D>
             <SectionHeading
               align="left"
@@ -116,13 +116,13 @@ export default function About() {
           </Reveal3D>
 
           <Parallax distance={16} className="md:pt-10">
-            <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[5/6]">
-              <ImageWithFallback
+            <div className="media aspect-[5/6]">
+                <ImageWithFallback
                 src={builderGelImg}
                 alt={t.services.items[0].title}
                 className="w-full h-full object-cover"
               />
-            </ScrollZoom>
+              </div>
           </Parallax>
         </div>
       </section>

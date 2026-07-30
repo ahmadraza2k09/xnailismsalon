@@ -118,7 +118,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-7 border-t border-white/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-white/72">
+        <div className="mt-10 pt-7 border-t border-white/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-white/72">
           <p>
             © {new Date().getFullYear()} {brand.name} · {t.common.artist}. {t.footer.rights}
           </p>

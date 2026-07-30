@@ -21,9 +21,9 @@ export default function Home() {
   return (
     <>
       {/* ── Hero: asymmetric, type on the left, image on the right ── */}
-      <section className="relative pt-24 pb-16 md:pt-28 md:pb-24 px-6 bg-white scene overflow-hidden">
+      <section className="relative pt-24 pb-12 md:pt-24 md:pb-16 px-6 bg-white scene overflow-hidden">
         <Ambient />
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center lg:items-start">
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-14 items-center lg:items-start">
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
@@ -70,7 +70,7 @@ export default function Home() {
           {/* Two prints in white frames, lightly tilted */}
           <div className="relative">
             <Parallax distance={14}>
-              <div className="relative mx-auto max-w-md lg:max-w-none aspect-[4/5]">
+              <div className="relative mx-auto max-w-sm lg:max-w-none aspect-[4/4.4]">
                 <motion.div
                   initial={{ opacity: 0, y: 24, rotate: -6 }}
                   animate={{ opacity: 1, y: 0, rotate: -4 }}
@@ -135,7 +135,7 @@ export default function Home() {
       </div>
 
       {/* ── The studio ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 scene">
+      <section className="relative overflow-hidden py-14 md:py-24 px-6 scene">
         <Ambient />
         <div className="relative max-w-3xl mx-auto">
           <Reveal3D>
@@ -170,7 +170,7 @@ export default function Home() {
       </section>
 
       {/* ── Services ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 bg-ivory-warm border-y border-border scene">
+      <section className="relative overflow-hidden py-14 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
         <Ambient />
         <div className="relative max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
@@ -189,7 +189,7 @@ export default function Home() {
             </FadeUp>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
                 <Link to={routes.services} className="media group block h-full aspect-[3/4]">
@@ -228,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* ── Portfolio: offset editorial grid ─────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 scene">
+      <section className="relative overflow-hidden py-14 md:py-24 px-6 scene">
         <Ambient />
         <div className="relative max-w-7xl mx-auto">
         <Reveal3D className="flex justify-center">
@@ -239,7 +239,7 @@ export default function Home() {
           />
         </Reveal3D>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-12">
           {galleryItems.slice(0, 4).map((img, i) => (
             <Parallax key={img.tag} distance={12}>
               <Link to={routes.portfolio} className="media group block aspect-[3/4]">
@@ -257,7 +257,7 @@ export default function Home() {
           ))}
         </div>
 
-        <FadeUp className="flex justify-center mt-16">
+        <FadeUp className="flex justify-center mt-12">
           <Link to={routes.portfolio} className="btn-outline text-[0.64rem] px-8 py-3.5">
             {t.common.fullGallery}
             <ArrowRight size={14} />
@@ -273,7 +273,7 @@ export default function Home() {
       <Faq />
 
       {/* ── Closing invitation ───────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 text-white bg-mauve-deep scene">
+      <section className="relative overflow-hidden py-14 md:py-24 px-6 text-white bg-mauve-deep scene">
         <Ambient tone="dark" />
         <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center">
           <Reveal3D className="flex flex-col items-center">

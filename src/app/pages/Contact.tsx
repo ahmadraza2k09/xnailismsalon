@@ -46,7 +46,7 @@ export default function Contact() {
         subtitle={t.contact.headerSubtitle}
       />
 
-      <section className="relative overflow-hidden py-16 md:py-24 px-6 scene">
+      <section className="relative overflow-hidden py-12 md:py-20 px-6 scene">
         <Ambient />
         <div className="relative max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
@@ -100,7 +100,7 @@ export default function Contact() {
       </section>
 
       {/* Instagram invitation */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 text-white bg-mauve-deep">
+      <section className="relative overflow-hidden py-14 md:py-20 px-6 text-white bg-mauve-deep">
         <Ambient tone="dark" />
         <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center">
           <FadeUp className="flex flex-col items-center">

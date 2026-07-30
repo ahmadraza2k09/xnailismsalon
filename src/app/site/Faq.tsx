@@ -12,14 +12,14 @@ export function Faq() {
   const t = useT();
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 px-6 scene">
+    <section className="relative overflow-hidden py-12 md:py-18 px-6 scene">
       <Ambient />
       <div className="relative max-w-3xl mx-auto">
         <Reveal3D className="flex justify-center">
           <SectionHeading eyebrow={t.home.faqEyebrow} title={t.home.faqTitle} />
         </Reveal3D>
 
-        <div className="mt-14 flex flex-col gap-4">
+        <div className="mt-10 flex flex-col gap-4">
           {t.home.faq.map((item, i) => (
             <Reveal3D key={item.q} delay={i * 0.05}>
               <details className="faq-item card card-hover group px-6 md:px-8">
