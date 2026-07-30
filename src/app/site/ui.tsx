@@ -240,11 +240,11 @@ export function SectionHeading({
         className={`font-display text-4xl md:text-6xl leading-[1.08] mt-4 ${
           light ? "text-white" : "text-mauve-deep"
         }`}
-        style={{ fontWeight: 400 }}
+        style={{ fontWeight: 500 }}
       >
         {title}
         {accent && (
-          <span className={`block mt-1 ${light ? "text-blush" : "text-mauve"}`} style={{ fontWeight: 300 }}>
+          <span className={`block mt-1 ${light ? "text-blush" : "text-mauve"}`} style={{ fontWeight: 400 }}>
             {accent}
           </span>
         )}
@@ -253,7 +253,7 @@ export function SectionHeading({
       {subtitle && (
         <p
           className={`mt-6 text-sm md:text-[0.95rem] leading-relaxed ${
-            light ? "text-white/75" : "text-foreground/70"
+            light ? "text-white/85" : "text-foreground/82"
           } ${align === "center" ? "max-w-xl" : "max-w-lg"}`}
         >
           {subtitle}

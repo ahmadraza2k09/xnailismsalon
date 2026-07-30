@@ -57,7 +57,7 @@ export default function Contact() {
                   <p className="font-display text-2xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {c.value}
                   </p>
-                  <p className="text-xs text-foreground/55 mt-2">{c.sub}</p>
+                  <p className="text-xs text-foreground/82 mt-2">{c.sub}</p>
                 </div>
                 <a
                   href={c.href}

@@ -17,7 +17,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
           className={`px-2 py-1 text-[0.62rem] font-body tracking-[0.16em] uppercase rounded-full transition-colors ${
             lang === code ? "bg-mauve text-white" : "text-mauve-deep/60 hover:text-mauve"
           }`}
-          style={{ fontWeight: 400 }}
+          style={{ fontWeight: 500 }}
         >
           {code}
         </button>
@@ -66,32 +66,26 @@ export function Navbar() {
           />
           <span className="flex flex-col leading-none">
             <span
-              className="font-display text-lg md:text-xl tracking-[0.14em] text-mauve-deep"
-              style={{ fontWeight: 400 }}
+              className="font-display text-2xl md:text-[1.6rem] tracking-[0.02em] text-mauve-deep"
+              style={{ fontWeight: 500 }}
             >
               {brand.wordmark}
-            </span>
-            <span
-              className="text-[0.55rem] font-body tracking-[0.32em] uppercase text-mauve/75 mt-1.5"
-              style={{ fontWeight: 400 }}
-            >
-              {t.nav.studioLine}
             </span>
           </span>
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-7">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
                 `font-body text-[0.7rem] tracking-[0.2em] uppercase transition-colors ${
-                  isActive ? "text-mauve" : "text-foreground/70 hover:text-mauve"
+                  isActive ? "text-mauve" : "text-foreground/82 hover:text-mauve"
                 }`
               }
-              style={{ fontWeight: 400 }}
+              style={{ fontWeight: 500 }}
             >
               {l.label}
             </NavLink>
@@ -103,7 +97,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <LanguageToggle />
           <button
             className="p-2 text-mauve-deep"
@@ -128,7 +122,7 @@ export function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className="md:hidden overflow-hidden transition-all duration-400 bg-ivory"
+        className="lg:hidden overflow-hidden transition-all duration-400 bg-ivory"
         style={{ maxHeight: open ? "24rem" : "0" }}
       >
         <div className="px-6 py-7 flex flex-col gap-5 border-t border-border">
@@ -137,9 +131,9 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-body text-xs tracking-[0.2em] uppercase ${isActive ? "text-mauve" : "text-foreground/75"}`
+                `font-body text-xs tracking-[0.2em] uppercase ${isActive ? "text-mauve" : "text-foreground/82"}`
               }
-              style={{ fontWeight: 400 }}
+              style={{ fontWeight: 500 }}
             >
               {l.label}
             </NavLink>

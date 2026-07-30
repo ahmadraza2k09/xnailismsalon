@@ -3,11 +3,9 @@ import { motion } from "motion/react";
 import { ArrowRight, Instagram } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import {
-  Eyebrow,
   FadeUp,
   Parallax,
   Reveal3D,
-  Rule,
   ScrollZoom,
   SectionHeading,
   TiltCard,
@@ -22,36 +20,26 @@ export default function Home() {
     <>
       {/* ── Hero: asymmetric, type on the left, image on the right ── */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 bg-blush-mist scene overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Eyebrow>{t.common.tagline}</Eyebrow>
-            </motion.div>
-
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+          <div>
             <motion.h1
               initial={{ opacity: 0, y: 22, rotateX: 10, transformPerspective: 1200 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.02] mt-6 text-mauve-deep"
-              style={{ fontWeight: 400, transformOrigin: "0% 100%" }}
+              className="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[1.02] text-mauve-deep"
+              style={{ fontWeight: 500, transformOrigin: "0% 100%" }}
             >
               {t.home.heroTitle}
-              <span className="block text-mauve mt-2" style={{ fontWeight: 300 }}>
+              <span className="block text-mauve mt-2" style={{ fontWeight: 400 }}>
                 {t.home.heroAccent}
               </span>
             </motion.h1>
-
-            <Rule className="w-32 mt-8" />
 
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-sm md:text-[0.95rem] text-foreground/70 leading-relaxed mt-8 max-w-md"
+              className="text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-8 max-w-md"
             >
               {t.home.heroText}{" "}
               <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
@@ -99,9 +87,9 @@ export default function Home() {
           </div>
 
           {/* Portrait with scroll drift + the logo as a seal */}
-          <div className="order-1 md:order-2 relative">
+          <div className="relative">
             <Parallax distance={34} depth={40}>
-              <ScrollZoom from={1.1} className="rounded-lg border border-mauve/15 aspect-[4/5]">
+              <ScrollZoom from={1.1} className="rounded-lg aspect-[4/3] lg:aspect-[4/5]">
                 <ImageWithFallback
                   src={asianArtImg}
                   alt={t.services.items[3].title}
@@ -114,11 +102,11 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute -bottom-6 -left-4 md:-left-8 w-24 h-24 md:w-28 md:h-28"
+              className="absolute bottom-4 left-4 lg:-bottom-6 lg:-left-8 w-20 h-20 lg:w-28 lg:h-28"
             >
               <ImageWithFallback
                 src={logo}
-                alt={`${brand.name} — ${t.common.tagline}`}
+                alt={brand.name}
                 className="w-full h-full rounded-full object-cover border-4 border-blush-mist"
               />
             </motion.div>
@@ -136,7 +124,7 @@ export default function Home() {
               title={t.home.introTitle}
               accent={t.home.introAccent}
             />
-            <div className="space-y-5 text-sm md:text-[0.95rem] text-foreground/70 leading-relaxed mt-8">
+            <div className="space-y-5 text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-8">
               <p>{t.home.introP1}</p>
               <p>{t.home.introP2}</p>
             </div>
@@ -144,7 +132,7 @@ export default function Home() {
             <dl className="grid grid-cols-3 gap-8 mt-12 border-t border-mauve/15 pt-8">
               {t.stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 400 }}>
+                  <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
                     {s.value}
                   </dt>
                   <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
@@ -189,7 +177,7 @@ export default function Home() {
               />
             </Reveal3D>
             <FadeUp delay={0.1}>
-              <p className="text-sm text-foreground/65 max-w-sm md:text-right">
+              <p className="text-sm text-foreground/78 max-w-sm md:text-right">
                 {t.home.servicesSubtitle}
               </p>
             </FadeUp>
@@ -218,7 +206,7 @@ export default function Home() {
                       >
                         {s.title}
                       </h3>
-                      <p className="text-xs text-foreground/65 leading-relaxed mt-3">{s.desc}</p>
+                      <p className="text-xs text-foreground/78 leading-relaxed mt-3">{s.desc}</p>
                     </div>
                   </Link>
                 </TiltCard>
@@ -227,7 +215,7 @@ export default function Home() {
           </div>
 
           <FadeUp className="mt-12">
-            <p className="text-xs text-foreground/55 max-w-2xl leading-relaxed">{t.services.priceNote}</p>
+            <p className="text-xs text-foreground/82 max-w-2xl leading-relaxed">{t.services.priceNote}</p>
           </FadeUp>
 
           <FadeUp className="flex mt-10">
@@ -292,7 +280,7 @@ export default function Home() {
                   <span className="font-display text-5xl text-mauve/30 leading-none" aria-hidden>
                     &ldquo;
                   </span>
-                  <blockquote className="text-sm md:text-[0.95rem] text-foreground/72 leading-relaxed mt-3">
+                  <blockquote className="text-sm md:text-[0.95rem] text-foreground/82 leading-relaxed mt-3">
                     {item.text}
                   </blockquote>
                   <figcaption className="mt-8 pt-5 border-t border-mauve/15">

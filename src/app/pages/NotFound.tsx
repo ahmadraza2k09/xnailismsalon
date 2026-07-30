@@ -13,7 +13,7 @@ export default function NotFound() {
         404
       </h1>
       <Rule className="w-24 mt-6" />
-      <p className="text-sm text-foreground/65 mt-6 max-w-sm">{t.notFound.text}</p>
+      <p className="text-sm text-foreground/78 mt-6 max-w-sm">{t.notFound.text}</p>
       <Link to={routes.home} className="btn-primary text-[0.66rem] px-8 py-4 mt-9">
         {t.notFound.cta}
       </Link>

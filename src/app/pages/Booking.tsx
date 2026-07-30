@@ -105,7 +105,7 @@ export default function Booking() {
                       </option>
                     ))}
                   </select>
-                  <p className="text-xs text-foreground/55 leading-relaxed mt-3">{t.services.priceNote}</p>
+                  <p className="text-xs text-foreground/82 leading-relaxed mt-3">{t.services.priceNote}</p>
                 </div>
                 <div className="md:col-span-2">
                   <label className={labelCls} htmlFor="bk-notes">
@@ -131,7 +131,7 @@ export default function Booking() {
                   <MessageCircle size={16} />
                   {t.booking.send}
                 </button>
-                <p className="text-xs text-foreground/55 text-center sm:text-left leading-relaxed">
+                <p className="text-xs text-foreground/82 text-center sm:text-left leading-relaxed">
                   {t.booking.sendNote}
                 </p>
               </div>

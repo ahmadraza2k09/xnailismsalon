@@ -16,7 +16,7 @@ export { logo, builderGelImg, polygelImg, acrylicImg, asianArtImg };
 /* Language-neutral facts. All prose lives in src/app/i18n/translations.ts */
 export const brand = {
   name: "X.Nailsm",
-  wordmark: "X.NAILSM",
+  wordmark: "X.nailsm",
   phone: "664 328 9886",
   phoneHref: "tel:+526643289886",
   whatsapp: "https://wa.me/526643289886",
