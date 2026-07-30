@@ -16,14 +16,21 @@ const LanguageContext = createContext<LanguageValue>({
   t: translations.es,
 });
 
-function readStoredLang(): Lang {
+function isLang(value: string | null): value is Lang {
+  return value === "es" || value === "en";
+}
+
+/* ?lang=en wins over the stored choice, so an English link can be shared. */
+function readInitialLang(): Lang {
   if (typeof window === "undefined") return "es";
+  const fromUrl = new URLSearchParams(window.location.search).get("lang");
+  if (isLang(fromUrl)) return fromUrl;
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === "en" || stored === "es" ? stored : "es";
+  return isLang(stored) ? stored : "es";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(readStoredLang);
+  const [lang, setLang] = useState<Lang>(readInitialLang);
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, lang);
