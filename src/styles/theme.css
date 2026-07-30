@@ -9,7 +9,7 @@
   Everything below is a tint/shade of those four — no colours outside the logo.
 */
 :root {
-  --font-size: 17px;
+  --font-size: 16px;
 
   /* Logo core */
   --logo-mauve: #A35B85;
@@ -28,7 +28,7 @@
   --ivory-warm: #F6EBF0;
   --ink: #2B1B24;
 
-  --background: #FBF6F8;
+  --background: #FFFFFF;
   --foreground: #2B1B24;
   --card: #FFFFFF;
   --card-foreground: #2B1B24;
@@ -242,7 +242,7 @@
   /* Wide-tracked small caps used for eyebrows, labels and captions */
   .eyebrow {
     font-family: 'Jost', sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -252,7 +252,7 @@
   /* Small caps caption, one step quieter than .eyebrow */
   .caption {
     font-family: 'Jost', sans-serif;
-    font-size: 0.76rem;
+    font-size: 0.66rem;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -347,7 +347,7 @@
     width: 100%;
     padding: 0.85rem 1rem;
     font-family: 'Jost', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 400;
     background: #FFFFFF;
     border: 1px solid var(--border);
@@ -379,16 +379,7 @@
 
   /* Thin engraved rule used under headings */
   .rule-lux {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .rule-lux::before,
-  .rule-lux::after {
-    content: '';
-    flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(163, 91, 133, 0.35), transparent);
+    background: rgba(163, 91, 133, 0.3);
   }
 }

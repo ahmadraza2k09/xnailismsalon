@@ -53,7 +53,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-ivory/95 transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 transition-shadow duration-300 ${
         scrolled ? "border-b border-border" : "border-b border-transparent"
       }`}
     >
@@ -122,7 +122,7 @@ export function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className="lg:hidden overflow-hidden transition-all duration-400 bg-ivory"
+        className="lg:hidden overflow-hidden transition-all duration-400 bg-white"
         style={{ maxHeight: open ? "24rem" : "0" }}
       >
         <div className="px-6 py-7 flex flex-col gap-5 border-t border-border">

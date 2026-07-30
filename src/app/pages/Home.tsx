@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero: asymmetric, type on the left, image on the right ── */}
-      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 bg-blush-mist scene overflow-hidden">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 bg-white scene overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
           <div>
             <motion.h1
@@ -107,7 +107,7 @@ export default function Home() {
               <ImageWithFallback
                 src={logo}
                 alt={brand.name}
-                className="w-full h-full rounded-full object-cover border-4 border-blush-mist"
+                className="w-full h-full rounded-full object-cover border-4 border-white"
               />
             </motion.div>
           </div>
@@ -148,7 +148,7 @@ export default function Home() {
 
           <Parallax distance={44} className="md:pt-16">
             <figure className="relative">
-              <ScrollZoom from={1.14} className="rounded-lg border border-mauve/15 aspect-[4/5]">
+              <ScrollZoom from={1.14} className="rounded-lg aspect-[4/5]">
                 <ImageWithFallback
                   src={serviceImages[0]}
                   alt={t.services.items[0].title}
@@ -242,7 +242,7 @@ export default function Home() {
             <Parallax key={img.tag} distance={i % 2 === 0 ? 26 : 46} className={i % 2 === 1 ? "md:pt-12" : ""}>
               <TiltCard intensity={5}>
                 <Link to={routes.portfolio} className="group block">
-                  <ScrollZoom from={1.08} className="rounded-lg border border-mauve/15 aspect-[3/4]">
+                  <ScrollZoom from={1.08} className="rounded-lg aspect-[3/4]">
                     <ImageWithFallback
                       src={img.src}
                       alt={t.portfolio.tags[img.tag]}

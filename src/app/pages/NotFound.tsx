@@ -7,7 +7,7 @@ export default function NotFound() {
   const t = useT();
 
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 py-32 bg-blush-mist">
+    <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 py-32 bg-white">
       <p className="eyebrow">{t.notFound.eyebrow}</p>
       <h1 className="font-display text-5xl md:text-7xl text-mauve-deep mt-4" style={{ fontWeight: 600 }}>
         404

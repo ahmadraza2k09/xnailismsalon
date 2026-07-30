@@ -45,7 +45,7 @@ export default function Services() {
         {t.services.items.map((s, i) => (
           <div key={s.title} className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Parallax distance={30} className={i % 2 === 1 ? "md:order-2" : ""}>
-              <ScrollZoom from={1.1} className="rounded-lg border border-mauve/15 aspect-[4/3]">
+              <ScrollZoom from={1.1} className="rounded-lg aspect-[4/3]">
                 <ImageWithFallback
                   src={serviceImages[i]}
                   alt={s.title}

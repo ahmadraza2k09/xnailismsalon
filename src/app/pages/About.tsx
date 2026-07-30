@@ -20,7 +20,7 @@ export default function About() {
       <section className="py-16 md:py-28 px-6 max-w-7xl mx-auto scene">
         <div className="grid md:grid-cols-2 gap-14 md:gap-24 items-center">
           <Parallax distance={34} depth={30}>
-            <ScrollZoom from={1.12} className="rounded-lg border border-mauve/15 aspect-[4/5]">
+            <ScrollZoom from={1.12} className="rounded-lg aspect-[4/5]">
               <ImageWithFallback
                 src={asianArtImg}
                 alt={t.services.items[3].title}
@@ -115,7 +115,7 @@ export default function About() {
           </Reveal3D>
 
           <Parallax distance={40} className="md:pt-10">
-            <ScrollZoom from={1.12} className="rounded-lg border border-mauve/15 aspect-[5/6]">
+            <ScrollZoom from={1.12} className="rounded-lg aspect-[5/6]">
               <ImageWithFallback
                 src={builderGelImg}
                 alt={t.services.items[0].title}
