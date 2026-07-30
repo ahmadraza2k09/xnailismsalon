@@ -38,8 +38,6 @@ const es = {
     whatsapp: "WhatsApp",
     instagram: "Instagram",
     phone: "Teléfono",
-    previous: "Anterior",
-    next: "Siguiente",
     hours: {
       weekdays: "Lunes a viernes",
       saturday: "Sábado",
@@ -370,8 +368,6 @@ const en: Dict = {
     whatsapp: "WhatsApp",
     instagram: "Instagram",
     phone: "Phone",
-    previous: "Previous",
-    next: "Next",
     hours: {
       weekdays: "Monday to Friday",
       saturday: "Saturday",

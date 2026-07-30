@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { Ambient, FadeUp, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
+import { translations } from "@/app/i18n/translations";
 import { brand, studioHours } from "@/app/site/data";
 
 const labelCls = "block text-[0.62rem] font-body tracking-[0.18em] uppercase text-mauve-deep mb-2.5";
@@ -21,10 +22,16 @@ export default function Booking() {
     setForm({ ...form, [key]: e.target.value });
 
   const ready = Boolean(form.name && form.phone && form.service);
-  const serviceOptions = t.services.items.map((s) => `${s.title} · ${s.price}`);
 
+  /*
+    The form is read in whichever language the visitor chose, but the
+    message goes to Ximena, so it is always written in Spanish. The select
+    stores the service index so the Spanish name can be looked up on send.
+  */
   const sendToWhatsApp = () => {
-    const m = t.booking.message;
+    const es = translations.es;
+    const m = es.booking.message;
+    const service = es.services.items[Number(form.service)];
     const message = [
       m.intro,
       "",
@@ -32,7 +39,7 @@ export default function Booking() {
       `${m.phone}: ${form.phone}`,
       `${m.date}: ${form.date || m.flexible}`,
       `${m.time}: ${form.time || m.flexible}`,
-      `${m.service}: ${form.service}`,
+      `${m.service}: ${service.title} · ${service.price}`,
       `${m.notes}: ${form.notes || m.none}`,
       "",
       m.thanks,
@@ -100,9 +107,9 @@ export default function Booking() {
                   </label>
                   <select id="bk-service" className="field" value={form.service} onChange={update("service")}>
                     <option value="">{t.booking.servicePlaceholder}</option>
-                    {serviceOptions.map((o) => (
-                      <option key={o} value={o}>
-                        {o}
+                    {t.services.items.map((item, i) => (
+                      <option key={item.title} value={i}>
+                        {item.title} · {item.price}
                       </option>
                     ))}
                   </select>

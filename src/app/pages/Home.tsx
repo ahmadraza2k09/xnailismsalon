@@ -135,8 +135,9 @@ export default function Home() {
       </div>
 
       {/* ── The studio ───────────────────────────────────────────── */}
-      <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto scene">
-        <div className="grid md:grid-cols-2 gap-14 md:gap-24 items-center">
+      <section className="relative overflow-hidden py-20 md:py-32 px-6 scene">
+        <Ambient />
+        <div className="relative max-w-3xl mx-auto">
           <Reveal3D>
             <SectionHeading
               align="left"
@@ -165,21 +166,6 @@ export default function Home() {
               <ArrowRight size={14} />
             </Link>
           </Reveal3D>
-
-          <Parallax distance={17} className="md:pt-16">
-            <figure className="relative">
-              <ScrollZoom from={1.04} className="rounded-xl frame-gloss aspect-[4/5]">
-                <ImageWithFallback
-                  src={serviceImages[0]}
-                  alt={t.services.items[0].title}
-                  className="w-full h-full object-cover"
-                />
-              </ScrollZoom>
-              <figcaption className="caption mt-4">
-                {t.home.badgeName} · {t.home.badgeSub}
-              </figcaption>
-            </figure>
-          </Parallax>
         </div>
       </section>
 
