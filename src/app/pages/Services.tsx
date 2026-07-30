@@ -36,7 +36,7 @@ export default function Services() {
               </li>
             ))}
           </ul>
-          <p className="text-sm text-foreground/85 leading-relaxed mt-5">{t.services.priceNote}</p>
+          <p className="text-xs text-foreground/55 leading-relaxed mt-5">{t.services.priceNote}</p>
         </FadeUp>
       </section>
 
@@ -58,26 +58,26 @@ export default function Services() {
               <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
               <h3
                 className="font-display text-3xl md:text-4xl text-mauve-deep mt-3 leading-tight"
-                style={{ fontWeight: 500 }}
+                style={{ fontWeight: 400 }}
               >
                 {s.title}
               </h3>
               <p className="caption text-mauve mt-4">
                 {s.price} · {s.badge}
               </p>
-              <p className="text-base md:text-[1.05rem] text-foreground/85 leading-relaxed mt-6">{s.detail}</p>
+              <p className="text-sm md:text-[0.95rem] text-foreground/70 leading-relaxed mt-6">{s.detail}</p>
 
               <p className="caption mt-8">{t.services.includesLabel}</p>
               <ul className="mt-4 grid sm:grid-cols-2 gap-3">
                 {s.includes.map((inc) => (
-                  <li key={inc} className="flex items-start gap-2.5 text-sm text-foreground/80 leading-relaxed">
+                  <li key={inc} className="flex items-start gap-2.5 text-xs text-foreground/68 leading-relaxed">
                     <Check size={13} className="text-mauve shrink-0 mt-0.5" />
                     {inc}
                   </li>
                 ))}
               </ul>
 
-              <Link to={routes.booking} className="btn-primary text-[0.74rem] px-7 py-3.5 mt-9">
+              <Link to={routes.booking} className="btn-primary text-[0.62rem] px-7 py-3.5 mt-9">
                 {t.common.bookThisService}
                 <ArrowRight size={13} />
               </Link>
@@ -106,14 +106,14 @@ export default function Services() {
                   <h3 className="font-display text-xl text-mauve-deep mt-3" style={{ fontWeight: 500 }}>
                     {st.title}
                   </h3>
-                  <p className="text-sm text-foreground/80 leading-relaxed mt-3">{st.text}</p>
+                  <p className="text-xs text-foreground/65 leading-relaxed mt-3">{st.text}</p>
                 </li>
               </Reveal3D>
             ))}
           </ol>
 
           <FadeUp className="flex justify-center mt-16">
-            <Link to={routes.booking} className="btn-primary text-[0.76rem] px-9 py-4">
+            <Link to={routes.booking} className="btn-primary text-[0.64rem] px-9 py-4">
               {t.services.reserveCta}
             </Link>
           </FadeUp>

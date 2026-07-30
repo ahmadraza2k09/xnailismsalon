@@ -240,11 +240,11 @@ export function SectionHeading({
         className={`font-display text-4xl md:text-6xl leading-[1.08] mt-4 ${
           light ? "text-white" : "text-mauve-deep"
         }`}
-        style={{ fontWeight: 500 }}
+        style={{ fontWeight: 400 }}
       >
         {title}
         {accent && (
-          <span className={`block mt-1 ${light ? "text-blush" : "text-mauve"}`} style={{ fontWeight: 400 }}>
+          <span className={`block mt-1 ${light ? "text-blush" : "text-mauve"}`} style={{ fontWeight: 300 }}>
             {accent}
           </span>
         )}
@@ -252,8 +252,8 @@ export function SectionHeading({
       <Rule className="w-24 mt-6" />
       {subtitle && (
         <p
-          className={`mt-6 text-base md:text-[1.05rem] leading-relaxed ${
-            light ? "text-white/85" : "text-foreground/85"
+          className={`mt-6 text-sm md:text-[0.95rem] leading-relaxed ${
+            light ? "text-white/75" : "text-foreground/70"
           } ${align === "center" ? "max-w-xl" : "max-w-lg"}`}
         >
           {subtitle}

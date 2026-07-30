@@ -30,10 +30,16 @@ export function Footer() {
           <div className="flex items-start gap-4">
             <ImageWithFallback src={logo} alt={brand.name} className="w-14 h-14 rounded-full object-cover" />
             <div>
-              <p className="font-display text-xl tracking-[0.14em] text-white" style={{ fontWeight: 500 }}>
+              <p className="font-display text-xl tracking-[0.14em] text-white" style={{ fontWeight: 400 }}>
                 {brand.wordmark}
               </p>
-              <p className="text-sm text-white/85 mt-4 leading-relaxed max-w-xs">{t.footer.about}</p>
+              <p
+                className="text-[0.6rem] font-body tracking-[0.28em] uppercase text-blush mt-1.5"
+                style={{ fontWeight: 400 }}
+              >
+                {t.common.tagline}
+              </p>
+              <p className="text-xs text-white/60 mt-4 leading-relaxed max-w-xs">{t.footer.about}</p>
             </div>
           </div>
 
@@ -45,8 +51,8 @@ export function Footer() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="font-body text-[0.8rem] tracking-[0.2em] uppercase text-white/80 hover:text-white transition-colors"
-                    style={{ fontWeight: 500 }}
+                    className="font-body text-[0.7rem] tracking-[0.2em] uppercase text-white/65 hover:text-white transition-colors"
+                    style={{ fontWeight: 400 }}
                   >
                     {l.label}
                   </Link>
@@ -58,7 +64,7 @@ export function Footer() {
           {/* Contact */}
           <div className="md:text-right">
             <p className="eyebrow text-blush">{t.footer.studio}</p>
-            <ul className="mt-5 flex flex-col gap-2 text-sm text-white/85">
+            <ul className="mt-5 flex flex-col gap-2 text-sm text-white/75">
               <li>
                 <a
                   href={brand.whatsapp}
@@ -80,7 +86,7 @@ export function Footer() {
                 </a>
               </li>
               {studioHours.map((h) => (
-                <li key={h.day} className="text-sm text-white/70">
+                <li key={h.day} className="text-xs text-white/55">
                   {t.common.hours[h.day]} — {h.time ?? t.common.hours.byAppointment}
                 </li>
               ))}
@@ -102,7 +108,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-7 border-t border-white/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.8rem] text-white/80">
+        <div className="mt-14 pt-7 border-t border-white/12 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-white/45">
           <p>
             © {new Date().getFullYear()} {brand.name} · {t.common.artist}. {t.footer.rights}
           </p>

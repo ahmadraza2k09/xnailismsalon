@@ -53,7 +53,7 @@ export default function Portfolio() {
         </div>
 
         <FadeUp className="flex justify-center mt-16">
-          <Link to={routes.booking} className="btn-primary text-[0.78rem] px-9 py-4">
+          <Link to={routes.booking} className="btn-primary text-[0.66rem] px-9 py-4">
             {t.portfolio.cta}
           </Link>
         </FadeUp>
