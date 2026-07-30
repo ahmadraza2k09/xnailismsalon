@@ -79,28 +79,6 @@ export default function Home() {
               ))}
             </motion.ul>
 
-            {/* Price index — the four services as a set list */}
-            <motion.ul
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="glass mt-12 max-w-md px-6 py-2"
-            >
-              {t.services.items.map((s, i) => (
-                <li
-                  key={s.title}
-                  className="flex items-baseline justify-between gap-4 py-3 border-b border-white/60 last:border-b-0"
-                >
-                  <span className="flex items-baseline gap-3">
-                    <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-display text-base md:text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
-                      {s.title}
-                    </span>
-                  </span>
-                  <span className="caption text-mauve whitespace-nowrap">{s.price}</span>
-                </li>
-              ))}
-            </motion.ul>
           </div>
 
           {/* Two prints in white frames, lightly tilted */}
