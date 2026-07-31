@@ -442,13 +442,12 @@
   .btn-on-dark {
     color: var(--mauve-deep);
     background: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    border: none;
     box-shadow: 0 6px 16px -12px rgba(0, 0, 0, 0.5);
   }
 
   .btn-on-dark:hover {
     background: var(--blush-mist);
-    border-color: var(--blush-mist);
   }
 
   .btn-on-dark:active {
@@ -554,6 +553,21 @@
       0 2px 6px -2px rgba(110, 58, 89, 0.12);
   }
 
+  /* Service card: floats on shadow alone, no outline anywhere */
+  .card-float {
+    border: none;
+    box-shadow:
+      0 34px 60px -28px rgba(43, 27, 36, 0.55),
+      0 12px 24px -16px rgba(43, 27, 36, 0.4);
+    transition: box-shadow 0.45s ease;
+  }
+
+  .card-float:hover {
+    box-shadow:
+      0 46px 80px -30px rgba(43, 27, 36, 0.62),
+      0 16px 30px -18px rgba(43, 27, 36, 0.45);
+  }
+
   /* Small pill for facts set on a dark card */
   .chip-dark {
     display: inline-flex;
@@ -561,9 +575,9 @@
     gap: 0.4rem;
     padding: 0.4rem 0.85rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.86);
+    background: rgba(255, 255, 255, 0.14);
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   /* Media tile: image with a scrim and a caption that lifts on hover */
