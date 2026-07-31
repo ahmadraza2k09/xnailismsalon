@@ -194,26 +194,36 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
-                <Link to={routes.services} className="media group block h-full aspect-[3/4]">
-                  <MediaParallax className="absolute inset-0" amount={7}>
-                    <ImageWithFallback
-                      src={serviceImages[i]}
-                      alt={s.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </MediaParallax>
-                  <span className="media-scrim" />
-                  <span className="absolute inset-x-0 bottom-0 p-6 flex flex-col gap-1.5">
-                    <span className="caption text-white/70">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-display text-2xl text-white leading-tight" style={{ fontWeight: 500 }}>
+                <article className="h-full rounded-[1.4rem] p-3 bg-plum-dark flex flex-col transition-transform duration-500 hover:-translate-y-1">
+                  <div className="media rounded-[1.1rem] aspect-[4/3]">
+                    <MediaParallax className="absolute inset-0" amount={6}>
+                      <ImageWithFallback
+                        src={serviceImages[i]}
+                        alt={s.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </MediaParallax>
+                  </div>
+
+                  <div className="flex flex-col flex-1 px-2.5 pt-5 pb-2">
+                    <h3 className="font-display text-xl text-white leading-snug" style={{ fontWeight: 500 }}>
                       {s.title}
-                    </span>
-                    <span className="caption text-blush">{s.price}</span>
-                  </span>
-                  <span className="absolute top-5 right-5 w-9 h-9 rounded-full grid place-items-center bg-white/85 text-mauve-deep opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowRight size={15} />
-                  </span>
-                </Link>
+                    </h3>
+                    <p className="text-sm text-white/60 leading-relaxed mt-2.5 flex-1">{s.desc}</p>
+
+                    <div className="flex flex-wrap gap-2 mt-5">
+                      <span className="chip-dark caption !text-white/85">{s.badge}</span>
+                      <span className="chip-dark caption !text-white/85">{s.price}</span>
+                    </div>
+
+                    <Link
+                      to={routes.booking}
+                      className="btn-on-dark w-full mt-5 py-3.5 text-[0.66rem]"
+                    >
+                      {t.common.bookThisService}
+                    </Link>
+                  </div>
+                </article>
               </Reveal3D>
             ))}
           </div>
