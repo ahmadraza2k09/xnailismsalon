@@ -29,18 +29,18 @@ export function Ambient({ tone = "light" }: { tone?: "light" | "dark" }) {
         ];
 
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ transform: "translateZ(0)" }}>
       <div
-        className="absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full blur-3xl"
-        style={{ background: orbs[0] }}
+        className="absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-70"
+        style={{ background: orbs[0], willChange: "transform" }}
       />
       <div
-        className="absolute top-1/4 -right-32 w-[32rem] h-[32rem] rounded-full blur-3xl"
-        style={{ background: orbs[1] }}
+        className="absolute top-1/4 -right-32 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-70"
+        style={{ background: orbs[1], willChange: "transform" }}
       />
       <div
-        className="absolute -bottom-40 left-1/3 w-[26rem] h-[26rem] rounded-full blur-3xl"
-        style={{ background: orbs[2] }}
+        className="absolute -bottom-40 left-1/3 w-[26rem] h-[26rem] rounded-full blur-3xl opacity-70"
+        style={{ background: orbs[2], willChange: "transform" }}
       />
     </div>
   );
@@ -412,12 +412,11 @@ export function PageHeader({
 
 /*
   ── Scroll3DRotate ─────────────────────────────────────────────────
-  Dynamic 3D scroll-linked tilt effect where elements rotate on their X & Y 
-  axis and scale in 3D space as you scroll through the page.
+  Hardware-accelerated 3D scroll entrance effect for silky smooth 60FPS performance.
 */
 export function Scroll3DRotate({
   children,
-  intensity = 12,
+  intensity = 6,
   perspective = 1200,
   className = "",
 }: {
@@ -426,33 +425,21 @@ export function Scroll3DRotate({
   perspective?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const rotateXRaw = useTransform(scrollYProgress, [0, 0.5, 1], [intensity, 0, -intensity]);
-  const rotateYRaw = useTransform(scrollYProgress, [0, 0.5, 1], [-intensity / 2, 0, intensity / 2]);
-  const scaleRaw = useTransform(scrollYProgress, [0, 0.5, 1], [0.94, 1, 0.96]);
-  const opacityRaw = useTransform(scrollYProgress, [0, 0.25, 0.85, 1], [0.6, 1, 1, 0.7]);
-
-  const rotateX = useSpring(rotateXRaw, { stiffness: 60, damping: 22 });
-  const rotateY = useSpring(rotateYRaw, { stiffness: 60, damping: 22 });
-  const scale = useSpring(scaleRaw, { stiffness: 60, damping: 22 });
 
   if (reduced) return <div className={className}>{children}</div>;
 
   return (
-    <div ref={ref} className={`scene ${className}`}>
+    <div className={`scene ${className}`}>
       <motion.div
+        initial={{ opacity: 0, y: 30, rotateX: intensity, scale: 0.96 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          rotateX,
-          rotateY,
-          scale,
-          opacity: opacityRaw,
           transformPerspective: perspective,
+          willChange: "transform, opacity",
+          transformStyle: "preserve-3d",
         }}
       >
         {children}

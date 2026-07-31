@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
-import { Sparkles } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useLanguage } from "@/app/i18n";
 import { brand, logo, routes } from "./data";
@@ -116,7 +115,6 @@ export function Navbar() {
             to={routes.booking}
             className="btn-primary text-[0.66rem] px-6 py-2.5 shadow-md hover:shadow-lg hover:scale-[1.03] transition-all duration-300"
           >
-            <Sparkles size={13} className="text-blush" />
             {t.nav.bookNow}
           </Link>
         </div>
@@ -165,7 +163,6 @@ export function Navbar() {
             </NavLink>
           ))}
           <Link to={routes.booking} className="btn-primary text-[0.66rem] px-6 py-3.5 mt-2 shadow-md">
-            <Sparkles size={14} className="text-blush" />
             {t.nav.bookAppointment}
           </Link>
         </div>

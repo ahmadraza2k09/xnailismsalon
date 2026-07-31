@@ -330,7 +330,7 @@ export function InstagramLivePreview() {
       <Ambient />
       <div className="relative max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
-        <Reveal3D className="flex flex-col items-center text-center max-w-2xl">
+        <Reveal3D className="flex flex-col items-center text-center max-w-2xl mb-8">
           <SectionHeading
             eyebrow=""
             title={t.home.instagramTitle}
@@ -339,36 +339,8 @@ export function InstagramLivePreview() {
           />
         </Reveal3D>
 
-        {/* View Mode Switcher Pills */}
-        <div className="mt-8 mb-10 flex items-center gap-2 p-1.5 bg-mauve/10 backdrop-blur-xl rounded-2xl border border-mauve/20 shadow-inner">
-          <button
-            onClick={() => setViewMode("phone")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 ${
-              viewMode === "phone"
-                ? "bg-white text-mauve-deep shadow-md font-bold scale-[1.02]"
-                : "text-foreground/70 hover:text-foreground"
-            }`}
-          >
-            <Smartphone size={15} />
-            <span>Vista Móvil Pro</span>
-          </button>
-          <button
-            onClick={() => setViewMode("expanded")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 ${
-              viewMode === "expanded"
-                ? "bg-white text-mauve-deep shadow-md font-bold scale-[1.02]"
-                : "text-foreground/70 hover:text-foreground"
-            }`}
-          >
-            <Maximize2 size={15} />
-            <span>Mural 3D Ampliado</span>
-          </button>
-        </div>
-
         {/* ── PHONE FRAME VIEW ────────────────────────────────────── */}
-        {viewMode === "phone" ? (
-          <Scroll3DRotate intensity={10} className="w-full flex justify-center">
-            <div className="relative w-full max-w-[340px] sm:max-w-[350px]">
+        <div className="relative w-full max-w-[340px] sm:max-w-[350px]">
             {/* Multilayer Ambient Aura Glow */}
             <div className="absolute -inset-6 bg-gradient-to-tr from-purple-600/20 via-pink-500/25 to-amber-500/20 rounded-[52px] blur-3xl opacity-80 animate-pulse pointer-events-none" />
 
@@ -1024,82 +996,6 @@ export function InstagramLivePreview() {
               </div>
             </div>
           </div>
-          </Scroll3DRotate>
-        ) : (
-          /* ── LUXURY 3D WALL FEED VIEW ───────────────────────── */
-          <div className="w-full max-w-5xl bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-mauve/20">
-            {/* Header info */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b border-mauve/15">
-              <div className="flex items-center gap-4">
-                <div className="relative p-1 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 shadow-md">
-                  <img src={logo} alt="X.Nailsm" className="w-20 h-20 rounded-full object-cover border-2 border-white" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-display text-2xl font-bold text-mauve-deep">@x.nailsm</h3>
-                    <CheckCircle2 size={20} className="fill-sky-500 text-white" />
-                  </div>
-                  <p className="text-sm text-foreground/75 mt-1">{t.home.instagramBioLine1}</p>
-                  <div className="flex items-center gap-4 text-xs font-semibold text-mauve mt-2">
-                    <span>1,177 Publicaciones</span>
-                    <span>{followerCount.toLocaleString()} Seguidores</span>
-                    <span>1,268 Seguidos</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <a
-                  href={brand.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-xs px-6 py-3.5 flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
-                >
-                  <Instagram size={16} />
-                  <span>{t.home.instagramOpenProfile}</span>
-                </a>
-              </div>
-            </div>
-
-            {/* 3D Wall Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-5 mt-6">
-              {postsList.map((post) => {
-                const isLiked = likedPosts[post.id];
-                return (
-                  <TiltCard key={post.id} intensity={10} className="h-full">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden group border border-mauve/20 shadow-md">
-                      <ImageWithFallback
-                        src={post.image}
-                        alt="Nail art item"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-between text-white">
-                        <div className="flex justify-end">
-                          <button
-                            onClick={() => handleToggleLike(post.id)}
-                            className="p-2 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/40 transition-colors"
-                          >
-                            <Heart
-                              size={16}
-                              className={isLiked ? "fill-red-500 text-red-500" : "fill-white"}
-                            />
-                          </button>
-                        </div>
-                        <div>
-                          <p className="text-xs line-clamp-2 text-white/90 font-medium">{post.caption}</p>
-                          <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/20 text-xs font-bold">
-                            <span>❤️ {(post.likes + (isLiked ? 1 : 0)).toLocaleString()}</span>
-                            <span>💬 {post.comments}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </TiltCard>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
         {/* CTA Bar underneath */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

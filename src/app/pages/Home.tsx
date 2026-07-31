@@ -289,9 +289,6 @@ export default function Home() {
       {/* ── Questions ────────────────────────────────────────────── */}
       <Faq />
 
-      {/* ── Instagram Live Screen Preview ───────────────────────── */}
-      <InstagramLivePreview />
-
       {/* ── Closing invitation ───────────────────────────────────── */}
       <section className="relative overflow-hidden py-14 md:py-24 px-6 text-white bg-mauve-deep scene">
         <Ambient tone="dark" />
@@ -321,6 +318,9 @@ export default function Home() {
           </Reveal3D>
         </div>
       </section>
+
+      {/* ── Instagram Live Screen Preview ───────────────────────── */}
+      <InstagramLivePreview />
     </>
   );
 }
