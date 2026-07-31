@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { Ambient, FadeUp, MediaParallax, PageHeader, Parallax, Reveal3D, SectionHeading } from "@/app/site/ui";
+import { Ambient, FadeUp, MediaParallax, PageHeader, Reveal3D, SectionHeading } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { routes, serviceImages } from "@/app/site/data";
 
@@ -44,50 +44,49 @@ export default function Services() {
       </section>
 
       {/* Each service in detail */}
-      <section className="py-12 md:py-20 px-6 max-w-6xl mx-auto space-y-14 md:space-y-20 scene">
+      <section className="py-12 md:py-20 px-6 max-w-6xl mx-auto space-y-8 md:space-y-12 scene">
         {t.services.items.map((s, i) => (
-          <div key={s.title} className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-            <Parallax distance={12} className={i % 2 === 1 ? "md:order-2" : ""}>
-              <div className="media aspect-[4/3]">
+          <Reveal3D key={s.title}>
+            <article className="glass overflow-hidden grid md:grid-cols-2 gap-0 items-stretch">
+              <div className={`media !rounded-none min-h-[19rem] ${i % 2 === 1 ? "md:order-2" : ""}`}>
                 <MediaParallax className="absolute inset-0" amount={7}>
                   <ImageWithFallback
-                  src={serviceImages[i]}
-                  alt={s.title}
-                  className="w-full h-full object-cover"
-                />
+                    src={serviceImages[i]}
+                    alt={s.title}
+                    className="w-full h-full object-cover"
+                  />
                 </MediaParallax>
               </div>
-            </Parallax>
 
-            <Reveal3D>
-              <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
-              <h3
-                className="font-display text-3xl md:text-4xl text-mauve-deep mt-3 leading-tight"
-                style={{ fontWeight: 500 }}
-              >
-                {s.title}
-              </h3>
-              <p className="caption text-mauve mt-4">
-                {s.price} · {s.badge}
-              </p>
-              <p className="text-[0.95rem] md:text-base text-foreground/82 leading-relaxed mt-6">{s.detail}</p>
+              <div className="p-8 md:p-11">
+                <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
+                <h3
+                  className="font-display text-3xl md:text-4xl text-mauve-deep mt-2 leading-tight"
+                  style={{ fontWeight: 500 }}
+                >
+                  {s.title}
+                </h3>
+                <p className="caption text-mauve mt-3">
+                  {s.price} · {s.badge}
+                </p>
+                <p className="text-[0.95rem] text-foreground/82 leading-relaxed mt-5">{s.detail}</p>
 
-              <p className="caption mt-8">{t.services.includesLabel}</p>
-              <ul className="mt-4 grid sm:grid-cols-2 gap-3">
-                {s.includes.map((inc) => (
-                  <li key={inc} className="flex items-start gap-2.5 text-sm text-foreground/78 leading-relaxed">
-                    <Check size={13} className="text-mauve shrink-0 mt-0.5" />
-                    {inc}
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-6 grid sm:grid-cols-2 gap-2.5">
+                  {s.includes.map((inc) => (
+                    <li key={inc} className="flex items-start gap-2.5 text-sm text-foreground/78 leading-relaxed">
+                      <Check size={13} className="text-mauve shrink-0 mt-1" />
+                      {inc}
+                    </li>
+                  ))}
+                </ul>
 
-              <Link to={routes.booking} className="btn-primary text-[0.62rem] px-7 py-3.5 mt-9">
-                {t.common.bookThisService}
-                <ArrowRight size={13} />
-              </Link>
-            </Reveal3D>
-          </div>
+                <Link to={routes.booking} className="btn-primary text-[0.62rem] px-7 py-3.5 mt-8">
+                  {t.common.bookThisService}
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
+            </article>
+          </Reveal3D>
         ))}
       </section>
 

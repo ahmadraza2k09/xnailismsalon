@@ -195,24 +195,23 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
-                <TiltCard intensity={9} className="h-full">
-                  <article className="card-float h-full rounded-[1.4rem] overflow-hidden bg-plum-dark flex flex-col">
-                    <div className="media !rounded-none aspect-[4/5]">
-                      <MediaParallax className="absolute inset-0" amount={6}>
-                        <ImageWithFallback
-                          src={serviceImages[i]}
-                          alt={s.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </MediaParallax>
-                    </div>
+                <TiltCard intensity={8} className="h-full">
+                  <article className="card-float relative h-full rounded-[1.4rem] overflow-hidden aspect-[3/4.2]">
+                    <MediaParallax className="absolute inset-0" amount={6}>
+                      <ImageWithFallback
+                        src={serviceImages[i]}
+                        alt={s.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </MediaParallax>
+                    <span className="media-scrim" />
 
-                    <div className="px-5 pt-5 pb-5 mt-auto">
-                      <h3 className="font-display text-xl text-white leading-snug" style={{ fontWeight: 500 }}>
+                    <div className="glass absolute inset-x-3 bottom-3 px-5 pt-4 pb-4">
+                      <h3 className="font-display text-xl text-mauve-deep leading-snug" style={{ fontWeight: 500 }}>
                         {s.title}
                       </h3>
-                      <p className="caption text-blush mt-2">{s.price}</p>
-                      <Link to={routes.booking} className="btn-on-dark w-full mt-4 py-3.5 text-[0.64rem]">
+                      <p className="caption text-mauve mt-1.5">{s.price}</p>
+                      <Link to={routes.booking} className="btn-primary w-full mt-4 py-3 text-[0.62rem]">
                         {t.common.bookThisService}
                       </Link>
                     </div>
