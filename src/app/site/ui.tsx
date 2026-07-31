@@ -409,3 +409,54 @@ export function PageHeader({
     </header>
   );
 }
+
+/*
+  ── Scroll3DRotate ─────────────────────────────────────────────────
+  Dynamic 3D scroll-linked tilt effect where elements rotate on their X & Y 
+  axis and scale in 3D space as you scroll through the page.
+*/
+export function Scroll3DRotate({
+  children,
+  intensity = 12,
+  perspective = 1200,
+  className = "",
+}: {
+  children: ReactNode;
+  intensity?: number;
+  perspective?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const rotateXRaw = useTransform(scrollYProgress, [0, 0.5, 1], [intensity, 0, -intensity]);
+  const rotateYRaw = useTransform(scrollYProgress, [0, 0.5, 1], [-intensity / 2, 0, intensity / 2]);
+  const scaleRaw = useTransform(scrollYProgress, [0, 0.5, 1], [0.94, 1, 0.96]);
+  const opacityRaw = useTransform(scrollYProgress, [0, 0.25, 0.85, 1], [0.6, 1, 1, 0.7]);
+
+  const rotateX = useSpring(rotateXRaw, { stiffness: 60, damping: 22 });
+  const rotateY = useSpring(rotateYRaw, { stiffness: 60, damping: 22 });
+  const scale = useSpring(scaleRaw, { stiffness: 60, damping: 22 });
+
+  if (reduced) return <div className={className}>{children}</div>;
+
+  return (
+    <div ref={ref} className={`scene ${className}`}>
+      <motion.div
+        style={{
+          rotateX,
+          rotateY,
+          scale,
+          opacity: opacityRaw,
+          transformPerspective: perspective,
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}

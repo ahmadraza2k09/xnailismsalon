@@ -13,9 +13,11 @@ import {
   Reveal3D,
   ScrollZoom,
   SectionHeading,
+  Scroll3DRotate,
 } from "@/app/site/ui";
 import { Testimonials } from "@/app/site/Testimonials";
 import { Faq } from "@/app/site/Faq";
+import { InstagramLivePreview } from "@/app/site/InstagramLivePreview";
 import { useT } from "@/app/i18n";
 import { asianArtImg, brand, galleryItems, logo, routes, serviceImages } from "@/app/site/data";
 
@@ -153,16 +155,18 @@ export default function Home() {
               <p>{t.home.introP2}</p>
             </div>
 
-            <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6">
-              {t.stats.map((s) => (
-                <div key={s.label}>
-                  <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
-                    {s.value}
-                  </dt>
-                  <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
+            <Scroll3DRotate intensity={8}>
+              <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6 border border-mauve/20 shadow-xl">
+                {t.stats.map((s) => (
+                  <div key={s.label}>
+                    <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
+                      {s.value}
+                    </dt>
+                    <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Scroll3DRotate>
 
             <Link to={routes.about} className="btn-outline text-[0.64rem] px-7 py-3.5 mt-10">
               {t.common.moreAboutHer}
@@ -195,28 +199,30 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
-                <TiltCard intensity={8} className="h-full">
-                  <article className="card-float relative h-full rounded-[1.4rem] overflow-hidden aspect-[3/4.2]">
-                    <MediaParallax className="absolute inset-0" amount={6}>
-                      <ImageWithFallback
-                        src={serviceImages[i]}
-                        alt={s.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </MediaParallax>
-                    <span className="media-scrim" />
+                <Scroll3DRotate intensity={10} className="h-full">
+                  <TiltCard intensity={8} className="h-full">
+                    <article className="card-float relative h-full rounded-[1.4rem] overflow-hidden aspect-[3/4.2] border border-mauve/20 shadow-lg">
+                      <MediaParallax className="absolute inset-0" amount={6}>
+                        <ImageWithFallback
+                          src={serviceImages[i]}
+                          alt={s.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </MediaParallax>
+                      <span className="media-scrim" />
 
-                    <div className="glass absolute inset-x-3 bottom-3 px-5 pt-4 pb-4">
-                      <h3 className="font-display text-xl text-mauve-deep leading-snug" style={{ fontWeight: 500 }}>
-                        {s.title}
-                      </h3>
-                      <p className="caption text-mauve mt-1.5">{s.price}</p>
-                      <Link to={routes.booking} className="btn-primary w-full mt-4 py-3 text-[0.62rem]">
-                        {t.common.bookThisService}
-                      </Link>
-                    </div>
-                  </article>
-                </TiltCard>
+                      <div className="glass absolute inset-x-3 bottom-3 px-5 pt-4 pb-4">
+                        <h3 className="font-display text-xl text-mauve-deep leading-snug" style={{ fontWeight: 500 }}>
+                          {s.title}
+                        </h3>
+                        <p className="caption text-mauve mt-1.5">{s.price}</p>
+                        <Link to={routes.booking} className="btn-primary w-full mt-4 py-3 text-[0.62rem]">
+                          {t.common.bookThisService}
+                        </Link>
+                      </div>
+                    </article>
+                  </TiltCard>
+                </Scroll3DRotate>
               </Reveal3D>
             ))}
           </div>
@@ -248,21 +254,23 @@ export default function Home() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 mt-12">
           {galleryItems.slice(0, 4).map((img, i) => (
-            <Parallax key={img.tag} distance={12}>
-              <Link to={routes.portfolio} className="media group block aspect-[3/4]">
-                <MediaParallax className="absolute inset-0" amount={8}>
-                  <ImageWithFallback
-                    src={img.src}
-                    alt={t.portfolio.tags[img.tag]}
-                    className="w-full h-full object-cover"
-                  />
-                </MediaParallax>
-                <span className="media-scrim" />
-                <span className="absolute inset-x-0 bottom-0 p-5 caption text-white/90">
-                  {t.portfolio.tags[img.tag]}
-                </span>
-              </Link>
-            </Parallax>
+            <Scroll3DRotate key={img.tag} intensity={12}>
+              <Parallax distance={12}>
+                <Link to={routes.portfolio} className="media group block aspect-[3/4] rounded-2xl overflow-hidden shadow-md">
+                  <MediaParallax className="absolute inset-0" amount={8}>
+                    <ImageWithFallback
+                      src={img.src}
+                      alt={t.portfolio.tags[img.tag]}
+                      className="w-full h-full object-cover"
+                    />
+                  </MediaParallax>
+                  <span className="media-scrim" />
+                  <span className="absolute inset-x-0 bottom-0 p-5 caption text-white/90">
+                    {t.portfolio.tags[img.tag]}
+                  </span>
+                </Link>
+              </Parallax>
+            </Scroll3DRotate>
           ))}
         </div>
 
@@ -280,6 +288,9 @@ export default function Home() {
 
       {/* ── Questions ────────────────────────────────────────────── */}
       <Faq />
+
+      {/* ── Instagram Live Screen Preview ───────────────────────── */}
+      <InstagramLivePreview />
 
       {/* ── Closing invitation ───────────────────────────────────── */}
       <section className="relative overflow-hidden py-14 md:py-24 px-6 text-white bg-mauve-deep scene">
