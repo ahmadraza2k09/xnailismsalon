@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import {
   motion,
   useMotionValue,
@@ -8,50 +8,59 @@ import {
   useTransform,
 } from "motion/react";
 
+/* Detect mobile screen size to bypass heavy scroll spring loops on touch devices */
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
 /*
   ── Ambient ────────────────────────────────────────────────────────
-  Soft out-of-focus colour behind a section. It exists so the frosted
-  panels above it have something to refract — glass over flat white
-  reads as nothing at all.
+  Soft out-of-focus colour behind a section. Hidden on mobile to prevent GPU fill-rate lag.
 */
 export function Ambient({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const isMobile = useIsMobile();
+  if (isMobile) return null;
+
   const orbs =
     tone === "dark"
       ? [
-          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.30), transparent 68%)",
-          "radial-gradient(circle at 60% 40%, rgba(201,155,182,0.24), transparent 70%)",
-          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.34), transparent 70%)",
+          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.25), transparent 68%)",
+          "radial-gradient(circle at 60% 40%, rgba(201,155,182,0.20), transparent 70%)",
+          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.25), transparent 70%)",
         ]
       : [
-          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.34), transparent 68%)",
-          "radial-gradient(circle at 60% 40%, rgba(163,91,133,0.18), transparent 70%)",
-          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.10), transparent 70%)",
+          "radial-gradient(circle at 30% 30%, rgba(254,181,203,0.25), transparent 68%)",
+          "radial-gradient(circle at 60% 40%, rgba(163,91,133,0.14), transparent 70%)",
+          "radial-gradient(circle at 50% 50%, rgba(143,34,81,0.08), transparent 70%)",
         ];
 
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ transform: "translateZ(0)" }}>
       <div
-        className="absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-70"
-        style={{ background: orbs[0], willChange: "transform" }}
+        className="absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-60"
+        style={{ background: orbs[0] }}
       />
       <div
-        className="absolute top-1/4 -right-32 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-70"
-        style={{ background: orbs[1], willChange: "transform" }}
+        className="absolute top-1/4 -right-32 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-60"
+        style={{ background: orbs[1] }}
       />
       <div
-        className="absolute -bottom-40 left-1/3 w-[26rem] h-[26rem] rounded-full blur-3xl opacity-70"
-        style={{ background: orbs[2], willChange: "transform" }}
+        className="absolute -bottom-40 left-1/3 w-[26rem] h-[26rem] rounded-full blur-3xl opacity-60"
+        style={{ background: orbs[2] }}
       />
     </div>
   );
 }
 
-
 /*
   ── MediaParallax ──────────────────────────────────────────────────
-  The image drifts inside its own frame as the tile crosses the
-  viewport, so the photo feels set behind the crop rather than pasted
-  into it. Pair with .media, which already clips and zooms on hover.
 */
 export function MediaParallax({
   children,
@@ -64,13 +73,14 @@ export function MediaParallax({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const yRaw = useTransform(scrollYProgress, [0, 1], [`-${amount}%`, `${amount}%`]);
-  const y = useSpring(yRaw, { stiffness: 80, damping: 26, mass: 0.4 });
+  const y = useSpring(yRaw, { stiffness: 120, damping: 30, mass: 0.2 });
 
   return (
     <div ref={ref} className={className}>
-      <motion.div className="w-full h-full" style={reduced ? undefined : { y, scale: 1 + amount / 100 }}>
+      <motion.div className="w-full h-full" style={reduced || isMobile ? undefined : { y, scale: 1 + amount / 100 }}>
         {children}
       </motion.div>
     </div>
@@ -79,9 +89,6 @@ export function MediaParallax({
 
 /*
   ── ScrollDepth ────────────────────────────────────────────────────
-  Scroll-linked rotation and lift on a real perspective. Used for the
-  hero stack, where a few degrees of turn as the page moves reads as
-  depth rather than as a gimmick.
 */
 export function ScrollDepth({
   children,
@@ -96,18 +103,19 @@ export function ScrollDepth({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   const rotateRaw = useTransform(scrollYProgress, [0, 1], [turn, -turn]);
   const yRaw = useTransform(scrollYProgress, [0, 1], [lift, -lift]);
-  const rotateY = useSpring(rotateRaw, { stiffness: 60, damping: 24, mass: 0.5 });
-  const y = useSpring(yRaw, { stiffness: 60, damping: 24, mass: 0.5 });
+  const rotateY = useSpring(rotateRaw, { stiffness: 100, damping: 28, mass: 0.3 });
+  const y = useSpring(yRaw, { stiffness: 100, damping: 28, mass: 0.3 });
 
   return (
     <div ref={ref} className={`scene ${className}`}>
       <motion.div
         className="layer-3d"
-        style={reduced ? undefined : { rotateY, y, transformPerspective: 1400 }}
+        style={reduced || isMobile ? undefined : { rotateY, y, transformPerspective: 1400 }}
       >
         {children}
       </motion.div>
@@ -117,12 +125,11 @@ export function ScrollDepth({
 
 /*
   ── ScrollExit ─────────────────────────────────────────────────────
-  Content settles back and fades as it leaves the top of the screen,
-  so one section hands over to the next instead of cutting.
 */
 export function ScrollExit({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
@@ -130,7 +137,7 @@ export function ScrollExit({ children, className = "" }: { children: ReactNode; 
 
   return (
     <div ref={ref} className={className}>
-      <motion.div style={reduced ? undefined : { opacity, scale, y }}>{children}</motion.div>
+      <motion.div style={reduced || isMobile ? undefined : { opacity, scale, y }}>{children}</motion.div>
     </div>
   );
 }
@@ -212,6 +219,7 @@ export function Parallax({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -219,14 +227,14 @@ export function Parallax({
 
   const yRaw = useTransform(scrollYProgress, [0, 1], [distance, -distance]);
   const zRaw = useTransform(scrollYProgress, [0, 0.5, 1], [-depth, 0, -depth]);
-  const y = useSpring(yRaw, { stiffness: 70, damping: 22, mass: 0.4 });
-  const z = useSpring(zRaw, { stiffness: 70, damping: 22, mass: 0.4 });
+  const y = useSpring(yRaw, { stiffness: 100, damping: 28, mass: 0.2 });
+  const z = useSpring(zRaw, { stiffness: 100, damping: 28, mass: 0.2 });
 
   return (
     <div ref={ref} className={className}>
       <motion.div
         className="layer-3d"
-        style={reduced ? undefined : { y, z, transformPerspective: 1200 }}
+        style={reduced || isMobile ? undefined : { y, z, transformPerspective: 1200 }}
       >
         {children}
       </motion.div>
@@ -234,11 +242,6 @@ export function Parallax({
   );
 }
 
-/*
-  ── TiltCard ───────────────────────────────────────────────────────
-  Pointer-driven tilt, capped at a couple of degrees: enough for a card
-  to catch the light, not enough to read as a 3D toy.
-*/
 export function TiltCard({
   children,
   intensity = 3,
@@ -249,12 +252,13 @@ export function TiltCard({
   className?: string;
 }) {
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
   const springX = useSpring(rotateX, { stiffness: 150, damping: 18 });
   const springY = useSpring(rotateY, { stiffness: 150, damping: 18 });
 
-  if (reduced) return <div className={className}>{children}</div>;
+  if (reduced || isMobile) return <div className={className}>{children}</div>;
 
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse") return;
@@ -282,11 +286,6 @@ export function TiltCard({
   );
 }
 
-/*
-  ── ScrollZoom ─────────────────────────────────────────────────────
-  Image wrapper that eases from slightly oversized to true scale as it
-  crosses the viewport — the editorial "breathing" crop.
-*/
 export function ScrollZoom({
   children,
   from = 1.04,
@@ -298,16 +297,17 @@ export function ScrollZoom({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [from, 1, from]);
-  const smooth = useSpring(scale, { stiffness: 80, damping: 24, mass: 0.4 });
+  const smooth = useSpring(scale, { stiffness: 100, damping: 28, mass: 0.2 });
 
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
-      <motion.div style={reduced ? undefined : { scale: smooth }} className="w-full h-full">
+      <motion.div style={reduced || isMobile ? undefined : { scale: smooth }} className="w-full h-full">
         {children}
       </motion.div>
     </div>

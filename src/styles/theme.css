@@ -288,6 +288,33 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
+  /* Mobile GPU performance optimizations */
+  @media (max-width: 768px) {
+    .glass {
+      background: rgba(255, 255, 255, 0.95);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .glass-dark {
+      background: rgba(42, 26, 35, 0.94);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .glass-chip {
+      background: rgba(255, 255, 255, 0.95);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+  }
+
   /* Same idea for use on the plum bands */
   .glass-dark {
     background: linear-gradient(
