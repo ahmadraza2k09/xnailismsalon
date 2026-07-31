@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { Ambient, PageHeader, Reveal3D } from "@/app/site/ui";
@@ -40,6 +40,28 @@ export default function Booking() {
   const [date, setDate] = useState<string | null>(null);
   const [time, setTime] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", notes: "" });
+
+  /*
+    Each step is a different height, so advancing from a tall step to a
+    short one used to leave the reader parked at the footer. Bring the
+    card back under the navbar on every step change, but not on first
+    paint, where the page should open at the top.
+  */
+  const cardRef = useRef<HTMLDivElement>(null);
+  const firstPaint = useRef(true);
+
+  useEffect(() => {
+    if (firstPaint.current) {
+      firstPaint.current = false;
+      return;
+    }
+    const el = cardRef.current;
+    if (!el) return;
+    const NAVBAR = 96;
+    const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: Math.max(0, top), behavior: reduced ? "auto" : "smooth" });
+  }, [step]);
 
   const today = useMemo(() => {
     const now = new Date();
@@ -138,7 +160,7 @@ export default function Booking() {
           </ol>
 
           <Reveal3D>
-            <div className="card p-7 md:p-12">
+            <div ref={cardRef} className="card p-7 md:p-12 scroll-mt-28">
               <h2 className="font-display text-2xl md:text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
                 {step === 1 && t.booking.stepService}
                 {step === 2 && t.booking.stepWhen}
