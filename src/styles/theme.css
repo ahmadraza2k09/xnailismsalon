@@ -557,15 +557,18 @@
   .card-float {
     border: none;
     box-shadow:
-      0 34px 60px -28px rgba(43, 27, 36, 0.55),
-      0 12px 24px -16px rgba(43, 27, 36, 0.4);
-    transition: box-shadow 0.45s ease;
+      0 42px 72px -26px rgba(43, 27, 36, 0.6),
+      0 18px 34px -18px rgba(43, 27, 36, 0.45),
+      0 4px 10px -6px rgba(43, 27, 36, 0.3);
+    transition: box-shadow 0.45s ease, transform 0.45s ease;
   }
 
   .card-float:hover {
+    transform: translateY(-6px);
     box-shadow:
-      0 46px 80px -30px rgba(43, 27, 36, 0.62),
-      0 16px 30px -18px rgba(43, 27, 36, 0.45);
+      0 60px 100px -28px rgba(43, 27, 36, 0.68),
+      0 24px 44px -20px rgba(43, 27, 36, 0.5),
+      0 6px 14px -8px rgba(43, 27, 36, 0.32);
   }
 
   /* Small pill for facts set on a dark card */

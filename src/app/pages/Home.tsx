@@ -195,9 +195,9 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
-                <TiltCard intensity={6} className="h-full">
-                  <article className="card-float h-full rounded-[1.4rem] p-3 bg-plum-dark flex flex-col">
-                    <div className="media rounded-[1.1rem] aspect-[4/5]">
+                <TiltCard intensity={9} className="h-full">
+                  <article className="card-float h-full rounded-[1.4rem] overflow-hidden bg-plum-dark flex flex-col">
+                    <div className="media !rounded-none aspect-[4/5]">
                       <MediaParallax className="absolute inset-0" amount={6}>
                         <ImageWithFallback
                           src={serviceImages[i]}
@@ -207,7 +207,7 @@ export default function Home() {
                       </MediaParallax>
                     </div>
 
-                    <div className="px-2.5 pt-5 pb-2 mt-auto">
+                    <div className="px-5 pt-5 pb-5 mt-auto">
                       <h3 className="font-display text-xl text-white leading-snug" style={{ fontWeight: 500 }}>
                         {s.title}
                       </h3>
