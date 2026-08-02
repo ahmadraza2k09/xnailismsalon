@@ -156,13 +156,18 @@ export default function Home() {
             </div>
 
             <Scroll3DRotate intensity={8}>
-              <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6 border border-mauve/20 shadow-xl">
+              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12">
                 {t.stats.map((s) => (
-                  <div key={s.label}>
-                    <dt className="font-display text-4xl text-mauve" style={{ fontWeight: 500 }}>
+                  <div
+                    key={s.label}
+                    className="glass p-5 rounded-2xl text-center border border-mauve/20 shadow-md flex flex-col justify-center items-center"
+                  >
+                    <dt className="font-display text-3xl sm:text-4xl text-mauve" style={{ fontWeight: 500 }}>
                       {s.value}
                     </dt>
-                    <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
+                    <dd className="text-xs sm:text-[0.8rem] font-medium text-mauve-deep/90 mt-2 leading-snug tracking-wide max-w-[13rem] mx-auto">
+                      {s.label}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -180,7 +185,7 @@ export default function Home() {
       <section className="relative overflow-hidden py-14 md:py-24 px-6 bg-ivory-warm border-y border-border scene">
         <Ambient />
         <div className="relative max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <Reveal3D>
               <SectionHeading
                 align="left"
@@ -196,30 +201,36 @@ export default function Home() {
             </FadeUp>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {t.services.items.map((s, i) => (
               <Reveal3D key={s.title} delay={i * 0.07}>
-                <Scroll3DRotate intensity={10} className="h-full">
-                  <TiltCard intensity={8} className="h-full">
-                    <article className="card-float relative h-full rounded-[1.4rem] overflow-hidden aspect-[3/4.2] border border-mauve/20 shadow-lg">
-                      <MediaParallax className="absolute inset-0" amount={6}>
-                        <ImageWithFallback
-                          src={serviceImages[i]}
-                          alt={s.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </MediaParallax>
-                      <span className="media-scrim" />
-
-                      <div className="glass absolute inset-x-3 bottom-3 px-5 pt-4 pb-4">
-                        <h3 className="font-display text-xl text-mauve-deep leading-snug" style={{ fontWeight: 500 }}>
+                <Scroll3DRotate intensity={8} className="h-full">
+                  <TiltCard intensity={6} className="h-full">
+                    <article className="card card-hover flex flex-col justify-between h-full p-5 rounded-2xl border border-mauve/20 shadow-md bg-white/95">
+                      <div>
+                        <div className="media aspect-[4/3] rounded-xl overflow-hidden mb-4">
+                          <MediaParallax className="w-full h-full" amount={5}>
+                            <ImageWithFallback
+                              src={serviceImages[i]}
+                              alt={s.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </MediaParallax>
+                        </div>
+                        <h3 className="font-display text-xl text-mauve-deep leading-snug font-medium">
                           {s.title}
                         </h3>
-                        <p className="caption text-mauve mt-1.5">{s.price}</p>
-                        <Link to={routes.booking} className="btn-primary w-full mt-4 py-3 text-[0.62rem]">
-                          {t.common.bookThisService}
-                        </Link>
+                        <p className="text-xs font-semibold text-mauve tracking-wide uppercase mt-1.5">
+                          {s.price}
+                        </p>
+                        <p className="text-xs text-foreground/75 leading-relaxed mt-2.5 line-clamp-2">
+                          {s.desc}
+                        </p>
                       </div>
+
+                      <Link to={routes.booking} className="btn-primary w-full mt-5 py-3 text-[0.65rem] tracking-wider">
+                        {t.common.bookThisService}
+                      </Link>
                     </article>
                   </TiltCard>
                 </Scroll3DRotate>

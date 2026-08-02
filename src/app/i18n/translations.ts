@@ -33,7 +33,7 @@ const es = {
     allServices: "Todos los servicios y precios",
     fullGallery: "Ver la galería completa",
     moreAboutHer: "Conoce a nuestro equipo",
-    bookThisService: "Reservar este servicio",
+    bookThisService: "Reservar cita",
     bookSession: "Reservar una sesión",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
@@ -273,7 +273,7 @@ const es = {
         ],
       },
       {
-        title: "Pedicura en Seco + Gel Un Solo Color",
+        title: "Pedicura en Seco + Gel 1 Color",
         price: "$300 pesos",
         badge: "Pedicura en seco",
         desc: "Limpieza precisa en seco con remoción de cutícula, limado y aplicación de gel de un solo color.",
@@ -287,7 +287,7 @@ const es = {
         ],
       },
       {
-        title: "Pedicura en Seco + Gel con Diseño ó Acripié",
+        title: "Pedicura en Seco + Diseño / Acripié",
         price: "$400 pesos",
         badge: "Diseño o Acripié",
         desc: "Limpieza en seco, remoción de cutícula, limado de uñas y aplicación de gel con diseño o técnica Acripié.",
@@ -301,7 +301,7 @@ const es = {
         ],
       },
       {
-        title: "Pedicura Completa Spa + Gel Un Solo Color",
+        title: "Pedicura Spa + Gel 1 Color",
         price: "$650 pesos",
         badge: "Experiencia Spa",
         desc: "Pedicura en seco más kit tina spa para pies con sales epsom, exfoliación, mascarilla y crema.",
@@ -316,7 +316,7 @@ const es = {
         ],
       },
       {
-        title: "Pedicura Completa Spa con Diseño ó Acripié",
+        title: "Pedicura Spa + Diseño / Acripié",
         price: "$700 - $800 pesos",
         badge: "Spa Premium",
         desc: "Pedicura en seco completa + kit tina spa relajante + gel con diseño o Acripié (opciones de $700 a $800).",
@@ -525,7 +525,7 @@ const en: Dict = {
     allServices: "All services & pricing",
     fullGallery: "See full gallery",
     moreAboutHer: "Meet our team",
-    bookThisService: "Book this service",
+    bookThisService: "Book appointment",
     bookSession: "Book a session",
     whatsapp: "WhatsApp",
     instagram: "Instagram",

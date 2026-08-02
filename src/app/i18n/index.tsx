@@ -20,13 +20,12 @@ function isLang(value: string | null): value is Lang {
   return value === "es" || value === "en";
 }
 
-/* ?lang=en wins over the stored choice, so an English link can be shared. */
+/* ?lang=en wins over default choice if explicitly requested in URL query. Defaults to Spanish 'es' on page load. */
 function readInitialLang(): Lang {
   if (typeof window === "undefined") return "es";
   const fromUrl = new URLSearchParams(window.location.search).get("lang");
   if (isLang(fromUrl)) return fromUrl;
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return isLang(stored) ? stored : "es";
+  return "es";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

@@ -31,13 +31,18 @@ export default function About() {
               <p>{t.about.storyP3}</p>
             </div>
 
-            <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6 border border-mauve/20 rounded-2xl shadow-sm">
+            <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12">
               {t.stats.map((s) => (
-                <div key={s.label} className="text-center">
+                <div
+                  key={s.label}
+                  className="glass p-5 rounded-2xl text-center border border-mauve/20 shadow-md flex flex-col justify-center items-center"
+                >
                   <dt className="font-display text-3xl md:text-4xl text-mauve" style={{ fontWeight: 500 }}>
                     {s.value}
                   </dt>
-                  <dd className="caption mt-2 leading-relaxed">{s.label}</dd>
+                  <dd className="text-xs sm:text-[0.8rem] font-medium text-mauve-deep/90 mt-2 leading-snug tracking-wide max-w-[13rem] mx-auto">
+                    {s.label}
+                  </dd>
                 </div>
               ))}
             </dl>

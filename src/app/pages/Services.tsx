@@ -26,15 +26,15 @@ export default function Services() {
             {t.services.items.map((s, i) => (
               <li
                 key={s.title}
-                className="flex items-baseline justify-between gap-6 py-4 border-b border-white/60 last:border-b-0"
+                className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 py-4 border-b border-white/60 last:border-b-0"
               >
                 <span className="flex items-baseline gap-4">
-                  <span className="caption text-mauve/50">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="caption text-mauve/50 shrink-0">{String(i + 1).padStart(2, "0")}</span>
                   <span className="font-display text-lg md:text-xl text-mauve-deep" style={{ fontWeight: 500 }}>
                     {s.title}
                   </span>
                 </span>
-                <span className="caption text-mauve whitespace-nowrap">{s.price}</span>
+                <span className="caption text-mauve sm:whitespace-nowrap sm:text-right pl-8 sm:pl-0">{s.price}</span>
               </li>
             ))}
           </ul>

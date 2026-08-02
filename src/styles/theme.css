@@ -252,7 +252,7 @@
     font-family: var(--font-ui);
     font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--logo-mauve);
   }
@@ -262,7 +262,7 @@
     font-family: var(--font-ui);
     font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
