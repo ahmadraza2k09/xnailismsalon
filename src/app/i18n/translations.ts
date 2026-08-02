@@ -143,17 +143,15 @@ const es = {
 
   about: {
     headerEyebrow: "Sobre el equipo",
-    headerTitle: "Ximena Moreno & Karelli Sandoval",
-    headerAccent: "artistas y socias",
+    headerTitle: "Ximena & Karelli",
+    headerAccent: "artistas y socias de X.Nailsm",
     headerSubtitle:
       "Unión de talento, técnica impecable y atención bilingüe para el cuidado de tus manos y pies.",
     storyEyebrow: "La historia",
     storyTitle: "Un estudio construido",
     storyAccent: "sobre oficio y cuidado",
-    storyP1a: "Con casi",
-    storyP1Strong: "nueve años de dominio profesional",
-    storyP1b:
-      ", Ximena Moreno y su socia Karelli Sandoval convierten cada cita en un ritual del que saldrás serena y renovada.",
+    storyP1:
+      "Con casi nueve años de dominio profesional, Ximena Moreno y su socia Karelli Sandoval convierten cada cita en un ritual del que saldrás serena y renovada.",
     storyP2:
       "Desde el builder gel esculpido y el arte pintado a mano hasta la pedicura en seco con spa hidratante y técnicas de Acripié.",
     storyP3:
@@ -163,7 +161,7 @@ const es = {
     partnerAccent: "Karelli Sandoval",
     partnerRole: "Manicurista & Pedicurista · Bilingüe (Inglés / Español)",
     partnerSubtitle:
-      "Especialista en pedicura en seco, tratamientospa completos para pies y diseños de uñas.",
+      "Especialista en pedicura en seco, tratamientos spa completos para pies y diseños de uñas.",
     partnerBio:
       "Karelli aporta al estudio una amplia experiencia en pedicura en seco, limado especializado y tratamientos spa para pies. Su trato cálido, atención al detalle y capacidad bilingüe (inglés/español) garantizan una estancia placentera y profesional.",
     partnerSpecialtiesTitle: "Especialidades de Karelli",
@@ -637,17 +635,15 @@ const en: Dict = {
 
   about: {
     headerEyebrow: "About the team",
-    headerTitle: "Ximena Moreno & Karelli Sandoval",
-    headerAccent: "artists & partners",
+    headerTitle: "Ximena & Karelli",
+    headerAccent: "artists & partners at X.Nailsm",
     headerSubtitle:
       "A combination of talent, flawless technique and bilingual service for your hand and foot care.",
     storyEyebrow: "The story",
     storyTitle: "A studio built on",
     storyAccent: "craft and care",
-    storyP1a: "With nearly",
-    storyP1Strong: "nine years of professional mastery",
-    storyP1b:
-      ", Ximena Moreno and her partner Karelli Sandoval turn every appointment into a relaxing, renewing ritual.",
+    storyP1:
+      "With nearly nine years of professional mastery, Ximena Moreno and her partner Karelli Sandoval turn every appointment into a relaxing, renewing ritual.",
     storyP2:
       "From sculpted builder gel and hand-painted art to dry pedicures with hydrating spa treatments and Acripié techniques.",
     storyP3:

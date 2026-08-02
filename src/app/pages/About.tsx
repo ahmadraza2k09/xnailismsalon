@@ -17,7 +17,7 @@ export default function About() {
       />
 
       {/* Main story */}
-      <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto scene">
+      <section className="py-12 md:py-20 px-6 max-w-5xl mx-auto scene">
         <Reveal3D>
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
@@ -25,21 +25,15 @@ export default function About() {
               title={t.about.storyTitle}
               accent={t.about.storyAccent}
             />
-            <div className="space-y-5 text-[0.98rem] md:text-base text-foreground/82 leading-relaxed mt-8">
-              <p>
-                {t.about.storyP1a}{" "}
-                <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
-                  {t.about.storyP1Strong}
-                </span>
-                {t.about.storyP1b}
-              </p>
+            <div className="space-y-5 text-base md:text-lg text-foreground/85 leading-relaxed mt-8 text-center max-w-2xl mx-auto">
+              <p>{t.about.storyP1}</p>
               <p>{t.about.storyP2}</p>
               <p>{t.about.storyP3}</p>
             </div>
 
-            <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6 border border-mauve/20">
+            <dl className="glass grid grid-cols-3 gap-6 mt-12 px-6 py-6 border border-mauve/20 rounded-2xl shadow-sm">
               {t.stats.map((s) => (
-                <div key={s.label}>
+                <div key={s.label} className="text-center">
                   <dt className="font-display text-3xl md:text-4xl text-mauve" style={{ fontWeight: 500 }}>
                     {s.value}
                   </dt>
@@ -64,91 +58,108 @@ export default function About() {
             />
           </Reveal3D>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10 mt-12">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10 mt-12 items-stretch">
             {/* Box 1: Ximena Moreno */}
-            <Reveal3D delay={0.05}>
-              <div className="card p-8 md:p-10 h-full flex flex-col justify-between border border-mauve/25 shadow-xl hover:border-mauve/50 transition-all bg-white/90">
+            <Reveal3D delay={0.05} className="h-full">
+              <div className="card p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between border border-mauve/25 shadow-lg hover:shadow-xl hover:border-mauve/50 transition-all bg-white/95 rounded-3xl">
                 <div>
-                  <div className="flex items-center justify-between gap-4 mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mauve/10 text-mauve-deep text-[0.7rem] font-body tracking-[0.14em] uppercase font-semibold">
-                      <UserCheck size={14} className="text-mauve" />
-                      Fundadora & Artista
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-mauve/10 text-mauve-deep text-[0.62rem] sm:text-[0.7rem] font-body tracking-[0.08em] sm:tracking-[0.14em] uppercase font-semibold whitespace-nowrap shrink-0">
+                      <UserCheck size={13} className="text-mauve shrink-0" />
+                      <span>Fundadora & Artista</span>
                     </span>
-                    <span className="text-xs text-mauve font-medium">9+ años oficio</span>
+                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">9+ años oficio</span>
                   </div>
 
-                  <h3 className="font-display text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
+                  <h3 className="font-display text-2xl sm:text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
                     {t.common.team.ximena.name}
                   </h3>
-                  <p className="caption text-mauve mt-1">{t.common.team.ximena.role}</p>
+                  <p className="caption text-mauve mt-1.5 font-medium">{t.common.team.ximena.role}</p>
 
                   <p className="text-sm text-foreground/82 leading-relaxed mt-5">
                     {t.common.team.ximena.bio}
                   </p>
 
-                  <div className="mt-6 pt-6 border-t border-border space-y-2.5">
-                    <div className="flex items-start gap-2.5 text-xs text-foreground/80">
+                  <div className="mt-6 pt-6 border-t border-border space-y-3">
+                    <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Nivelación de Builder, Extensiones de Polygel y Acrílico</span>
+                      <span>Nivelación de Builder Gel, Polygel y Acrílico esculpido</span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs text-foreground/80">
+                    <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Diseños asiáticos de autor pintados a mano</span>
+                      <span>Diseños asiáticos de autor pintados a mano al detalle</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-border">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-mauve-deep mb-2">
-                    <Clock size={14} className="text-mauve" />
-                    <span>Horarios de Ximena:</span>
+                <div className="mt-8 pt-6 border-t border-border space-y-4">
+                  <div className="p-3.5 rounded-xl bg-mauve/5 border border-mauve/15">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-mauve-deep mb-1.5">
+                      <Clock size={14} className="text-mauve shrink-0" />
+                      <span>Horarios de Ximena:</span>
+                    </div>
+                    <ul className="text-[0.75rem] text-foreground/75 space-y-1">
+                      <li>• Mar, Jue, Sáb y Dom: 7:00 am - 9:00 pm</li>
+                      <li>• Lun, Mié y Vie: 7:00 am - 3:00 pm</li>
+                    </ul>
                   </div>
-                  <ul className="text-xs text-foreground/75 space-y-1">
-                    <li>• Mar, Jue, Sáb y Dom: 7:00 am - 9:00 pm</li>
-                    <li>• Lun, Mié y Vie: 7:00 am - 3:00 pm</li>
-                  </ul>
+
+                  <Link to={routes.booking} className="btn-primary w-full text-[0.66rem] py-3.5">
+                    {t.common.bookSession}
+                    <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
             </Reveal3D>
 
             {/* Box 2: Karelli Sandoval */}
-            <Reveal3D delay={0.12}>
-              <div className="card p-8 md:p-10 h-full flex flex-col justify-between border border-mauve/25 shadow-xl hover:border-mauve/50 transition-all bg-white/90">
+            <Reveal3D delay={0.12} className="h-full">
+              <div className="card p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between border border-mauve/25 shadow-lg hover:shadow-xl hover:border-mauve/50 transition-all bg-white/95 rounded-3xl">
                 <div>
-                  <div className="flex items-center justify-between gap-4 mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mauve/10 text-mauve-deep text-[0.7rem] font-body tracking-[0.14em] uppercase font-semibold">
-                      <Globe size={14} className="text-mauve" />
-                      {t.common.team.karelli.badge}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-mauve/10 text-mauve-deep text-[0.62rem] sm:text-[0.7rem] font-body tracking-[0.08em] sm:tracking-[0.14em] uppercase font-semibold whitespace-nowrap shrink-0">
+                      <Globe size={13} className="text-mauve shrink-0" />
+                      <span>{t.common.team.karelli.badge}</span>
                     </span>
-                    <span className="text-xs text-mauve font-medium">Socia</span>
+                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">Socia</span>
                   </div>
 
-                  <h3 className="font-display text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
+                  <h3 className="font-display text-2xl sm:text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
                     {t.common.team.karelli.name}
                   </h3>
-                  <p className="caption text-mauve mt-1">{t.common.team.karelli.role}</p>
+                  <p className="caption text-mauve mt-1.5 font-medium">{t.common.team.karelli.role}</p>
 
                   <p className="text-sm text-foreground/82 leading-relaxed mt-5">
                     {t.common.team.karelli.bio}
                   </p>
 
-                  <div className="mt-6 pt-6 border-t border-border space-y-2.5">
-                    <div className="flex items-start gap-2.5 text-xs text-foreground/80">
+                  <div className="mt-6 pt-6 border-t border-border space-y-3">
+                    <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Pedicura en seco (limpieza profunda, cutícula y limado de precisión)</span>
+                      <span>Pedicura en seco (limpieza profunda, cutícula y limado preciso)</span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs text-foreground/80">
+                    <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Tratamientos completos de Tina Spa con sales epsom aromáticas</span>
+                      <span>Ritual Tina Spa con sales epsom aromáticas y mascarilla</span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs text-foreground/80">
+                    <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Técnica Acripié y diseños variados en pies</span>
+                      <span>Técnica Acripié y diseños personalizados en pies</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-border">
+                <div className="mt-8 pt-6 border-t border-border space-y-4">
+                  <div className="p-3.5 rounded-xl bg-mauve/5 border border-mauve/15">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-mauve-deep mb-1.5">
+                      <Globe size={14} className="text-mauve shrink-0" />
+                      <span>Atención Bilingüe Personalizada:</span>
+                    </div>
+                    <p className="text-[0.75rem] text-foreground/75">
+                      Fluidez total en Español e Inglés para asegurar la máxima comodidad durante tu cita.
+                    </p>
+                  </div>
+
                   <Link to={routes.booking} className="btn-primary w-full text-[0.66rem] py-3.5">
                     {t.common.bookSession}
                     <ArrowRight size={14} />
