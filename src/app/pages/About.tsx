@@ -56,10 +56,10 @@ export default function About() {
         <div className="relative max-w-7xl mx-auto">
           <Reveal3D className="flex justify-center text-center">
             <SectionHeading
-              eyebrow="El Equipo"
-              title="Nuestras"
-              accent="Especialistas"
-              subtitle="Conoce a las profesionales detrás de X.Nailsm"
+              eyebrow={t.about.teamEyebrow}
+              title={t.about.teamTitle}
+              accent={t.about.teamAccent}
+              subtitle={t.about.teamSubtitle}
             />
           </Reveal3D>
 
@@ -71,9 +71,9 @@ export default function About() {
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-mauve/10 text-mauve-deep text-[0.62rem] sm:text-[0.7rem] font-body tracking-[0.08em] sm:tracking-[0.14em] uppercase font-semibold whitespace-nowrap shrink-0">
                       <UserCheck size={13} className="text-mauve shrink-0" />
-                      <span>Fundadora & Artista</span>
+                      <span>{t.about.ximenaBadge}</span>
                     </span>
-                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">9+ años oficio</span>
+                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">{t.about.ximenaExp}</span>
                   </div>
 
                   <h3 className="font-display text-2xl sm:text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
@@ -88,11 +88,11 @@ export default function About() {
                   <div className="mt-6 pt-6 border-t border-border space-y-3">
                     <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Nivelación de Builder Gel, Polygel y Acrílico esculpido</span>
+                      <span>{t.about.ximenaSpec1}</span>
                     </div>
                     <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Diseños asiáticos de autor pintados a mano al detalle</span>
+                      <span>{t.about.ximenaSpec2}</span>
                     </div>
                   </div>
                 </div>
@@ -101,11 +101,11 @@ export default function About() {
                   <div className="p-3.5 rounded-xl bg-mauve/5 border border-mauve/15">
                     <div className="flex items-center gap-2 text-xs font-semibold text-mauve-deep mb-1.5">
                       <Clock size={14} className="text-mauve shrink-0" />
-                      <span>Horarios de Ximena:</span>
+                      <span>{t.about.ximenaHoursTitle}</span>
                     </div>
                     <ul className="text-[0.75rem] text-foreground/75 space-y-1">
-                      <li>• Mar, Jue, Sáb y Dom: 7:00 am - 9:00 pm</li>
-                      <li>• Lun, Mié y Vie: 7:00 am - 3:00 pm</li>
+                      <li>{t.about.ximenaHours1}</li>
+                      <li>{t.about.ximenaHours2}</li>
                     </ul>
                   </div>
 
@@ -126,7 +126,7 @@ export default function About() {
                       <Globe size={13} className="text-mauve shrink-0" />
                       <span>{t.common.team.karelli.badge}</span>
                     </span>
-                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">Socia</span>
+                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">{t.about.karelliPartnerBadge}</span>
                   </div>
 
                   <h3 className="font-display text-2xl sm:text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
@@ -141,15 +141,15 @@ export default function About() {
                   <div className="mt-6 pt-6 border-t border-border space-y-3">
                     <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Pedicura en seco (limpieza profunda, cutícula y limado preciso)</span>
+                      <span>{t.about.karelliSpec1}</span>
                     </div>
                     <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Ritual Tina Spa con sales epsom aromáticas y mascarilla</span>
+                      <span>{t.about.karelliSpec2}</span>
                     </div>
                     <div className="flex items-start gap-2.5 text-xs text-foreground/80 leading-normal">
                       <Sparkles size={14} className="text-mauve shrink-0 mt-0.5" />
-                      <span>Técnica Acripié y diseños personalizados en pies</span>
+                      <span>{t.about.karelliSpec3}</span>
                     </div>
                   </div>
                 </div>
@@ -158,10 +158,10 @@ export default function About() {
                   <div className="p-3.5 rounded-xl bg-mauve/5 border border-mauve/15">
                     <div className="flex items-center gap-2 text-xs font-semibold text-mauve-deep mb-1.5">
                       <Globe size={14} className="text-mauve shrink-0" />
-                      <span>Atención Bilingüe Personalizada:</span>
+                      <span>{t.about.karelliBilingualTitle}</span>
                     </div>
                     <p className="text-[0.75rem] text-foreground/75">
-                      Fluidez total en Español e Inglés para asegurar la máxima comodidad durante tu cita.
+                      {t.about.karelliBilingualText}
                     </p>
                   </div>
 

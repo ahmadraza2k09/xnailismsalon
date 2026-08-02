@@ -114,7 +114,7 @@ export default function Booking() {
         ? "Ximena Moreno"
         : artist === "karelli"
           ? "Karelli Sandoval"
-          : "Cualquiera disponible";
+          : t.booking.artistAny;
 
     const message = [
       m.intro,
