@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight, MessageCircle, User } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { Ambient, PageHeader, Reveal3D } from "@/app/site/ui";
 import { useLanguage } from "@/app/i18n";
@@ -35,18 +35,13 @@ export default function Booking() {
   const locale = lang === "es" ? "es-MX" : "en-GB";
 
   const [step, setStep] = useState(1);
+  const [artist, setArtist] = useState<string>("any");
   const [service, setService] = useState<number | null>(null);
   const [cursor, setCursor] = useState(() => startOfMonth(new Date()));
   const [date, setDate] = useState<string | null>(null);
   const [time, setTime] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", notes: "" });
 
-  /*
-    Each step is a different height, so advancing from a tall step to a
-    short one used to leave the reader parked at the footer. Bring the
-    card back under the navbar on every step change, but not on first
-    paint, where the page should open at the top.
-  */
   const cardRef = useRef<HTMLDivElement>(null);
   const firstPaint = useRef(true);
 
@@ -95,7 +90,13 @@ export default function Booking() {
       year: "numeric",
     });
 
-  /* The message always reaches Ximena in Spanish, whatever the visitor reads. */
+  const getArtistLabel = (key: string) => {
+    if (key === "ximena") return t.booking.artistXimena;
+    if (key === "karelli") return t.booking.artistKarelli;
+    return t.booking.artistAny;
+  };
+
+  /* The message reaches the studio on WhatsApp in Spanish. */
   const confirmReservation = () => {
     if (service === null || !date || !time) return;
     const es = translations.es;
@@ -108,14 +109,22 @@ export default function Booking() {
       year: "numeric",
     });
 
+    const artistName =
+      artist === "ximena"
+        ? "Ximena Moreno"
+        : artist === "karelli"
+          ? "Karelli Sandoval"
+          : "Cualquiera disponible";
+
     const message = [
       m.intro,
       "",
       `${m.name}: ${form.name}`,
       `${m.phone}: ${form.phone}`,
+      `${m.artist}: ${artistName}`,
       `${m.date}: ${spanishDate}`,
       `${m.time}: ${time}`,
-      `${m.service}: ${chosen.title} · ${chosen.price}`,
+      `${m.service}: ${chosen.title} (${chosen.price})`,
       `${m.notes}: ${form.notes || m.none}`,
       "",
       m.thanks,
@@ -172,33 +181,67 @@ export default function Booking() {
               )}
               <p className="caption mt-3">{stepLabel}</p>
 
-              {/* Step 1 — service */}
+              {/* Step 1 — artist & service */}
               {step === 1 && (
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-                  {t.services.items.map((item, i) => (
-                    <button
-                      key={item.title}
-                      onClick={() => setService(i)}
-                      aria-pressed={service === i}
-                      className={`text-left rounded-xl overflow-hidden border transition-all cursor-pointer ${
-                        service === i
-                          ? "border-mauve ring-2 ring-mauve/25 bg-white"
-                          : "border-border bg-white/70 hover:border-mauve/50"
-                      }`}
-                    >
-                      <ImageWithFallback
-                        src={serviceImages[i]}
-                        alt={item.title}
-                        className="w-full aspect-[4/3] object-cover"
-                      />
-                      <span className="block px-4 py-3.5">
-                        <span className="block font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
-                          {item.title}
-                        </span>
-                        <span className="block caption text-mauve mt-1.5">{item.price}</span>
-                      </span>
-                    </button>
-                  ))}
+                <div className="mt-8 space-y-8">
+                  {/* Specialist Selection */}
+                  <div className="p-5 rounded-2xl bg-mauve/5 border border-mauve/20">
+                    <label className="flex items-center gap-2 text-[0.75rem] font-body tracking-[0.16em] uppercase text-mauve-deep mb-3 font-semibold">
+                      <User size={15} className="text-mauve" />
+                      {t.booking.artist}
+                    </label>
+                    <div className="grid sm:grid-cols-3 gap-3">
+                      {[
+                        { id: "any", label: t.booking.artistAny },
+                        { id: "ximena", label: t.booking.artistXimena },
+                        { id: "karelli", label: t.booking.artistKarelli },
+                      ].map((art) => (
+                        <button
+                          key={art.id}
+                          type="button"
+                          onClick={() => setArtist(art.id)}
+                          className={`p-3.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
+                            artist === art.id
+                              ? "bg-white border-mauve ring-2 ring-mauve/25 font-medium text-mauve-deep"
+                              : "bg-white/60 border-border text-mauve-deep/80 hover:border-mauve/40"
+                          }`}
+                        >
+                          {art.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Services List */}
+                  <div>
+                    <label className={labelCls}>{t.booking.service}</label>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {t.services.items.map((item, i) => (
+                        <button
+                          key={item.title}
+                          onClick={() => setService(i)}
+                          aria-pressed={service === i}
+                          className={`text-left rounded-xl overflow-hidden border transition-all cursor-pointer ${
+                            service === i
+                              ? "border-mauve ring-2 ring-mauve/25 bg-white"
+                              : "border-border bg-white/70 hover:border-mauve/50"
+                          }`}
+                        >
+                          <ImageWithFallback
+                            src={serviceImages[i]}
+                            alt={item.title}
+                            className="w-full aspect-[4/3] object-cover"
+                          />
+                          <span className="block px-4 py-3.5">
+                            <span className="block font-display text-base text-mauve-deep leading-snug" style={{ fontWeight: 500 }}>
+                              {item.title}
+                            </span>
+                            <span className="block caption text-mauve mt-1.5">{item.price}</span>
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -339,6 +382,7 @@ export default function Booking() {
                 <>
                   <dl className="mt-8 divide-y divide-border border-y border-border">
                     {[
+                      [t.booking.summaryArtist, getArtistLabel(artist)],
                       [t.booking.summaryService, service !== null ? t.services.items[service].title : ""],
                       [t.booking.summaryDate, date ? longDate(date) : ""],
                       [t.booking.summaryTime, time ?? ""],
@@ -348,7 +392,7 @@ export default function Booking() {
                     ].map(([label, value]) => (
                       <div key={label} className="flex items-baseline justify-between gap-6 py-4">
                         <dt className="caption text-mauve-deep/70">{label}</dt>
-                        <dd className="font-display text-lg text-mauve-deep text-right" style={{ fontWeight: 500 }}>
+                        <dd className="font-display text-base md:text-lg text-mauve-deep text-right" style={{ fontWeight: 500 }}>
                           {value}
                         </dd>
                       </div>

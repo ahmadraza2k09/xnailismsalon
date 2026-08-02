@@ -10,8 +10,22 @@ import asianArtImg from "@/imports/8e8b75cf-bcf8-411e-a516-4dc67de67d3b.jpeg";
 import gallery1 from "@/imports/201b52d1-291b-4f09-9168-53d4eecac74e.jpeg";
 import gallery2 from "@/imports/cbe5e474-8f30-4240-814c-568a9d72849e.jpeg";
 import gallery3 from "@/imports/d2e1918e-2b53-48ec-ba06-5a0663e2aa06.jpeg";
+import pedicureDry1ColorImg from "@/imports/pedicure_dry_1color.jpg";
+import pedicureDryDesignImg from "@/imports/pedicure_dry_design.jpg";
+import pedicureSpa1ColorImg from "@/imports/pedicure_spa_1color.jpg";
+import pedicureSpaDesignImg from "@/imports/pedicure_spa_design.jpg";
 
-export { logo, builderGelImg, polygelImg, acrylicImg, asianArtImg };
+export {
+  logo,
+  builderGelImg,
+  polygelImg,
+  acrylicImg,
+  asianArtImg,
+  pedicureDry1ColorImg,
+  pedicureDryDesignImg,
+  pedicureSpa1ColorImg,
+  pedicureSpaDesignImg,
+};
 
 /* Language-neutral facts. All prose lives in src/app/i18n/translations.ts */
 export const brand = {
@@ -34,37 +48,48 @@ export const routes = {
   booking: "/booking",
 };
 
-/* Images for the four services, in the same order as t.services.items */
-export const serviceImages = [builderGelImg, polygelImg, acrylicImg, asianArtImg];
+/* Images for all services, in the exact same order as t.services.items */
+export const serviceImages = [
+  builderGelImg,
+  polygelImg,
+  acrylicImg,
+  asianArtImg,
+  pedicureDry1ColorImg,
+  pedicureDryDesignImg,
+  pedicureSpa1ColorImg,
+  pedicureSpaDesignImg,
+];
 
 /* Gallery order is fixed; `tag` keys into t.portfolio.tags */
 export const galleryItems = [
   { src: builderGelImg, tag: "builder" },
   { src: asianArtImg, tag: "handPainted" },
+  { src: pedicureDryDesignImg, tag: "pedicure" },
   { src: gallery1, tag: "fineLine" },
   { src: acrylicImg, tag: "acrylic" },
   { src: polygelImg, tag: "polygel" },
+  { src: pedicureSpaDesignImg, tag: "pedicure" },
   { src: gallery2, tag: "crystal" },
   { src: gallery3, tag: "french" },
 ] as const;
 
-/* `day` keys into t.common.hours; no `to` means "by appointment" */
+/* `day` keys into t.common.hours */
 export const studioHours = [
-  { day: "weekdays", from: "10:00", to: "19:00" },
-  { day: "saturday", from: "10:00", to: "16:00" },
-  { day: "sunday", from: null, to: null },
+  { day: "tueThuSatSun", from: "07:00", to: "21:00" },
+  { day: "monWedFri", from: "07:00", to: "15:00" },
 ] as const;
 
 /*
-  Appointment starts, spaced so a two hour session finishes inside the
-  studio hours above. Sunday is by appointment only, so it has no slots.
+  Appointment starts for Ximena's schedule:
+  - Tue, Thu, Sat, Sun (2, 4, 6, 0): 7:00 am - 9:00 pm
+  - Mon, Wed, Fri (1, 3, 5): 7:00 am - 3:00 pm
 */
 export const timeSlots: Record<number, string[]> = {
-  0: ["10:00", "12:30"],
-  1: ["10:00", "12:30", "15:00", "17:00"],
-  2: ["10:00", "12:30", "15:00", "17:00"],
-  3: ["10:00", "12:30", "15:00", "17:00"],
-  4: ["10:00", "12:30", "15:00", "17:00"],
-  5: ["10:00", "12:30", "15:00", "17:00"],
-  6: ["10:00", "12:30", "14:00"],
+  0: ["07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00"], // Domingo 7am-9pm
+  1: ["07:00", "09:00", "11:00", "13:00"],                            // Lunes 7am-3pm
+  2: ["07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00"], // Martes 7am-9pm
+  3: ["07:00", "09:00", "11:00", "13:00"],                            // Miércoles 7am-3pm
+  4: ["07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00"], // Jueves 7am-9pm
+  5: ["07:00", "09:00", "11:00", "13:00"],                            // Viernes 7am-3pm
+  6: ["07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00"], // Sábado 7am-9pm
 };
