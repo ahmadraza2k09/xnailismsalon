@@ -6,6 +6,7 @@ import { Footer } from "@/app/site/Footer";
 import { ScrollProgress } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
 import { brand } from "@/app/site/data";
+import { IS_WEBSITE_DOWN } from "./maintenanceConfig";
 
 /* Every route change starts at the top of the new page. */
 function ScrollToTop() {
@@ -20,6 +21,18 @@ function ScrollToTop() {
 
 export default function App() {
   const t = useT();
+
+  if (IS_WEBSITE_DOWN) {
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center bg-white text-gray-800 font-sans p-4">
+        <div className="text-center">
+          <h1 className="text-2xl sm:text-3xl font-medium text-gray-700 tracking-tight">
+            Website Not Available
+          </h1>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-body overflow-x-hidden selection:bg-mauve/20">

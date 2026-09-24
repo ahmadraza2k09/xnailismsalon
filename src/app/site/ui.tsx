@@ -447,3 +447,61 @@ export function Scroll3DRotate({
     </div>
   );
 }
+
+/* ── Vector Decorative Components ─────────────────────────────────── */
+export function VectorSparkle({ className = "w-5 h-5 text-mauve" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
+    </svg>
+  );
+}
+
+export function VectorBadge({
+  children,
+  color = "mauve",
+  className = "",
+}: {
+  children: ReactNode;
+  color?: "mauve" | "blush" | "gold" | "dark";
+  className?: string;
+}) {
+  const styles = {
+    mauve: "bg-mauve/10 text-mauve-deep border-mauve/40 shadow-[2px_2px_0px_rgba(163,91,133,0.3)]",
+    blush: "bg-blush-soft text-mauve-deep border-mauve-soft shadow-[2px_2px_0px_rgba(254,181,203,0.6)]",
+    gold: "bg-amber-100 text-amber-900 border-amber-300 shadow-[2px_2px_0px_rgba(217,119,6,0.3)]",
+    dark: "bg-mauve-deep text-white border-plum-dark shadow-[2px_2px_0px_rgba(43,27,36,0.4)]",
+  };
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full border ${styles[color]} ${className}`}
+    >
+      <VectorSparkle className="w-3 h-3" />
+      {children}
+    </span>
+  );
+}
+
+export function VectorDots() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 opacity-15"
+      style={{
+        backgroundImage: `radial-gradient(#A35B85 1.5px, transparent 1.5px)`,
+        backgroundSize: `24px 24px`,
+      }}
+    />
+  );
+}
+
+export function VectorNailIcon({ className = "w-6 h-6 text-mauve" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2C8 2 6 6 6 12v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8c0-6-2-10-6-10z" />
+      <path d="M9 10c1-1 5-1 6 0" />
+      <circle cx="12" cy="6" r="1" fill="currentColor" />
+    </svg>
+  );
+}

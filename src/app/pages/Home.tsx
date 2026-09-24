@@ -14,6 +14,9 @@ import {
   ScrollZoom,
   SectionHeading,
   Scroll3DRotate,
+  VectorBadge,
+  VectorDots,
+  VectorSparkle,
 } from "@/app/site/ui";
 import { Testimonials } from "@/app/site/Testimonials";
 import { Faq } from "@/app/site/Faq";
@@ -27,10 +30,21 @@ export default function Home() {
   return (
     <>
       {/* ── Hero: asymmetric, type on the left, image on the right ── */}
-      <section className="relative pt-24 pb-12 md:pt-24 md:pb-16 px-6 bg-white scene overflow-hidden">
+      <section className="relative pt-24 pb-12 md:pt-28 md:pb-16 px-6 bg-white scene overflow-hidden">
         <Ambient />
+        <VectorDots />
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-14 items-center lg:items-start">
           <ScrollExit>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-4 flex items-center gap-2 flex-wrap"
+            >
+              <VectorBadge color="mauve">Vector Art Studio</VectorBadge>
+              <VectorBadge color="blush">Hand-Painted Designs</VectorBadge>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -39,8 +53,9 @@ export default function Home() {
               style={{ fontWeight: 500, transformOrigin: "0% 100%" }}
             >
               {t.home.heroTitle}
-              <span className="block text-mauve mt-2" style={{ fontWeight: 400 }}>
+              <span className="block text-mauve mt-2 flex items-center gap-3" style={{ fontWeight: 400 }}>
                 {t.home.heroAccent}
+                <VectorSparkle className="w-8 h-8 text-mauve animate-pulse" />
               </span>
             </motion.h1>
 
@@ -51,7 +66,7 @@ export default function Home() {
               className="text-[0.95rem] md:text-base text-foreground/82 leading-relaxed mt-8 max-w-md"
             >
               {t.home.heroText}{" "}
-              <span className="font-display text-lg text-mauve-deep" style={{ fontWeight: 500 }}>
+              <span className="font-display text-lg text-mauve-deep font-semibold">
                 {t.common.artist}
               </span>
               .
@@ -63,10 +78,10 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="flex flex-col sm:flex-row gap-4 mt-10"
             >
-              <Link to={routes.booking} className="btn-primary text-[0.66rem] px-9 py-4">
+              <Link to={routes.booking} className="btn-primary text-[0.66rem] px-9 py-4 shadow-md hover:shadow-xl">
                 {t.nav.bookAppointment}
               </Link>
-              <Link to={routes.portfolio} className="btn-outline text-[0.66rem] px-9 py-4">
+              <Link to={routes.portfolio} className="btn-outline text-[0.66rem] px-9 py-4 shadow-md">
                 {t.common.viewPortfolio}
               </Link>
             </motion.div>

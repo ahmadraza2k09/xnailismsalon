@@ -355,54 +355,51 @@
     pointer-events: none;
   }
 
-  /* ── Cards: glass with a bevelled lift ─────────────────────────── */
+  /* ── Vector Cards & Surfaces ───────────────────────────────────── */
   .card {
-    background: rgba(255, 255, 255, 0.78);
-    -webkit-backdrop-filter: blur(22px) saturate(140%);
-    backdrop-filter: blur(22px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 2px solid rgba(163, 91, 133, 0.32);
+    border-radius: 1.25rem;
     box-shadow:
-      0 18px 36px -30px rgba(110, 58, 89, 0.32),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      4px 6px 0px 0px rgba(110, 58, 89, 0.18),
+      0 12px 28px -12px rgba(110, 58, 89, 0.15);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
   }
 
   .card-hover:hover {
-    transform: translateY(-3px);
-    border-color: #FFFFFF;
+    transform: translate(-3px, -4px);
+    border-color: var(--logo-mauve);
     box-shadow:
-      0 26px 48px -32px rgba(110, 58, 89, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      7px 10px 0px 0px rgba(163, 91, 133, 0.3),
+      0 20px 36px -16px rgba(110, 58, 89, 0.22);
   }
 
-  /* Warm carved surface for secondary blocks */
+  /* Vector carved card tint */
   .card-tint {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(246, 235, 240, 0.85));
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 0.75rem;
-    box-shadow:
-      inset 0 2px 5px rgba(110, 58, 89, 0.1),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(246, 235, 240, 0.9));
+    border: 2px solid rgba(163, 91, 133, 0.28);
+    border-radius: 1rem;
+    box-shadow: 3px 4px 0px 0px rgba(163, 91, 133, 0.14);
   }
 
-  /* Photo frame: an inner glass ring and a diagonal light catch */
+  /* Vector art photo frame: sharp outline with offset vector pop shadow */
+  .photo-frame {
+    background: #FFFFFF;
+    padding: 0.65rem;
+    border: 2.5px solid var(--mauve-deep);
+    border-radius: 1rem;
+    box-shadow:
+      6px 8px 0px 0px rgba(110, 58, 89, 0.25),
+      0 18px 36px -20px rgba(110, 58, 89, 0.3);
+  }
+
   .frame-gloss {
     position: relative;
-  }
-
-  .frame-gloss::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+    border: 2px solid rgba(163, 91, 133, 0.3);
     border-radius: inherit;
-    pointer-events: none;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
   }
 
-  /* ── Buttons: glossy, bevelled, pressable ──────────────────────── */
+  /* ── Vector Buttons: crisp strokes, pop vector shadows ──────────── */
   .btn-primary,
   .btn-outline,
   .btn-on-dark,
@@ -414,32 +411,35 @@
     justify-content: center;
     gap: 0.6rem;
     font-family: var(--font-ui);
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     white-space: nowrap;
     border-radius: 999px;
-    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease,
-      border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease,
+      border-color 0.25s ease, box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
   }
 
   .btn-primary {
     color: #FFFFFF;
     background: var(--logo-mauve);
-    border: 1px solid var(--logo-mauve);
+    border: 2px solid var(--mauve-deep);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.18),
-      0 6px 14px -10px rgba(163, 91, 133, 0.55);
+      0 4px 0 0 var(--mauve-deep),
+      0 6px 16px -6px rgba(110, 58, 89, 0.4);
   }
 
   .btn-primary:hover {
-    background: var(--mauve-deep);
-    border-color: var(--mauve-deep);
+    background: #924B75;
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 0 0 var(--mauve-deep),
+      0 10px 22px -8px rgba(110, 58, 89, 0.5);
   }
 
   .btn-primary:active {
-    background: var(--mauve-deep);
-    box-shadow: inset 0 1px 3px rgba(110, 58, 89, 0.35);
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 0 var(--mauve-deep);
   }
 
   .btn-primary:disabled {
@@ -449,73 +449,90 @@
     filter: none;
   }
 
-  /* Frosted outline button */
+  /* Vector outline button */
   .btn-outline {
     color: var(--mauve-deep);
-    background: rgba(255, 255, 255, 0.7);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    backdrop-filter: blur(14px) saturate(150%);
-    border: 1px solid rgba(163, 91, 133, 0.35);
-    box-shadow: 0 4px 10px -8px rgba(110, 58, 89, 0.4);
+    background: #FFFFFF;
+    border: 2px solid var(--logo-mauve);
+    box-shadow:
+      0 4px 0 0 rgba(163, 91, 133, 0.35),
+      0 6px 14px -6px rgba(110, 58, 89, 0.2);
   }
 
   .btn-outline:hover {
     color: #FFFFFF;
     background: var(--logo-mauve);
-    border-color: var(--logo-mauve);
+    border-color: var(--mauve-deep);
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 0 0 var(--mauve-deep),
+      0 10px 18px -6px rgba(110, 58, 89, 0.35);
   }
 
-  /* Light variant for the plum bands */
+  .btn-outline:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 0 var(--mauve-deep);
+  }
+
+  /* Light vector button for dark plum bands */
   .btn-on-dark {
     color: var(--mauve-deep);
     background: #FFFFFF;
-    border: none;
-    box-shadow: 0 6px 16px -12px rgba(0, 0, 0, 0.5);
+    border: 2px solid #FFFFFF;
+    box-shadow:
+      0 4px 0 0 rgba(0, 0, 0, 0.4),
+      0 6px 16px -6px rgba(0, 0, 0, 0.4);
   }
 
   .btn-on-dark:hover {
-    background: var(--blush-mist);
+    background: var(--blush-soft);
+    color: var(--mauve-deep);
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 0 0 rgba(0, 0, 0, 0.5),
+      0 10px 20px -6px rgba(0, 0, 0, 0.5);
   }
 
   .btn-on-dark:active {
-    box-shadow: inset 0 1px 3px rgba(163, 91, 133, 0.25);
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.4);
   }
 
-  /* Outline button for use on the plum bands */
+  /* Ghost light button for dark plum bands */
   .btn-ghost-light {
     color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.08);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.25);
   }
 
   .btn-ghost-light:hover {
     color: var(--mauve-deep);
     background: #FFFFFF;
     border-color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.35);
   }
 
-  /* Circular icon control: same bevel, no label */
+  /* Circular vector icon control */
   .btn-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--mauve-deep);
-    background: rgba(255, 255, 255, 0.75);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    backdrop-filter: blur(14px) saturate(150%);
-    border: 1px solid rgba(163, 91, 133, 0.28);
+    background: #FFFFFF;
+    border: 2px solid rgba(163, 91, 133, 0.35);
     border-radius: 999px;
-    box-shadow: 0 4px 10px -8px rgba(110, 58, 89, 0.45);
-    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 3px 0 0 rgba(163, 91, 133, 0.25);
+    transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
 
   .btn-icon:hover {
     color: #FFFFFF;
     background: var(--logo-mauve);
-    border-color: var(--logo-mauve);
+    border-color: var(--mauve-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 0 var(--mauve-deep);
   }
 
   .btn-icon:active {

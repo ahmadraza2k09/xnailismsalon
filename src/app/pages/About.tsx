@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { ArrowRight, Clock, Globe, Sparkles, UserCheck } from "lucide-react";
-import { Ambient, PageHeader, Reveal3D, SectionHeading } from "@/app/site/ui";
+import { Ambient, PageHeader, Reveal3D, SectionHeading, VectorBadge, VectorDots } from "@/app/site/ui";
 import { useT } from "@/app/i18n";
-import { routes } from "@/app/site/data";
+import { artistPortraitImg, routes } from "@/app/site/data";
+import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
 export default function About() {
   const t = useT();
@@ -17,7 +18,8 @@ export default function About() {
       />
 
       {/* Main story */}
-      <section className="py-12 md:py-20 px-6 max-w-5xl mx-auto scene">
+      <section className="relative py-12 md:py-20 px-6 max-w-5xl mx-auto scene overflow-hidden">
+        <VectorDots />
         <Reveal3D>
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
@@ -35,12 +37,12 @@ export default function About() {
               {t.stats.map((s) => (
                 <div
                   key={s.label}
-                  className="glass p-5 rounded-2xl text-center border border-mauve/20 shadow-md flex flex-col justify-center items-center"
+                  className="card p-5 rounded-2xl text-center border-2 border-mauve/30 shadow-md flex flex-col justify-center items-center"
                 >
-                  <dt className="font-display text-3xl md:text-4xl text-mauve" style={{ fontWeight: 500 }}>
+                  <dt className="font-display text-3xl md:text-4xl text-mauve font-semibold">
                     {s.value}
                   </dt>
-                  <dd className="text-xs sm:text-[0.8rem] font-medium text-mauve-deep/90 mt-2 leading-snug tracking-wide max-w-[13rem] mx-auto">
+                  <dd className="text-xs sm:text-[0.8rem] font-semibold text-mauve-deep mt-2 leading-snug tracking-wide max-w-[13rem] mx-auto">
                     {s.label}
                   </dd>
                 </div>
@@ -50,7 +52,7 @@ export default function About() {
         </Reveal3D>
       </section>
 
-      {/* Side-by-side Partners Intro Boxes (No pictures) */}
+      {/* Side-by-side Partners Intro Boxes */}
       <section className="relative overflow-hidden py-14 md:py-24 px-6 bg-mauve/5 border-y border-border scene">
         <Ambient />
         <div className="relative max-w-7xl mx-auto">
@@ -64,19 +66,24 @@ export default function About() {
           </Reveal3D>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-10 mt-12 items-stretch">
-            {/* Box 1: Ximena Moreno */}
+            {/* Box 1: Ximena Moreno with Vector Portrait */}
             <Reveal3D delay={0.05} className="h-full">
-              <div className="card p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between border border-mauve/25 shadow-lg hover:shadow-xl hover:border-mauve/50 transition-all bg-white/95 rounded-3xl">
+              <div className="card p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between border-2 border-mauve/30 shadow-lg hover:shadow-2xl transition-all bg-white rounded-3xl">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-mauve/10 text-mauve-deep text-[0.62rem] sm:text-[0.7rem] font-body tracking-[0.08em] sm:tracking-[0.14em] uppercase font-semibold whitespace-nowrap shrink-0">
-                      <UserCheck size={13} className="text-mauve shrink-0" />
-                      <span>{t.about.ximenaBadge}</span>
-                    </span>
-                    <span className="text-[0.7rem] sm:text-xs text-mauve font-medium whitespace-nowrap">{t.about.ximenaExp}</span>
+                    <VectorBadge color="mauve">{t.about.ximenaBadge}</VectorBadge>
+                    <span className="text-[0.7rem] sm:text-xs text-mauve font-semibold">{t.about.ximenaExp}</span>
                   </div>
 
-                  <h3 className="font-display text-2xl sm:text-3xl text-mauve-deep" style={{ fontWeight: 500 }}>
+                  <div className="mb-6 rounded-2xl overflow-hidden border-2 border-mauve/30 shadow-md aspect-[4/3]">
+                    <ImageWithFallback
+                      src={artistPortraitImg}
+                      alt={t.common.team.ximena.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+
+                  <h3 className="font-display text-2xl sm:text-3xl text-mauve-deep font-semibold">
                     {t.common.team.ximena.name}
                   </h3>
                   <p className="caption text-mauve mt-1.5 font-medium">{t.common.team.ximena.role}</p>

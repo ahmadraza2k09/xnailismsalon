@@ -2,18 +2,19 @@
   On-page logo is a 700px derivative of the master artwork (the 2 MB original
   is kept only for the favicons in public/), so the brand mark paints fast.
 */
-import logo from "@/imports/logo-seal.jpg";
-import builderGelImg from "@/imports/8d5e0d9b-595f-4f62-bef6-e00598cbf0f7.jpeg";
-import polygelImg from "@/imports/b29a61bf-cc3d-41e2-a835-0f15e46500aa.jpeg";
-import acrylicImg from "@/imports/092385ee-ae0d-42ec-b0fc-d857f4e13718.jpeg";
-import asianArtImg from "@/imports/8e8b75cf-bcf8-411e-a516-4dc67de67d3b.jpeg";
-import gallery1 from "@/imports/201b52d1-291b-4f09-9168-53d4eecac74e.jpeg";
-import gallery2 from "@/imports/cbe5e474-8f30-4240-814c-568a9d72849e.jpeg";
-import gallery3 from "@/imports/d2e1918e-2b53-48ec-ba06-5a0663e2aa06.jpeg";
-import pedicureDry1ColorImg from "@/imports/pedicure_dry_1color.jpg";
-import pedicureDryDesignImg from "@/imports/pedicure_dry_design.jpg";
-import pedicureSpa1ColorImg from "@/imports/pedicure_spa_1color.jpg";
-import pedicureSpaDesignImg from "@/imports/pedicure_spa_design.jpg";
+import logo from "@/imports/vector/vector_logo_seal.jpg";
+import builderGelImg from "@/imports/vector/vector_builder_gel.jpg";
+import polygelImg from "@/imports/vector/vector_polygel.jpg";
+import acrylicImg from "@/imports/vector/vector_acrylic.jpg";
+import asianArtImg from "@/imports/vector/vector_asian_art.jpg";
+import gallery1 from "@/imports/vector/vector_fine_line.jpg";
+import gallery2 from "@/imports/vector/vector_crystal.jpg";
+import gallery3 from "@/imports/vector/vector_french.jpg";
+import pedicureDry1ColorImg from "@/imports/vector/vector_pedicure_dry.jpg";
+import pedicureDryDesignImg from "@/imports/vector/vector_pedicure_dry.jpg";
+import pedicureSpa1ColorImg from "@/imports/vector/vector_pedicure_spa.jpg";
+import pedicureSpaDesignImg from "@/imports/vector/vector_pedicure_spa.jpg";
+import artistPortraitImg from "@/imports/vector/vector_artist_portrait.jpg";
 
 export {
   logo,
@@ -25,6 +26,7 @@ export {
   pedicureDryDesignImg,
   pedicureSpa1ColorImg,
   pedicureSpaDesignImg,
+  artistPortraitImg,
 };
 
 /* Language-neutral facts. All prose lives in src/app/i18n/translations.ts */
